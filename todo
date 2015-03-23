@@ -1,0 +1,16 @@
+nutne
+	- sitovy multiplayer
+	- nastavitelne AI
+napady
+	- graficke vykresleni (tzn. ne jenom textove dotazy)
+	- pustit ruzna AI proti sobe a zmerit, kolik procent vyhrajou
+	- ai poskladat z ruznych vlastnosti
+		- kolem lodi nic nemuze byt
+		- podle velikosti lodi nekam vubec nestrilet (napr nestrilet do uzemi max 3, kdyz mu zbyva jenom lod 5)
+todo
+	- [ ] najit nejaka ofiko pravidla lodi
+	- [ ] navrhnout tridy
+	- [ ] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
+	- [ ] nakodovat to, vcetne unit testu!
+	- [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+	- [ ] profit
