@@ -2,7 +2,6 @@
 	- Renderer (inline, ncruses, ...)
 	- Game
 		- Player A
-			- fields (10x10, but customizable)
 			- ship placement
 			- shots fired
 			- fireAt()

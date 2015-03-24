@@ -11,4 +11,5 @@ Controller::~Controller() {
 }
 
 void Controller::run() {
+	string name = renderer->ask("What is your name?");
 }
