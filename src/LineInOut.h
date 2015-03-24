@@ -2,6 +2,7 @@
 #define LINEINOUT
 
 #include <iostream>
+#include <stdio.h>
 #include "InOut.h"
 
 
@@ -9,6 +10,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::getline;
+using std::sscanf;
 
 
 class LineInOut : public InOut {
@@ -19,6 +21,9 @@ public:
 
 	virtual Ship askShipLoc(int length, string ship) override;
 	virtual Location askShot() override;
+
+private:
+	Location readLocation();
 };
 
 

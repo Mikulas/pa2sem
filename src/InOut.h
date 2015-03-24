@@ -20,7 +20,7 @@ class InOut
         virtual Location askShot() = 0;
 
     protected:
-    	const string reset = "\033[0m";
+        const string reset = "\033[0m";
 		const string underline = "\033[4m";
     	const string red = "\033[31m";
 		const string green = "\033[32m";
