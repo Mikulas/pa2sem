@@ -16,7 +16,9 @@ public:
 	virtual void announce(string) override;
 	virtual void renderBoard() override;
 	virtual string ask(string question) override;
+
 	virtual Ship askShipLoc(int length, string ship) override;
+	virtual Location askShot() override;
 };
 
 

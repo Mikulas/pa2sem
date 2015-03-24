@@ -9,5 +9,5 @@ void HumanPlayer::setup() {
 }
 
 void HumanPlayer::takeTurn() {
-
+	fireAt(inOut->askShot());
 }
