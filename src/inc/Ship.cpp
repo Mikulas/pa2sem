@@ -2,7 +2,7 @@
 
 bool Ship::setStartEnd(Location start, Location end) {
 	if (fields.size() != 0) {
-		throw this;
+		return false;
 	}
 	
 	if (!start.inLine(&end) || start.distance(&end) != this->length) {
