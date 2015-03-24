@@ -1,3 +1,6 @@
+_:
+	make compile && make run
+
 compile:
 	g++ -std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb -o build/lode src/*.cpp
 run:
