@@ -1,4 +1,8 @@
+#ifndef GAME
+#define GAME
+
 #include "Player.h"
+
 
 enum class State : char {SETUP_A, SETUP_B, TURN_A, TURN_B};
 
@@ -15,3 +19,6 @@ private:
 
 	void nextState();
 };
+
+
+#endif

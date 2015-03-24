@@ -1,7 +1,11 @@
 #include "HumanPlayer.h"
 
-void HumanPlayer::setup() {
+HumanPlayer::HumanPlayer(InOut* inOut) {
+	this->inOut = inOut;
+}
 
+void HumanPlayer::setup() {
+	inOut->askShipLoc(5, "Destroyer");
 }
 
 void HumanPlayer::takeTurn() {

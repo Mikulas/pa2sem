@@ -1,13 +1,13 @@
 #include "Game.h"
-#include "IRenderer.h"
+#include "InOut.h"
 #include "HumanPlayer.h"
 
 class Controller {
 public:
-	Controller(IRenderer* renderer);
+	Controller(InOut* inOut);
 	~Controller();
 	void run();
 private:
-	IRenderer* renderer;
+	InOut* inOut;
 	Game* game;
 };

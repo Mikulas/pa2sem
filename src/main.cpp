@@ -1,13 +1,13 @@
 #include <iostream>
 #include "Controller.h"
-#include "LineRenderer.h"
+#include "LineInOut.h"
 
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
-	auto renderer = new LineRenderer;
+	auto renderer = new LineInOut;
 
 	Controller controller(renderer);
 	controller.run();

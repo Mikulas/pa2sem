@@ -1,8 +1,9 @@
-#ifndef LINERENDERER
-#define LINERENDERER
+#ifndef LINEINOUT
+#define LINEINOUT
 
 #include <iostream>
-#include "IRenderer.h"
+#include "InOut.h"
+
 
 using std::cin;
 using std::cout;
@@ -10,10 +11,11 @@ using std::endl;
 using std::getline;
 
 
-class LineRenderer : public IRenderer {
+class LineInOut : public InOut {
 public:
 	virtual void renderBoard() override;
 	virtual string ask(string question) override;
+	virtual Ship askShipLoc(int length, string ship) override;
 };
 
 
