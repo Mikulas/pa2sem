@@ -13,8 +13,10 @@ class Player
     public:
     	virtual void setup() = 0;
     	virtual void takeTurn() = 0;
-
+	
+	protected:
     	void fireAt(Location);
+	
 	private:
 		vector<Location> shotsFired;
 		vector<Ship> ships;

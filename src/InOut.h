@@ -19,6 +19,7 @@ class InOut
         virtual Ship askShipLoc(int length, string ship) = 0;
         virtual Location askShot() = 0;
 
+    protected:
     	const string reset = "\033[0m";
 		const string underline = "\033[4m";
     	const string red = "\033[31m";
