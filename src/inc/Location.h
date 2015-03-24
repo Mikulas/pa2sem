@@ -6,11 +6,12 @@
 
 class Location {
 public:
-	Location(unsigned int x, unsigned int y) : y(y), x(x) {};
+	Location(unsigned int x, unsigned int y) : x(x), y(y) {};
 	const unsigned int x;
 	const unsigned int y;
 
 	unsigned int distance(Location*);
+	bool inLine(Location*);
 };
 
 

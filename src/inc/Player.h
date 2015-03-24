@@ -17,10 +17,10 @@ class Player
 	
 	protected:
     	void fireAt(Location);
-	
+    	vector<Ship> ships;
+
 	private:
 		vector<Location> shotsFired;
-		vector<Ship> ships;
 };
 
 

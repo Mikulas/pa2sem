@@ -5,7 +5,7 @@ bool Ship::setStartEnd(Location start, Location end) {
 		throw this;
 	}
 	
-	if (start.distance(&end) != this->length) {
+	if (!start.inLine(&end) || start.distance(&end) != this->length) {
 		return false;
 	}
 

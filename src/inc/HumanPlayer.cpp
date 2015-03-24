@@ -5,7 +5,9 @@ HumanPlayer::HumanPlayer(InOut* inOut) {
 }
 
 void HumanPlayer::setup() {
-	// todo iterate over ships and ask for loc
+	for (auto &ship : ships) {
+		inOut->askShipLoc(&ship);
+	}
 }
 
 void HumanPlayer::takeTurn() {

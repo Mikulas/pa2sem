@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Controller.h"
-#include "LineInOut.h"
+#include "inc/Controller.h"
+#include "inc/LineInOut.h"
 
 
 using namespace std;
