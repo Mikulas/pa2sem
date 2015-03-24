@@ -3,8 +3,8 @@
 
 
 class Location {
-	uint x;
-	uint y;
+	unsigned int x;
+	unsigned int y;
 };
 
 

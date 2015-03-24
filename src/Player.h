@@ -11,6 +11,8 @@ using std::vector;
 class Player
 {
     public:
+    	virtual void setup() = 0;
+    	virtual void takeTurn() = 0;
 	private:
 		vector<Location> shotsFired;
 		vector<Ship> ships;

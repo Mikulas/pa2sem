@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "IRenderer.h"
+#include "HumanPlayer.h"
 
 class Controller {
 public:
