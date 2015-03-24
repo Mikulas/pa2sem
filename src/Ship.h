@@ -11,10 +11,13 @@ using std::vector;
 
 class Ship {
 public:
-	Ship(string name, Location start, Location end);
+	Ship(unsigned int length, string name) : name(name), length(length) {};
+	bool setStartEnd(Location start, Location end);
+
+	const string name;
+	const unsigned int length;
 
 private:
-	string name;
 	vector<Location> fields;
 };
 

@@ -16,7 +16,7 @@ class InOut
         virtual string ask(string question) = 0;
 
         virtual void announce(string) = 0;
-        virtual Ship askShipLoc(int length, string ship) = 0;
+        virtual void askShipLoc(Ship*) = 0;
         virtual Location askShot() = 0;
 
     protected:

@@ -1,7 +1,13 @@
 #include "Ship.h"
 
-Ship::Ship(string name, Location start, Location end) {
-	this->name = name;
+bool Ship::setStartEnd(Location start, Location end) {
+	if (fields.size() != 0) {
+		throw this;
+	}
+	
+	if (start.distance(&end) != this->length) {
+		return false;
+	}
 
 	unsigned int i;
 	short int step;
@@ -17,4 +23,6 @@ Ship::Ship(string name, Location start, Location end) {
 			fields.push_back(Location(i, start.y));
 		}
 	}
+
+	return true;
 }

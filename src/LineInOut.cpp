@@ -36,13 +36,18 @@ void LineInOut::renderBoard() {
 
 }
 
-Ship LineInOut::askShipLoc(int length, string ship) {
-	cout << "Pick position of " << blue << ship << reset << " (" << length << "): ";
+void LineInOut::askShipLoc(Ship* ship) {
+	do {
+		cout << "Pick position of " << blue << ship->name << reset << " (length " << ship->length << "): ";
 
-	Location loc = readLocation();
+		Location start = readLocation();
+		Location end = readLocation();
 
-	// TODO ask for second coordinate
-	return Ship(ship, loc, Location(loc.x, loc.y + 5));
+		if (!ship->setStartEnd(start, end)) {
+			break;
+		}
+		cout << "Invalid length, expected " << ship->length << ", try again" << endl;
+	} while (true);
 }
 
 Location LineInOut::askShot() {

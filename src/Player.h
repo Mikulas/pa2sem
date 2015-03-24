@@ -11,6 +11,7 @@ using std::vector;
 class Player
 {
     public:
+    	Player();
     	virtual void setup() = 0;
     	virtual void takeTurn() = 0;
 	
