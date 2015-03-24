@@ -2,9 +2,9 @@
 
 Location LineInOut::readLocation() {
 	string answer;
-	
+
 	int res = -1;
-	int x, y;
+	unsigned int x, y;
 	do {
 		if (res != -1) {
 			cout << "enter 'x y' ranged <0, 9>: ";
@@ -14,9 +14,16 @@ Location LineInOut::readLocation() {
 		getline(cin, answer);
 
 		res = sscanf(answer.c_str(), "%d %d", &x, &y);
-	} while (res != 2 || x < 0 || x >= 10 || y < 0 || y >= 10);
+		if (res == 2) {
+			try {
+				return Location(x, y);
+			} catch (exception* e) {
+				continue;
+			}
+			break;
+		}
 
-	return Location(x, y);
+	} while (true);
 }
 
 string LineInOut::ask(string question) {

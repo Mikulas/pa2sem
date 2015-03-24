@@ -1,6 +1,7 @@
 #ifndef LINEINOUT
 #define LINEINOUT
 
+#include <exception>
 #include <iostream>
 #include <stdio.h>
 #include "InOut.h"
@@ -9,6 +10,7 @@
 using std::cin;
 using std::cout;
 using std::endl;
+using std::exception;
 using std::getline;
 using std::sscanf;
 

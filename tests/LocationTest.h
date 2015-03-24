@@ -1,5 +1,6 @@
 #include "TestCase.h"
 
+#include "../src/inc/Game.h"
 #include "../src/inc/Location.h"
 
 
@@ -7,11 +8,11 @@ class LocationTest : public TestCase {
 public:
 	virtual void run() override {
 
-		assertExc({Location invalid(11, 0);},
+		assertExc({Location invalid(BOARD_SIZE, 0);},
 			"out of bound coords throw x");
-		assertExc({Location invalid(0, 11);},
+		assertExc({Location invalid(0, BOARD_SIZE);},
 			"out of bound coords throw y");
-		
+
 		Location zero(0, 0);
 		assert(0 == Location(0, 0).distance(&zero),
 			"distance zero");

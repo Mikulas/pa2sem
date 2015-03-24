@@ -7,6 +7,7 @@ HumanPlayer::HumanPlayer(InOut* inOut) {
 void HumanPlayer::setup() {
 	for (auto &ship : ships) {
 		inOut->askShipLoc(&ship);
+		// TODO validate all ships are placed according to rules
 	}
 }
 
