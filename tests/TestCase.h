@@ -18,6 +18,9 @@ class TestCase {
 public:
 	virtual ~TestCase() {};
 	virtual void run() = 0;
+	static unsigned int countPassed() {
+		return passed;
+	}
 
 protected:
 	template<typename T> void assert(T val) {
@@ -30,6 +33,7 @@ protected:
 		} else if (msg.size()) {
 			cout << "\033[32m- [x] \033[0m" << msg << endl;
 		}
+		passed++;
 	}
 	template<typename T> void _assertExc(T lambda, string msg) {
 		bool caught = false;
@@ -39,8 +43,14 @@ protected:
 			caught = true;
 		}
 		assert(caught, msg);
+		passed++;
 	}
+
+private:
+	static unsigned int passed;
 };
+
+unsigned int TestCase::passed = 0;
 
 
 #endif

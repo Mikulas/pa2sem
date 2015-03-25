@@ -20,5 +20,15 @@ public:
 
 		assert(false == b0.canPlace(&s0),
 			"canPlace overlap");
+
+		assert(nullptr == b0.isShipAt(Location(9, 9)),
+			"isShipAt empty");
+		assert(nullptr != b0.isShipAt(Location(1, 1)),
+			"isShipAt ok");
+
+		assert(nullptr == b0.hit(Location(9, 9)),
+			"hit empty");
+		assert(nullptr != b0.hit(Location(1, 1)),
+			"hit ok");
 	}
 };

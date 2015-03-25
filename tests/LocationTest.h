@@ -24,6 +24,10 @@ public:
 			"operator != positive");
 		assert(false == (zero != zero2),
 			"operator != negative");
+		assert(true == (zero < Location(1, 1)),
+			"operator < positive");
+		assert(false == (zero < zero2),
+			"operator < negative");
 
 
 		assert(1 == zero.distance(&zero),

@@ -46,5 +46,25 @@ public:
 			"correct length");
 		assert(false == s4.setStartEnd(Location(1, 1), Location(1, s4.length)),
 			"reset length not allowed");
+
+
+		Ship s5(2);
+		s5.setStartEnd(Location(1, 1), Location(1, s5.length));
+		assert(false == s5.isSunk(),
+			"not sunk");
+		assert(false == s5.hit(Location(9, 9)),
+			"not hit");
+		assert(true == s5.hit(Location(1, 1)),
+			"hit");
+		assert(false == s5.isSunk(),
+			"not sunk after first hit");
+		assert(true == s5.hit(Location(1, 1)),
+			"hit on same spot");
+		assert(false == s5.isSunk(),
+			"not sunk after second hit on same spot");
+		assert(true == s5.hit(Location(1, 2)),
+			"hit on last spot");
+		assert(true == s5.isSunk(),
+			"sunk after last hit");
 	}
 };

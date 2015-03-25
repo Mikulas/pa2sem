@@ -20,5 +20,7 @@ int main(int argc, char **argv)
 	testcase(Ship);
 	testcase(Board);
 
+	cout << endl << "\033[1;32m" << "All " << TestCase::countPassed() << " tests passed" << "\033[0m" << endl;
+
 	return 0;
 }
