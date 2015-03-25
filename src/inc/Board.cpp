@@ -9,6 +9,10 @@ Board::Board() {
 }
 
 bool Board::canPlace(Ship* newShip) {
+	if (!newShip->isPlaced()) {
+		return false;
+	}
+
 	for (auto &ship : ships) {
 		if (ship.overlaps(newShip)) {
 			return false;

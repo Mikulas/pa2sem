@@ -11,7 +11,8 @@ using std::vector;
 
 class Ship {
 public:
-	Ship(unsigned int length, string name) : name(name), length(length) {};
+	Ship(unsigned int length) : length(length) {}
+	Ship(unsigned int length, string name) : name(name), length(length) {}
 	bool setStartEnd(Location start, Location end);
 	bool overlaps(Ship*);
 	bool isPlaced();

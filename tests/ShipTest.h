@@ -7,7 +7,7 @@
 class ShipTest : public TestCase {
 public:
 	virtual void run() override {
-		Ship s0(5, "foo");
+		Ship s0(5);
 		assert(false == s0.isPlaced(),
 			"not placed");
 		s0.setStartEnd(Location(0, 0), Location(0, s0.length));
@@ -29,7 +29,7 @@ public:
 			"no overlap y");
 
 
-		Ship s4(5, "foo");
+		Ship s4(5);
 		assert(false == s4.setStartEnd(Location(0, 0), Location(0, 0)),
 			"zero length");
 		assert(false == s4.setStartEnd(Location(0, 0), Location(s4.length - 1, 0)),
