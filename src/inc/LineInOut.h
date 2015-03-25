@@ -21,7 +21,7 @@ public:
 	virtual void renderBoard() override;
 	virtual string ask(string question) override;
 
-	virtual void askShipLoc(Ship*) override;
+	virtual void askShipLoc(Ship*, Board*) override;
 	virtual Location askShot() override;
 
 private:

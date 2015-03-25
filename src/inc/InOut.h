@@ -2,6 +2,7 @@
 #define INOUT
 
 #include <string>
+#include "Board.h"
 #include "Location.h"
 #include "Ship.h"
 
@@ -16,7 +17,7 @@ class InOut
         virtual string ask(string question) = 0;
 
         virtual void announce(string) = 0;
-        virtual void askShipLoc(Ship*) = 0;
+        virtual void askShipLoc(Ship*, Board*) = 0;
         virtual Location askShot() = 0;
 
     protected:

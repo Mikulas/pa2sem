@@ -13,11 +13,13 @@ class Ship {
 public:
 	Ship(unsigned int length, string name) : name(name), length(length) {};
 	bool setStartEnd(Location start, Location end);
+	bool overlaps(Ship*);
+	bool isPlaced();
 
 	const string name;
 	const unsigned int length;
 
-private:
+protected:
 	vector<Location> fields;
 };
 

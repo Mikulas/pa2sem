@@ -11,8 +11,12 @@ napady
 todo
 	- [x] najit nejaka ofiko pravidla lodi
 		- http://battleship.wikia.com/wiki/Battleship_(game)
-	- [ ] navrhnout tridy
-	- [ ] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
+		- actually ignore the not touching rule, its stupid and strategies dont work
+		- http://www.datagenetics.com/blog/december32011/index.html
+	- [x] navrhnout tridy
+	- [x] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
 	- [ ] nakodovat to, vcetne unit testu!
+		- [ ] vyresit todo v humanplayer.cpp
+		- [ ] pripravit ascii renderer
 	- [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 	- [ ] profit

@@ -1,10 +1,25 @@
 #include "Ship.h"
 
+bool Ship::isPlaced() {
+	return fields.size() != 0;
+}
+
+bool Ship::overlaps(Ship* other) {
+	for (auto &fieldA : this->fields) {
+		for (auto &fieldB : other->fields) {
+			if (fieldA == fieldB) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 bool Ship::setStartEnd(Location start, Location end) {
 	if (fields.size() != 0) {
 		return false;
 	}
-	
+
 	if (!start.inLine(&end) || start.distance(&end) != this->length) {
 		return false;
 	}
