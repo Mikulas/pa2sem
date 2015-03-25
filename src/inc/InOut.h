@@ -13,7 +13,7 @@ class InOut
 {
     public:
     	virtual ~InOut() {}
-        virtual void renderBoard() = 0;
+        virtual void renderBoard(Board*) = 0;
         virtual string ask(string question) = 0;
 
         virtual void announce(string) = 0;

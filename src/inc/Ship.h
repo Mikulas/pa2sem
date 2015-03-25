@@ -15,6 +15,7 @@ public:
 	Ship(unsigned int length, string name) : name(name), length(length) {}
 	bool setStartEnd(Location start, Location end);
 	bool overlaps(Ship*);
+	bool overlaps(Location);
 	bool isPlaced();
 
 	const string name;

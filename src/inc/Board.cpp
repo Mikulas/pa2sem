@@ -8,6 +8,15 @@ Board::Board() {
 	ships.push_back(Ship(2, "Destroyer"));
 }
 
+bool Board::isShipAt(Location loc) {
+	for (auto &ship : ships) {
+		if (ship.overlaps(loc)) {
+			return true;
+		}
+	}
+	return false;
+}
+
 bool Board::canPlace(Ship* newShip) {
 	if (!newShip->isPlaced()) {
 		return false;

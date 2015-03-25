@@ -5,11 +5,18 @@ bool Ship::isPlaced() {
 }
 
 bool Ship::overlaps(Ship* other) {
-	for (auto &fieldA : this->fields) {
-		for (auto &fieldB : other->fields) {
-			if (fieldA == fieldB) {
-				return true;
-			}
+	for (auto &field : this->fields) {
+		if (other->overlaps(field)) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Ship::overlaps(Location loc) {
+	for (auto &field : this->fields) {
+		if (field == loc) {
+			return true;
 		}
 	}
 	return false;

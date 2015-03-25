@@ -18,7 +18,7 @@ using std::sscanf;
 class LineInOut : public InOut {
 public:
 	virtual void announce(string) override;
-	virtual void renderBoard() override;
+	virtual void renderBoard(Board*) override;
 	virtual string ask(string question) override;
 
 	virtual void askShipLoc(Ship*, Board*) override;

@@ -39,8 +39,19 @@ void LineInOut::announce(string msg) {
 	cout << underline << msg << reset << endl;
 }
 
-void LineInOut::renderBoard() {
-
+void LineInOut::renderBoard(Board* board) {
+	cout << "   ";
+	for (unsigned int x = 0; x < BOARD_SIZE; x++) {
+		cout << x << " ";
+	}
+	cout << endl;
+	for (unsigned int y = 0; y < BOARD_SIZE; y++) {
+		cout << y << "  ";
+		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
+			cout << (board->isShipAt(Location(x, y)) ? "#" : "_") << " ";
+		}
+		cout << endl;
+	}
 }
 
 void LineInOut::askShipLoc(Ship* ship, Board* board) {
