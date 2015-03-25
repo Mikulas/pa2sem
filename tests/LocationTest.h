@@ -26,13 +26,13 @@ public:
 			"operator != negative");
 
 
-		assert(0 == Location(0, 0).distance(&zero),
-			"distance zero");
-		assert(5 == Location(5, 0).distance(&zero),
+		assert(1 == zero.distance(&zero),
+			"distance self");
+		assert(5 == Location(4, 0).distance(&zero),
 			"distance x");
-		assert(5 == Location(0, 5).distance(&zero),
+		assert(5 == Location(0, 4).distance(&zero),
 			"distance y");
-		assert(7 == Location(3, 4).distance(&zero),
+		assert(6 == Location(2, 3).distance(&zero),
 			"distance mixed");
 
 		assert(false == Location(1, 1).inLine(&zero),

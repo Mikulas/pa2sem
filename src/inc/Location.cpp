@@ -7,7 +7,7 @@ Location::Location(unsigned int x, unsigned int y) : x(x), y(y) {
 }
 
 unsigned int Location::distance(Location* other) {
-	return abs(this->x - other->x) + abs(this->y - other->y);
+	return abs(this->x - other->x) + abs(this->y - other->y) + 1;
 }
 
 bool Location::inLine(Location* other) {

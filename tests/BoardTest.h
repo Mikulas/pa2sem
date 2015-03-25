@@ -12,7 +12,7 @@ public:
 		Ship s0(5);
 		assert(false == b0.canPlace(&s0),
 			"canPlace no coords");
-		s0.setStartEnd(Location(0, 0), Location(0, s0.length));
+		s0.setStartEnd(Location(1, 1), Location(1, s0.length));
 		assert(true == b0.canPlace(&s0),
 			"canPlace ok");
 
