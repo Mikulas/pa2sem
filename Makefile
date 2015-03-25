@@ -11,5 +11,8 @@ compile-test:
 test:
 	build/test
 
+lines:
+	cat src/* src/**/* 2>/dev/null | wc -l
+
 clean:
 	rm -rf build/*
