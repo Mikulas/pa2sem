@@ -12,8 +12,6 @@ void HumanPlayer::setup() {
 }
 
 void HumanPlayer::takeTurn() {
-	fireAt(inOut->askShot());
-	
-	// TODO what now???
-	// ALSO track state in shotsFired
+	Shot shot = fireAt(inOut->askShot());
+	inOut->renderShotResult(shot);
 }

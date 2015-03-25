@@ -23,6 +23,7 @@ public:
 
 	virtual void askShipLoc(Ship*, Board*) override;
 	virtual Location askShot() override;
+	virtual void renderShotResult(Shot) override;
 
 private:
 	Location readLocation();

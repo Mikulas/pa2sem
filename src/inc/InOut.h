@@ -5,6 +5,7 @@
 #include "Board.h"
 #include "Location.h"
 #include "Ship.h"
+#include "Shot.h"
 
 using std::string;
 
@@ -19,6 +20,7 @@ class InOut
         virtual void announce(string) = 0;
         virtual void askShipLoc(Ship*, Board*) = 0;
         virtual Location askShot() = 0;
+        virtual void renderShotResult(Shot) = 0;
 
     protected:
         const string reset = "\033[0m";

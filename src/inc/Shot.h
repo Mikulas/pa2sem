@@ -1,4 +1,8 @@
+#ifndef SHOT
+#define SHOT
+
 #include "Location.h"
+
 
 enum class Response : char {MISS, HIT, SUNK};
 
@@ -8,3 +12,6 @@ public:
 	Location location;
 	Response response;
 };
+
+
+#endif
