@@ -2,6 +2,7 @@
 #define testcase(Class) cout << endl << _Stringify(Class) << endl; (new Class##Test())->run()
 
 #include <iostream>
+#include "../src/C.h"
 #include "BoardTest.h"
 #include "LocationTest.h"
 #include "ShipTest.h"
@@ -12,15 +13,19 @@ using std::endl;
 
 int main(int argc, char **argv)
 {
-	cout << "\033[1;34m          |\\___..--\"/\033[0m" << endl;
-	cout << "\033[1;34m   __..--``        /\033[0m    Battleship test suite" << endl;
-	cout << "\033[1;34m  \\_______________/\033[0m" << endl;
+	cout << C::bold << C::blue
+		<< "          |\\___..--\"/" << C::reset << endl;
+	cout << C::bold << C::blue
+		<< "   __..--``        /" << C::reset
+		<< "  Battleship test suite" << endl;
+	cout << C::bold << C::blue
+		<< "  \\_______________/" << C::reset << endl;
 
 	testcase(Location);
 	testcase(Ship);
 	testcase(Board);
 
-	cout << endl << "\033[1;32m" << "All " << TestCase::countPassed() << " tests passed" << "\033[0m" << endl;
+	cout << endl << C::bold << C::green << "All " << TestCase::countPassed() << " tests passed" << C::reset << endl;
 
 	return 0;
 }

@@ -6,6 +6,7 @@
 #include <exception>
 #include <iostream>
 #include <string>
+#include "../src/C.h"
 
 using std::cerr;
 using std::cout;
@@ -28,10 +29,10 @@ protected:
 	}
 	template<typename T> void assert(T val, string msg) {
 		if (!val) {
-			cerr << "\033[1;31m- [ ] \033[31m" << msg << "\033[0m" << endl;
+			cerr << C::bold << C::red << "- [ ] " << msg << C::reset << endl;
 			exit(1);
 		} else if (msg.size()) {
-			cout << "\033[32m- [x] \033[0m" << msg << endl;
+			cout << C::green << "- [x] " << C::reset << msg << endl;
 		}
 		passed++;
 	}

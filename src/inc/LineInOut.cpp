@@ -36,7 +36,7 @@ string LineInOut::ask(string question) {
 }
 
 void LineInOut::announce(string msg) {
-	cout << underline << msg << reset << endl;
+	cout << C::underline << msg << C::reset << endl;
 }
 
 void LineInOut::renderBoard(Board* board) {
@@ -57,7 +57,7 @@ void LineInOut::renderBoard(Board* board) {
 void LineInOut::askShipLoc(Ship* ship, Board* board) {
 	Ship newShip = *ship;
 	do {
-		cout << "Pick start coordinate of " << blue << ship->name << reset << " (length " << ship->length << "): ";
+		cout << "Pick start coordinate of " << C::blue << ship->name << C::reset << " (length " << ship->length << "): ";
 
 		Location start = readLocation();
 		cout << "Enter end coordinate: ";
@@ -88,9 +88,9 @@ Location LineInOut::askShot() {
 
 void LineInOut::renderShotResult(Shot shot) {
 	if (shot.response == Response::SUNK) {
-		cout << blue << "shot was SUNK a ship" << reset << endl;
+		cout << C::blue << "shot was SUNK a ship" << C::reset << endl;
 	} else if (shot.response == Response::HIT) {
-		cout << green << "shot was a HIT" << reset << endl;
+		cout << C::green << "shot was a HIT" << C::reset << endl;
 	} else {
 		cout << "shot was a miss" << endl;
 	}

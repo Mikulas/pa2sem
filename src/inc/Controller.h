@@ -1,3 +1,7 @@
+#ifndef CONTROLLER
+#define CONTROLLER
+
+
 #include "Game.h"
 #include "InOut.h"
 #include "HumanPlayer.h"
@@ -11,3 +15,6 @@ private:
 	InOut* inOut;
 	Game* game;
 };
+
+
+#endif
