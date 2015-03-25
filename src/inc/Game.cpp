@@ -3,7 +3,9 @@
 Game::Game(InOut* inOut, Player* playerA, Player* playerB) {
 	this->inOut = inOut;
 	this->playerA = playerA;
+	this->playerA->setOpponent(playerB);
 	this->playerB = playerB;
+	this->playerB->setOpponent(playerA);
 
 	this->state = State::INIT;
 }

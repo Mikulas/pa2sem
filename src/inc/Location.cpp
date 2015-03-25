@@ -6,6 +6,10 @@ Location::Location(unsigned int x, unsigned int y) : x(x), y(y) {
 	}
 }
 
+unsigned int Location::getIndex() const {
+	return this->y * BOARD_SIZE + this->x;
+}
+
 unsigned int Location::distance(Location* other) {
 	return abs(this->x - other->x) + abs(this->y - other->y) + 1;
 }

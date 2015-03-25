@@ -1,12 +1,12 @@
 #ifndef SHIP
 #define SHIP
 
-#include <vector>
+#include <set>
 #include <string>
 #include "Location.h"
 
 using std::string;
-using std::vector;
+using std::set;
 
 
 class Ship {
@@ -17,12 +17,15 @@ public:
 	bool overlaps(Ship*);
 	bool overlaps(Location);
 	bool isPlaced();
+	bool hit(Location);
+	bool isSunk();
 
 	const string name;
 	const unsigned int length;
 
 protected:
-	vector<Location> fields;
+	set<Location> fields;
+	set<Location> hits;
 };
 
 

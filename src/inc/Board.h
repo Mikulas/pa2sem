@@ -14,7 +14,8 @@ public:
 	Board();
 	vector<Ship> ships;
 	bool canPlace(Ship* newShip);
-	bool isShipAt(Location);
+	Ship* isShipAt(Location);
+	Ship* hit(Location);
 };
 
 

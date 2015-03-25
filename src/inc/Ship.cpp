@@ -13,13 +13,8 @@ bool Ship::overlaps(Ship* other) {
 	return false;
 }
 
-bool Ship::overlaps(Location loc) {
-	for (auto &field : this->fields) {
-		if (field == loc) {
-			return true;
-		}
-	}
-	return false;
+bool Ship::overlaps(const Location loc) {
+	return fields.find(loc) != fields.end();
 }
 
 bool Ship::setStartEnd(Location start, Location end) {
@@ -36,15 +31,27 @@ bool Ship::setStartEnd(Location start, Location end) {
 	if (start.x == end.x) {
 		step = start.y <= end.y ? 1 : -1;
 		for (i = start.y; i <= end.y; i += step) {
-			fields.push_back(Location(start.x, i));
+			fields.insert(Location(start.x, i));
 		}
 
 	} else {
 		step = start.x <= end.x ? 1 : -1;
 		for (i = start.x; i <= end.x; i += step) {
-			fields.push_back(Location(i, start.y));
+			fields.insert(Location(i, start.y));
 		}
 	}
 
 	return true;
+}
+
+bool Ship::hit(Location loc) {
+	if (fields.find(loc) == fields.end()) {
+		return false;
+	}
+	hits.insert(loc);
+	return true;
+}
+
+bool Ship::isSunk() {
+	return hits.size() == fields.size();
 }

@@ -5,6 +5,7 @@
 #include "Board.h"
 #include "Location.h"
 #include "Ship.h"
+#include "Shot.h"
 
 using std::vector;
 
@@ -12,15 +13,18 @@ using std::vector;
 class Player
 {
     public:
+    	Shot respond(Location);
+    	void setOpponent(Player*);
     	virtual void setup() = 0;
     	virtual void takeTurn() = 0;
 
 	protected:
 		Board board;
-    	void fireAt(Location);
+    	Shot fireAt(Location);
 
 	private:
-		vector<Location> shotsFired;
+		Player *opponent;
+		vector<Shot> shotsFired;
 };
 
 

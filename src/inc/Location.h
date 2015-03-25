@@ -15,17 +15,37 @@ public:
 	const unsigned int x;
 	const unsigned int y;
 
-	inline bool operator==(const Location& rhs) {
-		return this->x == rhs.x && this->y == rhs.y;
+	// <set> operators
+	inline bool operator==(const Location &rhs) const {
+		return this->getIndex() == rhs.getIndex();
 	}
 
-	inline bool operator!=(const Location& rhs) {
-		return !(*this == rhs);
+	inline bool operator!=(const Location &rhs) const {
+		return this->getIndex() != rhs.getIndex();
+	}
+
+	inline bool operator<(const Location &rhs) const {
+		return this->getIndex() < rhs.getIndex();
+	}
+
+	inline bool operator<=(const Location &rhs) const {
+		return this->getIndex() <= rhs.getIndex();
+	}
+
+	inline bool operator>(const Location &rhs) const {
+		return this->getIndex() > rhs.getIndex();
+	}
+
+	inline bool operator>=(const Location &rhs) const {
+		return this->getIndex() >= rhs.getIndex();
 	}
 
 	/** for 0,0->3,4 intentionally returns 7, not 5 */
 	unsigned int distance(Location*);
 	bool inLine(Location*);
+
+private:
+	unsigned int getIndex() const;
 };
 
 
