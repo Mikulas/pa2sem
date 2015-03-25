@@ -13,7 +13,19 @@ public:
 		assertExc({Location invalid(0, BOARD_SIZE);},
 			"out of bound coords throw y");
 
+
 		Location zero(0, 0);
+		Location zero2(0, 0);
+		assert(true == (zero == zero2),
+			"operator == positive");
+		assert(false == (zero == Location(1, 1)),
+			"operator == negative");
+		assert(true == (zero != Location(1, 1)),
+			"operator != positive");
+		assert(false == (zero != zero2),
+			"operator != negative");
+
+
 		assert(0 == Location(0, 0).distance(&zero),
 			"distance zero");
 		assert(5 == Location(5, 0).distance(&zero),
