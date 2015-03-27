@@ -29,6 +29,7 @@ public:
 
 private:
 	Location readLocation();
+	int symbolHead = 0;
 	map<Ship*, string> symbolMap;
 	string getCharForShip(Ship*);
 };

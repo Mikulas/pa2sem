@@ -16,7 +16,10 @@ public:
 
 	static const string red;
 	static const string green;
+	static const string yellow;
 	static const string blue;
+	static const string magenta;
+	static const string cyan;
 };
 
 #endif

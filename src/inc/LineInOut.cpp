@@ -40,9 +40,15 @@ void LineInOut::announce(string msg) {
 }
 
 string LineInOut::getCharForShip(Ship* ship) {
-	string s[] = {"⦾", "⊜", "⊠", "⊡", "⊖", "◈", "⟁", "⊞", "⟐", "⬠", "⊙", "⊟"};
 	if (!symbolMap.count(ship)) {
-		symbolMap[ship] = s[symbolMap.size()];
+		string s[] = {
+			C::cyan + "Ⓐ",
+			C::green + "Ⓑ",
+			C::yellow + "Ⓒ",
+			C::blue + "Ⓓ",
+			C::magenta + "Ⓔ",
+		};
+		symbolMap[ship] = s[symbolHead++ % 5] + C::reset;
 	}
 	return symbolMap[ship];
 }
