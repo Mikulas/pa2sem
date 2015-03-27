@@ -38,3 +38,12 @@ bool Board::canPlace(Ship* newShip) {
 	}
 	return true;
 }
+
+bool Board::allShipsSunk() {
+	for (auto &ship : ships) {
+		if (!ship.isSunk()) {
+			return false;
+		}
+	}
+	return true;
+}

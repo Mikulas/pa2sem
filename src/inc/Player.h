@@ -1,8 +1,11 @@
 #ifndef PLAYER
 #define PLAYER
 
+class Player;
+
 #include <vector>
 #include "Board.h"
+#include "Game.h"
 #include "Location.h"
 #include "Ship.h"
 #include "Shot.h"
@@ -15,6 +18,7 @@ class Player
     public:
     	Shot respond(Location);
     	void setOpponent(Player*);
+        void setGame(Game*);
     	virtual void setup() = 0;
     	virtual void takeTurn() = 0;
 
@@ -25,6 +29,7 @@ class Player
 
 	private:
 		Player *opponent;
+        Game *game;
 };
 
 

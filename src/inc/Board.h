@@ -16,6 +16,7 @@ public:
 	bool canPlace(Ship* newShip);
 	Ship* isShipAt(Location);
 	Ship* hit(Location);
+	bool allShipsSunk();
 };
 
 

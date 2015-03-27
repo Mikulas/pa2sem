@@ -4,16 +4,16 @@ Game::Game(InOut* inOut, Player* playerA, Player* playerB) {
 	this->inOut = inOut;
 	this->playerA = playerA;
 	this->playerA->setOpponent(playerB);
+	this->playerA->setGame(this);
 	this->playerB = playerB;
 	this->playerB->setOpponent(playerA);
+	this->playerB->setGame(this);
 
 	this->state = State::INIT;
 }
 
 void Game::gameLoop() {
 	while (true) {
-		nextState();
-
 		switch (state) {
 			case State::SETUP_A:
 				playerA->setup();
@@ -27,14 +27,20 @@ void Game::gameLoop() {
 			case State::TURN_B:
 				playerB->takeTurn();
 				break;
+			case State::OVER:
+				return;
 			default:
 				break;
 		}
+
+		nextState();
 	}
 }
 
 void Game::nextState() {
 	switch (state) {
+		case State::OVER:
+			break;
 		case State::SETUP_A:
 			state = State::SETUP_B;
 			inOut->announce("Player B setup phase");
@@ -53,4 +59,14 @@ void Game::nextState() {
 			state = State::SETUP_A;
 			inOut->announce("Player A setup phase");
 	}
+}
+
+void Game::gameOver(Player* player) {
+	if (this->playerA == player) {
+		inOut->gameOver("Player A");
+	} else {
+		inOut->gameOver("Player B");
+	}
+
+	state = State::OVER;
 }

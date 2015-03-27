@@ -24,6 +24,7 @@ class InOut
         virtual void askShipLoc(Ship*, Board*) = 0;
         virtual Location askShot(vector<Shot>) = 0;
         virtual void renderShotResult(Shot) = 0;
+        virtual void gameOver(string player) = 0;
 };
 
 

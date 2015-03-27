@@ -148,3 +148,8 @@ void LineInOut::renderShotResult(Shot shot) {
 		cout << "was a miss" << endl;
 	}
 }
+
+void LineInOut::gameOver(string player) {
+	cout << "GAME OVER" << endl;
+	cout << player << " won" << endl;
+}

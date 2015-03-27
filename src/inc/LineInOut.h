@@ -26,6 +26,7 @@ public:
 	virtual void askShipLoc(Ship*, Board*) override;
 	virtual Location askShot(vector<Shot> shots) override;
 	virtual void renderShotResult(Shot) override;
+	virtual void gameOver(string player) override;
 
 private:
 	Location readLocation();
