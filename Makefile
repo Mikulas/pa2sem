@@ -13,6 +13,7 @@ test:
 
 lines:
 	cat src/* src/**/* 2>/dev/null | wc -l
+	cat tests/* tests/**/* 2>/dev/null | wc -l
 
 clean:
 	rm -rf build/*
