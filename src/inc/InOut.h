@@ -2,6 +2,7 @@
 #define INOUT
 
 #include <string>
+#include <Vector>
 #include "Board.h"
 #include "Location.h"
 #include "Ship.h"
@@ -9,6 +10,7 @@
 #include "../C.h"
 
 using std::string;
+using std::vector;
 
 
 class InOut
@@ -20,7 +22,7 @@ class InOut
 
         virtual void announce(string) = 0;
         virtual void askShipLoc(Ship*, Board*) = 0;
-        virtual Location askShot() = 0;
+        virtual Location askShot(vector<Shot>) = 0;
         virtual void renderShotResult(Shot) = 0;
 };
 

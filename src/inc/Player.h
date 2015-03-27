@@ -21,10 +21,10 @@ class Player
 	protected:
 		Board board;
     	Shot fireAt(Location);
+        vector<Shot> shotsFired;
 
 	private:
 		Player *opponent;
-		vector<Shot> shotsFired;
 };
 
 

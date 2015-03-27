@@ -24,7 +24,7 @@ public:
 	virtual string ask(string question) override;
 
 	virtual void askShipLoc(Ship*, Board*) override;
-	virtual Location askShot() override;
+	virtual Location askShot(vector<Shot> shots) override;
 	virtual void renderShotResult(Shot) override;
 
 private:
@@ -32,6 +32,7 @@ private:
 	int symbolHead = 0;
 	map<Ship*, string> symbolMap;
 	string getCharForShip(Ship*);
+	void renderShots(vector<Shot> shots);
 };
 
 #endif

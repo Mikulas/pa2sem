@@ -12,6 +12,6 @@ void HumanPlayer::setup() {
 }
 
 void HumanPlayer::takeTurn() {
-	Shot shot = fireAt(inOut->askShot());
+	Shot shot = fireAt(inOut->askShot(shotsFired));
 	inOut->renderShotResult(shot);
 }

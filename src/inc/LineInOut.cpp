@@ -66,7 +66,7 @@ void LineInOut::renderBoard(Board* board) {
 		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
 			ship = board->isShipAt(Location(x, y));
 			if (!ship) {
-				cout << "_";
+				cout << "⬚";
 			} else {
 				cout << getCharForShip(ship);
 			}
@@ -103,9 +103,39 @@ void LineInOut::askShipLoc(Ship* ship, Board* board) {
 	} while (true);
 }
 
-Location LineInOut::askShot() {
+Location LineInOut::askShot(vector<Shot> shots) {
+	renderShots(shots);
 	cout << "Fire at: ";
 	return readLocation();
+}
+
+void LineInOut::renderShots(vector<Shot> shots) {
+	cout << "y\\x ";
+	for (unsigned int x = 0; x < BOARD_SIZE; x++) {
+		cout << x << " ";
+	}
+	cout << endl;
+	Shot* found;
+	for (unsigned int y = 0; y < BOARD_SIZE; y++) {
+		cout << " " << y << "  ";
+		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
+			found = nullptr;
+			for (auto &shot : shots) {
+				if (shot.location == Location(x, y)) {
+					found = &shot;
+					continue;
+				}
+			}
+			if (found && found->response == Response::MISS) {
+				cout << "◯ "; // ⎔▢⦁·
+			} else if (found) {
+				cout << "ⓧ "; // ⬣ⓧⓍ
+			} else {
+				cout << "⬚ "; // ·
+			}
+		}
+		cout << endl;
+	}
 }
 
 void LineInOut::renderShotResult(Shot shot) {
