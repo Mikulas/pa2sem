@@ -87,11 +87,12 @@ Location LineInOut::askShot() {
 }
 
 void LineInOut::renderShotResult(Shot shot) {
+	cout << "shot fired at " << shot.location.x << "," << shot.location.y << " ";
 	if (shot.response == Response::SUNK) {
-		cout << C::blue << "shot was SUNK a ship" << C::reset << endl;
+		cout << C::blue << "SUNK a ship" << C::reset << endl;
 	} else if (shot.response == Response::HIT) {
-		cout << C::green << "shot was a HIT" << C::reset << endl;
+		cout << C::green << "was a HIT" << C::reset << endl;
 	} else {
-		cout << "shot was a miss" << endl;
+		cout << "was a miss" << endl;
 	}
 }
