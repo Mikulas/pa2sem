@@ -29,6 +29,13 @@ public:
 		assert(nullptr == b0.hit(Location(9, 9)),
 			"hit empty");
 		assert(nullptr != b0.hit(Location(1, 1)),
-			"hit ok");
+			"hit first ok");
+		assert(nullptr != b0.hit(Location(1, s0.length)),
+			"hit last ok");
+
+		Ship s1(2);
+		s1.setStartEnd(Location(4, 0), Location(4, 1));
+		assert(nullptr != b0.hit(Location(4, 1)),
+			"hit end ok");
 	}
 };
