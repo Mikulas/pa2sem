@@ -2,6 +2,7 @@
 #define AIPLAYER
 
 #include "Player.h"
+#include "Random.h"
 
 
 class AIPlayer : public Player
