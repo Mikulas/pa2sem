@@ -19,6 +19,11 @@ public:
 		assert(true == b0.canPlace(&s0),
 			"canPlace ok");
 
+		Ship s6(2);
+		s6.setStartEnd(Location(9, 9), Location(9, 8));
+		assert(true == b0.canPlace(&s6),
+			"canPlace upside down");
+
 		b0.ships.push_back(s0);
 		assert(false == b0.allShipsSunk(),
 			"allShipsSunk not sunk");

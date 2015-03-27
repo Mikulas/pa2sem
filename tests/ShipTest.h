@@ -14,6 +14,9 @@ public:
 		assert(true == s0.isPlaced(),
 			"placed");
 
+		Ship s6(2);
+		assert(true == s6.setStartEnd(Location(9, 9), Location(9, 8)),
+			"placed upside down");
 
 		Ship s1(5, "down");
 		Ship s2(5, "right");

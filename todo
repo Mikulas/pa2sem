@@ -16,8 +16,6 @@ todo
 	- [x] navrhnout tridy
 	- [x] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
 	- [ ] nakodovat to, vcetne unit testu!
-		- [x] vyresit todo v humanplayer.cpp
-		- [ ] add board tests
 		- [ ] pripravit ascii renderer
 	- [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 	- [ ] profit

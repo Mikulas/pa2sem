@@ -27,16 +27,18 @@ bool Ship::setStartEnd(Location start, Location end) {
 	}
 
 	unsigned int i;
-	short int step;
+	short int min, max;
 	if (start.x == end.x) {
-		step = start.y <= end.y ? 1 : -1;
-		for (i = start.y; i <= end.y; i += step) {
+		min = start.y < end.y ? start.y : end.y;
+		max = start.y < end.y ? end.y : start.y;
+		for (i = min; i <= max; i++) {
 			fields.insert(Location(start.x, i));
 		}
 
 	} else {
-		step = start.x <= end.x ? 1 : -1;
-		for (i = start.x; i <= end.x; i += step) {
+		min = start.x < end.x ? start.x : end.x;
+		max = start.x < end.x ? end.x : start.x;
+		for (i = min; i <= max; i++) {
 			fields.insert(Location(i, start.y));
 		}
 	}
