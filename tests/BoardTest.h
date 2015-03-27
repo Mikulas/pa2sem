@@ -9,6 +9,9 @@ public:
 	virtual void run() override {
 
 		Board b0;
+		assert(true == b0.allShipsSunk(),
+			"allShipsSunk empty");
+
 		Ship s0(5);
 		assert(false == b0.canPlace(&s0),
 			"canPlace no coords");
@@ -17,7 +20,8 @@ public:
 			"canPlace ok");
 
 		b0.ships.push_back(s0);
-
+		assert(false == b0.allShipsSunk(),
+			"allShipsSunk not sunk");
 		assert(false == b0.canPlace(&s0),
 			"canPlace overlap");
 
@@ -32,6 +36,8 @@ public:
 			"hit first ok");
 		assert(nullptr != b0.hit(Location(1, s0.length)),
 			"hit last ok");
+		assert(false == b0.allShipsSunk(),
+			"allShipsSunk sunk");
 
 
         Board b1;
