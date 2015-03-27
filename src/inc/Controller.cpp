@@ -17,7 +17,7 @@ void Controller::run() {
 
 	// if (mode == "player") {
 		// this->game = new Game(inOut, new HumanPlayer(inOut), new HumanPlayer(inOut));
-		this->game = new Game(inOut, new HumanPlayer(inOut), new AIPlayer());
+		this->game = new Game(inOut, new HumanPlayer(inOut), new AIPlayer(inOut));
 		this->game->gameLoop();
 	// }
 }

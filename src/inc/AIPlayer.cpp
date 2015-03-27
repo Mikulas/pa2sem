@@ -21,7 +21,6 @@ void AIPlayer::setup() {
 }
 
 void AIPlayer::takeTurn() {
-	//Shot shot =
-	fireAt(Random::location());
-	// inOut->renderShotResult(shot);
+	Shot shot = fireAt(Random::location());
+	inOut->renderShotResult(shot);
 }

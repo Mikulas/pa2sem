@@ -1,10 +1,7 @@
 #include "HumanPlayer.h"
 
-HumanPlayer::HumanPlayer(InOut* inOut) {
-	this->inOut = inOut;
-}
-
 void HumanPlayer::setup() {
+	inOut->renderBoard(&board);
 	for (auto &ship : board.ships) {
 		inOut->askShipLoc(&ship, &board);
 		inOut->renderBoard(&board);
