@@ -3,6 +3,7 @@
 
 #include <exception>
 #include <iostream>
+#include <map>
 #include <stdio.h>
 #include "InOut.h"
 
@@ -12,6 +13,7 @@ using std::cout;
 using std::endl;
 using std::exception;
 using std::getline;
+using std::map;
 using std::sscanf;
 
 
@@ -27,7 +29,8 @@ public:
 
 private:
 	Location readLocation();
+	map<Ship*, string> symbolMap;
+	string getCharForShip(Ship*);
 };
-
 
 #endif

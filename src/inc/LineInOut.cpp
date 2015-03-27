@@ -39,16 +39,32 @@ void LineInOut::announce(string msg) {
 	cout << C::underline << msg << C::reset << endl;
 }
 
+string LineInOut::getCharForShip(Ship* ship) {
+	string s[] = {"⦾", "⊜", "⊠", "⊡", "⊖", "◈", "⟁", "⊞", "⟐", "⬠", "⊙", "⊟"};
+	if (!symbolMap.count(ship)) {
+		symbolMap[ship] = s[symbolMap.size()];
+	}
+	return symbolMap[ship];
+}
+
 void LineInOut::renderBoard(Board* board) {
-	cout << "   ";
+	cout << "y\\x ";
 	for (unsigned int x = 0; x < BOARD_SIZE; x++) {
 		cout << x << " ";
 	}
 	cout << endl;
+	Ship* ship;
+	// TODO colorize the ships or use different symbol
 	for (unsigned int y = 0; y < BOARD_SIZE; y++) {
-		cout << y << "  ";
+		cout << " " << y << "  ";
 		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
-			cout << (board->isShipAt(Location(x, y)) ? "#" : "_") << " ";
+			ship = board->isShipAt(Location(x, y));
+			if (!ship) {
+				cout << "_";
+			} else {
+				cout << getCharForShip(ship);
+			}
+			cout << " ";
 		}
 		cout << endl;
 	}
