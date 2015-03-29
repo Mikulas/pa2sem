@@ -1,6 +1,6 @@
-#include "AIPlayer.h"
+#include "Random.h"
 
-void AIPlayer::setup() {
+void RandomAIPlayer::setup() {
 	for (auto &ship : board.ships) {
 		do {
 			Ship newShip = ship;
@@ -20,7 +20,7 @@ void AIPlayer::setup() {
 	}
 }
 
-void AIPlayer::takeTurn() {
+void RandomAIPlayer::takeTurn() {
 	Shot shot = fireAt(Random::location());
 	inOut->renderShotResult(shot);
 }

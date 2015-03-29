@@ -2,10 +2,10 @@
 #define CONTROLLER
 
 
-#include "AIPlayer.h"
 #include "Game.h"
-#include "HumanPlayer.h"
 #include "InOut.h"
+#include "Player/AI/Random.h"
+#include "Player/Human.h"
 
 class Controller {
 public:

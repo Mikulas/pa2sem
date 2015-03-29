@@ -4,12 +4,12 @@
 class Player;
 
 #include <vector>
-#include "Board.h"
-#include "Game.h"
-#include "InOut.h"
-#include "Location.h"
-#include "Ship.h"
-#include "Shot.h"
+#include "../Board.h"
+#include "../Game.h"
+#include "../InOut.h"
+#include "../Location.h"
+#include "../Ship.h"
+#include "../Shot.h"
 
 using std::vector;
 
@@ -34,6 +34,5 @@ class Player
 		Player *opponent;
         Game *game;
 };
-
 
 #endif

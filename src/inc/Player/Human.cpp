@@ -1,4 +1,4 @@
-#include "HumanPlayer.h"
+#include "Human.h"
 
 void HumanPlayer::setup() {
 	inOut->renderBoard(&board);
