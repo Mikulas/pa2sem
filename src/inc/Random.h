@@ -13,26 +13,35 @@ public:
 	static unsigned int coord() {
 		return between(0, BOARD_SIZE - 1);
 	}
+	/**
+	 * \return random valid location
+	 */
 	static Location location() {
 		return Location(coord(), coord());
 	}
-	static Location location(Location loc, unsigned int length) {
-		length--;
+	/**
+	 * \return random valid location for specified distance
+	 * of another location
+	 *
+	 * Useful for placing random ships.
+	 */
+	static Location location(Location loc, unsigned int distance) {
+		distance--;
 	tryAgain:
 		switch (between(0, 3)) {
 			case 0:
-				if (loc.y - length >= BOARD_SIZE) goto tryAgain;
-				return Location(loc.x, loc.y - length);
+				if (loc.y - distance >= BOARD_SIZE) goto tryAgain;
+				return Location(loc.x, loc.y - distance);
 			case 1:
-				if (loc.y + length >= BOARD_SIZE) goto tryAgain;
-				return Location(loc.x, loc.y + length);
+				if (loc.y + distance >= BOARD_SIZE) goto tryAgain;
+				return Location(loc.x, loc.y + distance);
 			case 2:
-				if (loc.x - length >= BOARD_SIZE) goto tryAgain;
-				return Location(loc.x - length, loc.y);
+				if (loc.x - distance >= BOARD_SIZE) goto tryAgain;
+				return Location(loc.x - distance, loc.y);
 			case 3:
 			default:
-				if (loc.x + length >= BOARD_SIZE) goto tryAgain;
-				return Location(loc.x + length, loc.y);
+				if (loc.x + distance >= BOARD_SIZE) goto tryAgain;
+				return Location(loc.x + distance, loc.y);
 		}
 	}
 };

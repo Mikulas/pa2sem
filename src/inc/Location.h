@@ -6,11 +6,21 @@
 #include <exception>
 #include <stdlib.h>
 
-using std::exception;
+
+/**
+ * Thrown when coordinates are out of bounds
+ */
+class InvalidLocationException {};
 
 
+/**
+ * \exception InvalidLocationException
+ */
 class Location {
 public:
+	/**
+	 * \throws InvalidLocationException if `x`, `y` are out of bounds
+	 */
 	Location(unsigned int x, unsigned int y);
 	const unsigned int x;
 	const unsigned int y;

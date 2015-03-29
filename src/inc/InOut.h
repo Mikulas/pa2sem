@@ -19,6 +19,9 @@ using std::vector;
  *
  * Implementations might range from console line io, ncurses,
  * network, carry pidgeons and so on.
+ *
+ * \interface InOut
+ * \pure
  */
 class InOut
 {

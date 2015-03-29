@@ -5,6 +5,9 @@
 #include "../../Random.h"
 
 
+/**
+ * \pure
+ */
 class AIPlayer : public Player
 {
 	public:

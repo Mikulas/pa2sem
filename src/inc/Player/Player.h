@@ -14,6 +14,10 @@ class Player;
 using std::vector;
 
 
+/**
+ * \interface Player
+ * \pure
+ */
 class Player
 {
     public:
