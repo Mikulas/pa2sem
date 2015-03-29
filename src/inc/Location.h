@@ -48,5 +48,4 @@ private:
 	unsigned int getIndex() const;
 };
 
-
 #endif
