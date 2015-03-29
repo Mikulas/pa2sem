@@ -39,6 +39,10 @@ void LineInOut::announce(string msg) {
 	cout << C::underline << msg << C::reset << endl;
 }
 
+void LineInOut::announceTurn(string msg, unsigned int turn) {
+	announce(msg + " turn " + to_string(turn));
+}
+
 string LineInOut::getCharForShip(Ship* ship) {
 	if (!symbolMap.count(ship)) {
 		string s[] = {

@@ -48,11 +48,12 @@ void Game::nextState() {
 		case State::SETUP_B:
 		case State::TURN_B:
 			state = State::TURN_A;
-			inOut->announce("Player A turn");
+			turn++;
+			inOut->announceTurn("Player A", turn);
 			break;
 		case State::TURN_A:
 			state = State::TURN_B;
-			inOut->announce("Player B turn");
+			inOut->announceTurn("Player B", turn);
 			break;
 		case State::INIT:
 		default:

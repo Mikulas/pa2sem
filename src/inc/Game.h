@@ -16,6 +16,7 @@ public:
 	void gameOver(Player* player);
 
 private:
+	unsigned int turn;
 	State state;
 
 	InOut* inOut;

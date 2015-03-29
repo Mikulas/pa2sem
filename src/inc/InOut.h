@@ -10,6 +10,7 @@
 #include "../C.h"
 
 using std::string;
+using std::to_string;
 using std::vector;
 
 
@@ -21,6 +22,7 @@ class InOut
         virtual string ask(string question) = 0;
 
         virtual void announce(string) = 0;
+        virtual void announceTurn(string, unsigned int turn) = 0;
         virtual void askShipLoc(Ship*, Board*) = 0;
         virtual Location askShot(vector<Shot>) = 0;
         virtual void renderShotResult(Shot) = 0;

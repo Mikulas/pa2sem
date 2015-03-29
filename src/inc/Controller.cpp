@@ -17,8 +17,9 @@ void Controller::run() {
 
 	// if (mode == "player") {
 		// this->game = new Game(inOut, new HumanPlayer(inOut), new HumanPlayer(inOut));
-		this->game = new Game(inOut, new HumanPlayer(inOut), new RandomAIPlayer(inOut));
-		// this->game = new Game(inOut, new RandomAIPlayer(inOut), new RandomAIPlayer(inOut));
+		// this->game = new Game(inOut, new HumanPlayer(inOut), new RandomAIPlayer(inOut));
+		this->game = new Game(inOut, new RandomAIPlayer(inOut), new RandomAIPlayer(inOut));
+		// this->game = new Game(inOut, new RandomWithMemoryAIPlayer(inOut), new RandomAIPlayer(inOut));
 		this->game->gameLoop();
 	// }
 }
