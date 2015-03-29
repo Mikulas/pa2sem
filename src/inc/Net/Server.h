@@ -2,24 +2,25 @@
 #define SERVER_H
 
 #include <cctype>
+#include <cstring>
+#include <pthread.h>
+#include <unistd.h>
 #include <cstdio>
 #include <cstdlib>
-#include <netdb.h>
-#include <pthread.h>
-#include <sys/socket.h>
+#include <cstring>
 #include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
 #include <unistd.h>
-#include <vector>
-#include "InOut.h"
 
 #define PORT 5037 // unassigned http://www.speedguide.net/port.php?port=5037
-
-using namespace std;
 
 
 class ServerException {};
 
-
+/**
+ * \internal
+ */
 struct Thread
 {
 	pthread_t thr;
@@ -28,16 +29,18 @@ struct Thread
 
 /**
  * \exception ServerException
+ * Implementations taken from https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
  */
 class Server {
 public:
-	Server(InOut* inOut) : inOut(inOut) {};
+	/**
+ 	 * \throws ServerException
+ 	 */
 	void start();
 
 private:
 	int openSrvSocket(const char *name, int port);
 	static void *serveClient(Thread*);
-	InOut* inOut;
 };
 
 

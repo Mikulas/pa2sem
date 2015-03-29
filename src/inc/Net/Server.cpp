@@ -27,9 +27,6 @@ void Server::start() {
 	close(fd);
 }
 
-/**
- * implementation taken from https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
- */
 int Server::openSrvSocket(const char *name, int port)
 {
 	struct addrinfo *ai;

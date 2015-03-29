@@ -4,7 +4,7 @@
 
 #include "Game.h"
 #include "InOut.h"
-#include "Server.h"
+#include "Net/Server.h"
 #include "Player/AI/Random.h"
 #include "Player/AI/RandomWithMemory.h"
 #include "Player/Human.h"

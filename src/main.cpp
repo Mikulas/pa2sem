@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include "inc/Net/Client.h"
 #include "inc/Controller.h"
 #include "inc/LineInOut.h"
 
@@ -21,11 +22,23 @@ using namespace std;
 int main(int argc, char **argv)
 {
 	srand(time(NULL));
-
 	auto renderer = new LineInOut;
 
-	Controller controller(renderer);
-	controller.run();
+	if (argc == 1) {
+		Controller controller(renderer);
+		controller.run();
+
+	} else if (argc == 2) {
+		Client* client = new Client();
+		client->connect(argv[1]);
+
+	} else {
+		cerr << "Usage: " << argv[0] << endl;
+		cerr << "            - starts a new game" << endl;
+		cerr << "       " << argv[0] << " [server ip]" << endl;
+		cerr << "            - connects to an existing game server" << endl;
+		return 1;
+	}
 
 	return 0;
 }

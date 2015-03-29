@@ -22,8 +22,9 @@ void Controller::run() {
 				players[i] = new HumanPlayer(inOut);
 
 			} else if ("net" == buff) {
-				// new Networking;
-				// TODO??
+				Server* server = new Server();
+				server->start();
+				// waits for second player to connect
 
 			} else if ("ai1" == buff) {
 				players[i] = new RandomAIPlayer(inOut);
