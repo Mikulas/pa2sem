@@ -81,8 +81,8 @@ void LineInOut::renderBoard(Board* board) {
 }
 
 void LineInOut::askShipLoc(Ship* ship, Board* board) {
-	Ship newShip = *ship;
 	do {
+		Ship newShip = *ship;
 		cout << "Pick start coordinate of " << C::blue << ship->name << C::reset << " (length " << ship->length << "): ";
 
 		Location start = readLocation();
