@@ -16,10 +16,14 @@ void Controller::run() {
 		while (true) {
 			string question = "Select player ";
 			question += (char) ('A' + i);
-			question += ": [human/ai1/ai2]: ";
+			question += ": [human/net/ai1/ai2]: ";
 			buff = inOut->ask(question);
 			if ("human" == buff) {
 				players[i] = new HumanPlayer(inOut);
+
+			} else if ("net" == buff) {
+				// new Networking;
+				// TODO??
 
 			} else if ("ai1" == buff) {
 				players[i] = new RandomAIPlayer(inOut);
