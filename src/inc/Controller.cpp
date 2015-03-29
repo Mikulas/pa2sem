@@ -10,16 +10,31 @@ Controller::~Controller() {
 }
 
 void Controller::run() {
-	// string mode;
-	// do {
-	// 	mode = inOut->ask("Select game mode: play against AI,\nhot seat on this pc, or play on network. [ai/pc/net]: ");
-	// } while (mode != "ai" && mode != "player");
+	string buff;
+	Player* players[2];
+	for (uint i = 0; i < 2; i++) {
+		while (true) {
+			string question = "Select player ";
+			question += (char) ('A' + i);
+			question += ": [human/ai1/ai2]: ";
+			buff = inOut->ask(question);
+			if ("human" == buff) {
+				players[i] = new HumanPlayer(inOut);
 
-	// if (mode == "player") {
-		// this->game = new Game(inOut, new HumanPlayer(inOut), new HumanPlayer(inOut));
-		// this->game = new Game(inOut, new HumanPlayer(inOut), new RandomAIPlayer(inOut));
-		this->game = new Game(inOut, new RandomAIPlayer(inOut), new RandomAIPlayer(inOut));
-		// this->game = new Game(inOut, new RandomWithMemoryAIPlayer(inOut), new RandomAIPlayer(inOut));
-		this->game->gameLoop();
-	// }
+			} else if ("ai1" == buff) {
+				players[i] = new RandomAIPlayer(inOut);
+
+			} else if ("ai2" == buff) {
+				players[i] = new RandomWithMemoryAIPlayer(inOut);
+
+			} else {
+				continue;
+			}
+			break;
+		};
+	}
+
+	// TODO randomize player order?
+	this->game = new Game(inOut, players[0], players[1]);
+	this->game->gameLoop();
 }
