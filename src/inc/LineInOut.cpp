@@ -64,7 +64,6 @@ void LineInOut::renderBoard(Board* board) {
 	}
 	cout << endl;
 	Ship* ship;
-	// TODO colorize the ships or use different symbol
 	for (unsigned int y = 0; y < BOARD_SIZE; y++) {
 		cout << " " << y << "  ";
 		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
@@ -90,8 +89,6 @@ void LineInOut::askShipLoc(Ship* ship, Board* board) {
 		// TODO offer all 4 options
 		Location end = readLocation();
 
-		// TODO do not edit the ship straight away
-		// board might return false!
 		if (!newShip.setStartEnd(start, end)) {
 			cout << "Invalid length, expected " << ship->length << ", try again" << endl;
 			continue;

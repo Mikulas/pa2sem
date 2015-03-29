@@ -3,17 +3,17 @@
 
 #include <algorithm>
 #include <random>
-#include "../Player.h"
+#include "AI.h"
 #include "../../Random.h"
 
 using std::default_random_engine;
 using std::shuffle;
 
 
-class RandomWithMemoryAIPlayer : public Player
+class RandomWithMemoryAIPlayer : public AIPlayer
 {
     public:
-    	RandomWithMemoryAIPlayer(InOut* inOut) : Player(inOut) {
+    	RandomWithMemoryAIPlayer(InOut* inOut) : AIPlayer(inOut) {
     		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
     			for (unsigned int y = 0; y < BOARD_SIZE; y++) {
     				shootAt.push_back(new Location(x, y));

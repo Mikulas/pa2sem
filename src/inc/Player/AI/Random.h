@@ -1,14 +1,14 @@
 #ifndef AIPLAYER
 #define AIPLAYER
 
-#include "../Player.h"
+#include "AI.h"
 #include "../../Random.h"
 
 
-class RandomAIPlayer : public Player
+class RandomAIPlayer : public AIPlayer
 {
     public:
-    	RandomAIPlayer(InOut* inOut) : Player(inOut) {};
+    	RandomAIPlayer(InOut* inOut) : AIPlayer(inOut) {};
 		virtual void setup() override;
     	virtual void takeTurn() override;
 };
