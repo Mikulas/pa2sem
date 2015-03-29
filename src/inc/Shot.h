@@ -9,8 +9,8 @@ enum class Response : char {MISS, HIT, SUNK};
 class Shot {
 public:
 	Shot(Location location) : location(location) {};
-	Location location;
-	Response response;
+	Location location; // TODO fix visibility
+	Response response; // TODO fix visibility
 };
 
 

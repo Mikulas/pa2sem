@@ -8,7 +8,7 @@ Board::Board() {
 	ships.push_back(Ship(2, "Destroyer"));
 }
 
-Ship* Board::isShipAt(Location loc) {
+const Ship* Board::isShipAt(const Location loc) const {
 	for (auto &ship : ships) {
 		if (ship.overlaps(loc)) {
 			return &ship;
@@ -17,7 +17,7 @@ Ship* Board::isShipAt(Location loc) {
 	return nullptr;
 }
 
-Ship* Board::hit(Location loc) {
+const Ship* Board::hit(const Location loc) {
 	for (auto &ship : ships) {
 		if (ship.hit(loc)) {
 			return &ship;
@@ -26,7 +26,7 @@ Ship* Board::hit(Location loc) {
 	return nullptr;
 }
 
-bool Board::canPlace(Ship* newShip) {
+bool Board::canPlace(const Ship* newShip) const {
 	if (!newShip->isPlaced()) {
 		return false;
 	}
@@ -39,7 +39,7 @@ bool Board::canPlace(Ship* newShip) {
 	return true;
 }
 
-bool Board::allShipsSunk() {
+bool Board::allShipsSunk() const {
 	for (auto &ship : ships) {
 		if (!ship.isSunk()) {
 			return false;

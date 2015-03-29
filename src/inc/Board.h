@@ -12,11 +12,11 @@ class Board
 {
 public:
 	Board();
-	vector<Ship> ships;
-	bool canPlace(Ship* newShip);
-	Ship* isShipAt(Location);
-	Ship* hit(Location);
-	bool allShipsSunk();
+	vector<Ship> ships; // TODO fix visibility
+	bool canPlace(const Ship* newShip) const;
+	const Ship* isShipAt(const Location) const;
+	const Ship* hit(const Location);
+	bool allShipsSunk() const;
 };
 
 

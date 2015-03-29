@@ -19,22 +19,22 @@ using std::sscanf;
 
 class LineInOut : public InOut {
 public:
-	virtual void announce(string) override;
-	virtual void announceTurn(string, unsigned int turn) override;
-	virtual void renderBoard(Board*) override;
-	virtual string ask(string question) override;
+	virtual void announce(string) const override;
+	virtual void announceTurn(string, unsigned int turn) const override;
+	virtual void renderBoard(const Board*) override;
+	virtual string ask(string question) const override;
 
-	virtual void askShipLoc(Ship*, Board*) override;
-	virtual Location askShot(vector<Shot> shots) override;
-	virtual void renderShotResult(Shot) override;
-	virtual void gameOver(string player) override;
+	virtual void askShipLoc(Ship*, const Board*) const override;
+	virtual const Location askShot(const vector<Shot> *shots) const override;
+	virtual void renderShotResult(const Shot) const override;
+	virtual void gameOver(string player) const override;
 
 private:
-	Location readLocation();
+	const Location readLocation() const;
 	int symbolHead = 0;
-	map<Ship*, string> symbolMap;
-	string getCharForShip(Ship*);
-	void renderShots(vector<Shot> shots);
+	map<const Ship*, string> symbolMap;
+	string getCharForShip(const Ship*);
+	void renderShots(const vector<Shot> *shots) const;
 };
 
 #endif

@@ -41,8 +41,8 @@ public:
 	}
 
 	/** for 0,0->3,4 intentionally returns 7, not 5 */
-	unsigned int distance(Location*);
-	bool inLine(Location*);
+	unsigned int distance(const Location*) const;
+	bool inLine(const Location*) const;
 
 private:
 	unsigned int getIndex() const;

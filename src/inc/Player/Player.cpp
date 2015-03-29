@@ -8,9 +8,9 @@ void Player::setGame(Game* game) {
 	this->game = game;
 }
 
-Shot Player::respond(Location loc) {
+const Shot Player::respond(const Location loc) {
 	Shot shot(loc);
-	Ship* ship = this->board.hit(loc);
+	const Ship* ship = this->board.hit(loc);
 	if (!ship) {
 		shot.response = Response::MISS;
 
@@ -24,8 +24,8 @@ Shot Player::respond(Location loc) {
 	return shot;
 }
 
-Shot Player::fireAt(Location location) {
-	Shot shot = opponent->respond(location);
+const Shot Player::fireAt(const Location location) {
+	const Shot shot = opponent->respond(location);
 	shotsFired.push_back(shot);
 	if (shot.response == Response::SUNK) {
 		if (opponent->board.allShipsSunk()) {

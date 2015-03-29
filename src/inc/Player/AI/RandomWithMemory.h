@@ -26,7 +26,7 @@ class RandomWithMemoryAIPlayer : public AIPlayer
     	virtual void takeTurn() override;
 
     private:
-    	vector<Location*> shootAt;
+    	vector<const Location*> shootAt;
 };
 
 

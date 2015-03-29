@@ -1,10 +1,10 @@
 #include "Ship.h"
 
-bool Ship::isPlaced() {
+bool Ship::isPlaced() const {
 	return fields.size() != 0;
 }
 
-bool Ship::overlaps(Ship* other) {
+bool Ship::overlaps(const Ship* other) const {
 	for (auto &field : this->fields) {
 		if (other->overlaps(field)) {
 			return true;
@@ -13,11 +13,11 @@ bool Ship::overlaps(Ship* other) {
 	return false;
 }
 
-bool Ship::overlaps(const Location loc) {
+bool Ship::overlaps(const Location loc) const {
 	return fields.find(loc) != fields.end();
 }
 
-bool Ship::setStartEnd(Location start, Location end) {
+bool Ship::setStartEnd(const Location start, const Location end) {
 	if (fields.size() != 0) {
 		return false;
 	}
@@ -46,7 +46,7 @@ bool Ship::setStartEnd(Location start, Location end) {
 	return true;
 }
 
-bool Ship::hit(Location loc) {
+bool Ship::hit(const Location loc) {
 	if (fields.find(loc) == fields.end()) {
 		return false;
 	}
@@ -54,6 +54,6 @@ bool Ship::hit(Location loc) {
 	return true;
 }
 
-bool Ship::isSunk() {
+bool Ship::isSunk() const {
 	return hits.size() == fields.size();
 }

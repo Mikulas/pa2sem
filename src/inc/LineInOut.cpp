@@ -1,6 +1,6 @@
 #include "LineInOut.h"
 
-Location LineInOut::readLocation() {
+const Location LineInOut::readLocation() const {
 	string answer;
 
 	int res = -1;
@@ -26,7 +26,7 @@ Location LineInOut::readLocation() {
 	} while (true);
 }
 
-string LineInOut::ask(string question) {
+string LineInOut::ask(string question) const {
 	string answer;
 
 	cout << question << " >> ";
@@ -35,15 +35,15 @@ string LineInOut::ask(string question) {
 	return answer;
 }
 
-void LineInOut::announce(string msg) {
+void LineInOut::announce(string msg) const {
 	cout << C::underline << msg << C::reset << endl;
 }
 
-void LineInOut::announceTurn(string msg, unsigned int turn) {
+void LineInOut::announceTurn(string msg, unsigned int turn) const {
 	announce(msg + " turn " + to_string(turn));
 }
 
-string LineInOut::getCharForShip(Ship* ship) {
+string LineInOut::getCharForShip(const Ship* ship) {
 	if (!symbolMap.count(ship)) {
 		string s[] = {
 			C::cyan + "Ⓐ",
@@ -57,13 +57,13 @@ string LineInOut::getCharForShip(Ship* ship) {
 	return symbolMap[ship];
 }
 
-void LineInOut::renderBoard(Board* board) {
+void LineInOut::renderBoard(const Board* board) {
 	cout << "y\\x ";
 	for (unsigned int x = 0; x < BOARD_SIZE; x++) {
 		cout << x << " ";
 	}
 	cout << endl;
-	Ship* ship;
+	const Ship* ship;
 	for (unsigned int y = 0; y < BOARD_SIZE; y++) {
 		cout << " " << y << "  ";
 		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
@@ -79,7 +79,7 @@ void LineInOut::renderBoard(Board* board) {
 	}
 }
 
-void LineInOut::askShipLoc(Ship* ship, Board* board) {
+void LineInOut::askShipLoc(Ship* ship, const Board* board) const {
 	do {
 		Ship newShip = *ship;
 		cout << "Pick start coordinate of " << C::blue << ship->name << C::reset << " (length " << ship->length << "): ";
@@ -104,24 +104,24 @@ void LineInOut::askShipLoc(Ship* ship, Board* board) {
 	} while (true);
 }
 
-Location LineInOut::askShot(vector<Shot> shots) {
+const Location LineInOut::askShot(const vector<Shot> *shots) const {
 	renderShots(shots);
 	cout << "Fire at: ";
 	return readLocation();
 }
 
-void LineInOut::renderShots(vector<Shot> shots) {
+void LineInOut::renderShots(const vector<Shot> *shots) const {
 	cout << "y\\x ";
 	for (unsigned int x = 0; x < BOARD_SIZE; x++) {
 		cout << x << " ";
 	}
 	cout << endl;
-	Shot* found;
+	const Shot* found;
 	for (unsigned int y = 0; y < BOARD_SIZE; y++) {
 		cout << " " << y << "  ";
 		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
 			found = nullptr;
-			for (auto &shot : shots) {
+			for (auto &shot : *shots) {
 				if (shot.location == Location(x, y)) {
 					found = &shot;
 					continue;
@@ -139,7 +139,7 @@ void LineInOut::renderShots(vector<Shot> shots) {
 	}
 }
 
-void LineInOut::renderShotResult(Shot shot) {
+void LineInOut::renderShotResult(const Shot shot) const {
 	cout << "shot fired at " << shot.location.x << "," << shot.location.y << " ";
 	if (shot.response == Response::SUNK) {
 		cout << C::blue << "SUNK a ship" << C::reset << endl;
@@ -150,7 +150,7 @@ void LineInOut::renderShotResult(Shot shot) {
 	}
 }
 
-void LineInOut::gameOver(string player) {
+void LineInOut::gameOver(string player) const {
 	cout << "GAME OVER" << endl;
 	cout << player << " won" << endl;
 }

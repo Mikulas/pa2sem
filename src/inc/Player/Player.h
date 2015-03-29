@@ -18,7 +18,7 @@ class Player
 {
     public:
         Player(InOut* inOut) : inOut(inOut) {};
-    	Shot respond(Location);
+    	const Shot respond(const Location);
     	void setOpponent(Player*);
         void setGame(Game*);
     	virtual void setup() = 0;
@@ -26,7 +26,7 @@ class Player
 
 	protected:
 		Board board;
-    	Shot fireAt(Location);
+    	const Shot fireAt(const Location);
         vector<Shot> shotsFired;
         InOut* inOut;
 

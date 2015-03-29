@@ -13,12 +13,12 @@ class Ship {
 public:
 	Ship(unsigned int length) : length(length) {}
 	Ship(unsigned int length, string name) : name(name), length(length) {}
-	bool setStartEnd(Location start, Location end);
-	bool overlaps(Ship*);
-	bool overlaps(Location);
-	bool isPlaced();
-	bool hit(Location);
-	bool isSunk();
+	bool setStartEnd(const Location start, const Location end);
+	bool overlaps(const Ship*) const;
+	bool overlaps(const Location) const;
+	bool isPlaced() const;
+	bool hit(const Location);
+	bool isSunk() const;
 
 	const string name;
 	const unsigned int length;

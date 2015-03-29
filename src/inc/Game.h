@@ -16,7 +16,7 @@ public:
 	void gameOver(Player* player);
 
 private:
-	unsigned int turn;
+	unsigned int turn; /**< One turn means all players fire a shot */
 	State state;
 
 	InOut* inOut;
