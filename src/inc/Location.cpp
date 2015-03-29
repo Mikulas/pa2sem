@@ -2,7 +2,7 @@
 
 Location::Location(unsigned int x, unsigned int y) : x(x), y(y) {
 	if (x >= BOARD_SIZE || y >= BOARD_SIZE) {
-		throw new exception;
+		throw InvalidLocationException();
 	}
 }
 

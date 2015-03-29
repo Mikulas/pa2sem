@@ -40,7 +40,7 @@ protected:
 		bool caught = false;
 		try {
 			lambda();
-		} catch (exception* e) {
+		} catch (...) {
 			caught = true;
 		}
 		assert(caught, msg);
