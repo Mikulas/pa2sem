@@ -27,10 +27,10 @@ printf("accepted\n");
 }
 
 void Server::invoke(const char* method) const {
-printf("writing to fd '%s'\n", method);
+printf("writing '%s'\n", method);
 	// TODO send method name
 	write(this->fd, method, strlen(method) * sizeof(char));
-printf("wrote to fd '%s'\n", method);
+printf("wrote '%s'\n", method);
 	char buffer[200];
 printf("reading\n");
 	int l = read(this->fd, buffer, sizeof(buffer));
@@ -39,7 +39,7 @@ printf("read %s\n", buffer);
 		// nulova delka -> uzavreni spojeni klientem
 		// TODO
 	}
-	printf("received: %s\n", buffer);
+	printf("received: '%s'\n", buffer);
 }
 
 void Server::stop() {

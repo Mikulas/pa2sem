@@ -17,22 +17,20 @@ void Client::connect(string name) {
 }
 
 void Client::connect(string name, int port) {
-	int fd;
-
 	this->port = port;
-	openCliSocket(name.c_str(), port);
+	int fd = openCliSocket(name.c_str(), port);
 	if (fd < 0) {
 		throw ClientException();
 	}
 
 printf("connected to server on port %d\n", port);
 
-	char buffer[200];
+	char buffer[200] = "";
 
 	int l = read(fd, buffer, sizeof(buffer));
 printf("received:\n");
-	write(STDOUT_FILENO, buffer, l);
-printf("\n<<<end");
+	printf("%s\n", buffer);
+printf("\n<<<end\n");
 
 	snprintf(buffer, sizeof(buffer), "%d: %s\n", 1337, "Ahoj Mikulasi");
 printf("writing:\n");

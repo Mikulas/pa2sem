@@ -17,5 +17,6 @@ todo
 	- [x] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
 	- [ ] nakodovat to, vcetne unit testu!
 		- [ ] pripravit ascii renderer
+	- [ ] pridat bashove integracni testy
 	- [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 	- [ ] profit
