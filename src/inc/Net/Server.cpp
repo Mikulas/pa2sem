@@ -1,29 +1,48 @@
 #include "Server.h"
 
+int Server::getPort() {
+    return port;
+}
+
 /**
  * \throws ServerException
  */
 void Server::start() {
-	// TODO create new thread
-
-	int fd = openSrvSocket("127.0.0.1", PORT);
+	for (port = PORT_MIN; port <= PORT_MAX; port++) {
+		 fd = openSrvSocket("127.0.0.1", port);
+		 if (fd >= 0) {
+		 	break;
+		 }
+	}
 	if (fd < 0) {
+		// failed to open any of the ports in range
 		throw ServerException();
 	}
 
-	pthread_attr_t attr;
-	pthread_attr_init (&attr);
-	pthread_attr_setdetachstate (&attr, PTHREAD_CREATE_DETACHED);
+	struct sockaddr remote;
+	socklen_t remoteLen = sizeof (remote);
+printf("going to accept on port %d\n", port);
+	this->fd = accept(fd, &remote, &remoteLen);
+printf("accepted\n");
+}
 
-	while(1) {
-		struct sockaddr remote;
-		socklen_t remoteLen = sizeof (remote);
-		Thread* thread = new Thread;
-		thread->fd = accept(fd, &remote, &remoteLen);
-		printf("New connection\n");
-		pthread_create(&thread->thr, &attr, (void*(*)(void*)) serveClient, (void*) thread);
-    }
-	pthread_attr_destroy (&attr);
+void Server::invoke(const char* method) const {
+printf("writing to fd '%s'\n", method);
+	// TODO send method name
+	write(this->fd, method, strlen(method) * sizeof(char));
+printf("wrote to fd '%s'\n", method);
+	char buffer[200];
+printf("reading\n");
+	int l = read(this->fd, buffer, sizeof(buffer));
+printf("read %s\n", buffer);
+	if (!l) {
+		// nulova delka -> uzavreni spojeni klientem
+		// TODO
+	}
+	printf("received: %s\n", buffer);
+}
+
+void Server::stop() {
 	close(fd);
 }
 
@@ -69,29 +88,4 @@ int Server::openSrvSocket(const char *name, int port)
     	return -1;
     }
     return fd;
-}
-
-/* obsluha jednoho klienta (vsechny jeho zpravy)
- */
-void *Server::serveClient(Thread *thread) {
-	char buffer[200];
-	while (1) {
-		int l = read(thread->fd, buffer, sizeof(buffer));
-		// nulova delka -> uzavreni spojeni klientem
-		if (!l) {
-			break;
-		}
-
-		// prevod mala -> velka a naopak
-		for (int i = 0; i < l; i ++) {
-			if (isalpha(buffer[i])) {
-				buffer[i] ^= 0x20;
-			}
-		}
-		write(thread->fd, buffer, l);
-		// spojeni nebylo ukonceno, jeste mohou prijit dalsi data.
-	}
-	close(thread->fd);
-	printf("Close connection\n");
-	return NULL;
 }

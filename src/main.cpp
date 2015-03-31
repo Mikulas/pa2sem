@@ -32,10 +32,14 @@ int main(int argc, char **argv)
 		Client* client = new Client();
 		client->connect(argv[1]);
 
+	} else if (argc == 3) {
+		Client* client = new Client();
+		client->connect(argv[1], stoi(argv[2]));
+
 	} else {
 		cerr << "Usage: " << argv[0] << endl;
 		cerr << "            - starts a new game" << endl;
-		cerr << "       " << argv[0] << " [server ip]" << endl;
+		cerr << "       " << argv[0] << " [server ip] [port]" << endl;
 		cerr << "            - connects to an existing game server" << endl;
 		return 1;
 	}

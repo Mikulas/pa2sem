@@ -36,11 +36,11 @@ string LineInOut::ask(string question) const {
 }
 
 void LineInOut::announce(string msg) const {
-	cout << C::underline << msg << C::reset << endl;
+	cout << msg << endl;
 }
 
 void LineInOut::announceTurn(string msg, unsigned int turn) const {
-	announce(msg + " turn " + to_string(turn));
+	announce(C::underline + msg + " turn " + to_string(turn) + C::reset);
 }
 
 string LineInOut::getCharForShip(const Ship* ship) {
@@ -153,4 +153,8 @@ void LineInOut::renderShotResult(const Shot shot) const {
 void LineInOut::gameOver(string player) const {
 	cout << "GAME OVER" << endl;
 	cout << player << " won" << endl;
+}
+
+void LineInOut::announceWaiting(int port) const {
+	cout << "Waiting for player to connect on port " << port << "..." << endl;
 }

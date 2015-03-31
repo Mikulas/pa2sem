@@ -32,6 +32,7 @@ class InOut
 
         virtual void announce(string) const = 0;
         virtual void announceTurn(string, unsigned int turn) const = 0;
+        virtual void announceWaiting(int port) const = 0;
         virtual void askShipLoc(Ship*, const Board*) const = 0;
         virtual const Location askShot(const vector<Shot>*) const = 0;
         virtual void renderShotResult(const Shot) const = 0;

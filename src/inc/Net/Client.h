@@ -26,8 +26,10 @@ public:
 	 * \throws ClientException
 	 */
 	void connect(string name);
+	void connect(string name, int port);
 
 private:
+	int port;
 	int openCliSocket(const char* name, int port);
 };
 

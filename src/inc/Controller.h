@@ -8,6 +8,7 @@
 #include "Player/AI/Random.h"
 #include "Player/AI/RandomWithMemory.h"
 #include "Player/Human.h"
+#include "Player/Remote.h"
 
 
 class Controller {
@@ -18,6 +19,7 @@ public:
 private:
 	InOut* inOut;
 	Game* game;
+	Server* servers[2];
 };
 
 

@@ -20,7 +20,8 @@ using std::sscanf;
 class LineInOut : public InOut {
 public:
 	virtual void announce(string) const override;
-	virtual void announceTurn(string, unsigned int turn) const override;
+	virtual void announceWaiting(int port) const override;
+    virtual void announceTurn(string, unsigned int turn) const override;
 	virtual void renderBoard(const Board*) override;
 	virtual string ask(string question) const override;
 

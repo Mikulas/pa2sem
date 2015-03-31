@@ -13,19 +13,11 @@
 #include <netdb.h>
 #include <unistd.h>
 
-#define PORT 5037 // unassigned http://www.speedguide.net/port.php?port=5037
+#define PORT_MIN 5037 // unassigned http://www.speedguide.net/port.php?port=5037
+#define PORT_MAX 5040
 
 
 class ServerException {};
-
-/**
- * \internal
- */
-struct Thread
-{
-	pthread_t thr;
-	int fd;
-};
 
 /**
  * \exception ServerException
@@ -37,10 +29,14 @@ public:
  	 * \throws ServerException
  	 */
 	void start();
+	void invoke(const char* method) const;
+	void stop();
+	int getPort();
 
 private:
+	int port;
+	int fd;
 	int openSrvSocket(const char *name, int port);
-	static void *serveClient(Thread*);
 };
 
 
