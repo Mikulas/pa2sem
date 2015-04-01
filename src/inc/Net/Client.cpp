@@ -41,6 +41,15 @@ void Client::connect(string name, int port) {
 		} else if (0 == strcmp(buffer, "takeTurn")) {
 			player->takeTurn();
 
+		} else if (0 == strcmp(buffer, "respond")) {
+			// TODO read location from received
+			//player->respond(location);
+			// TODO send response back
+
+		} else if (0 == strcmp(buffer, "allShipsSunk")) {
+			player->allShipsSunk();
+			// TODO send response back
+
 		} else {
 			printf("unknown '%s'\n", buffer);
 			throw ClientException();
@@ -95,13 +104,19 @@ int Client::openCliSocket(const char * name, int port)
 // Player implementations
 //
 
-void Client::setup() {
-	// TODO
-}
+/**
+ * Does not need to do anything,
+ * setup is done on remote instance by
+ * other implementation of Player
+ */
+void Client::setup() {}
 
-void Client::takeTurn() {
-	// TODO
-}
+/**
+ * Does not need to do anything,
+ * setup is done on remote instance by
+ * other implementation of Player
+ */
+void Client::takeTurn() {}
 
 const Shot Client::respond(const Location) {
 	// TODO

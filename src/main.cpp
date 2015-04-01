@@ -32,6 +32,7 @@ int main(int argc, char **argv)
 	} else if (argc == 2 || argc == 3) {
 		Player* player = new RandomWithMemoryAIPlayer(inOut);
 		Client* client = new Client(player);
+		player->setOpponent(client);
 
 		if (argc == 3) {
 			client->connect(argv[1], stoi(argv[2]));
