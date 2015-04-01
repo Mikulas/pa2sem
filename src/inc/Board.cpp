@@ -1,6 +1,6 @@
 #include "Board.h"
 
-Board::Board() {
+Board::Board(Player* player) : player(player) {
 	ships.push_back(Ship(5, "Aircraft Carrier"));
 	ships.push_back(Ship(4, "Battleship"));
 	ships.push_back(Ship(3, "Submarine"));
@@ -46,4 +46,8 @@ bool Board::allShipsSunk() const {
 		}
 	}
 	return true;
+}
+
+Player* Board::getPlayer() const {
+	return player;
 }

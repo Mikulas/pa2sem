@@ -1,6 +1,8 @@
 #ifndef INOUT
 #define INOUT
 
+class InOut;
+
 #include <string>
 #include <Vector>
 #include "Board.h"

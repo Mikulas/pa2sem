@@ -2,30 +2,36 @@
 
 Game::Game(InOut* inOut, Player* playerA, Player* playerB) {
 	this->inOut = inOut;
-	this->playerA = playerA;
-	this->playerA->setOpponent(playerB);
-	this->playerA->setGame(this);
-	this->playerB = playerB;
-	this->playerB->setOpponent(playerA);
-	this->playerB->setGame(this);
+
+	playerA->setGame(this);
+	playerB->setGame(this);
+	this->boardA = new Board(playerA);
+	this->boardB = new Board(playerB);
 
 	this->state = State::INIT;
+}
+
+Game::~Game() {
+	delete boardA;
+	delete boardB;
 }
 
 void Game::gameLoop() {
 	while (true) {
 		switch (state) {
 			case State::SETUP_A:
-				playerA->setup();
+				//boardA->ships
+				boardA->getPlayer()->setup();
 				break;
 			case State::SETUP_B:
-				playerB->setup();
+				//boardB->ships
+				boardB->getPlayer()->setup();
 				break;
 			case State::TURN_A:
-				playerA->takeTurn();
+				boardA->getPlayer()->takeTurn();
 				break;
 			case State::TURN_B:
-				playerB->takeTurn();
+				boardB->getPlayer()->takeTurn();
 				break;
 			case State::OVER:
 				return;
@@ -63,7 +69,7 @@ void Game::nextState() {
 }
 
 void Game::gameOver(Player* player) {
-	if (this->playerA == player) {
+	if (this->boardA->getPlayer() == player) {
 		inOut->gameOver("Player A");
 	} else {
 		inOut->gameOver("Player B");
