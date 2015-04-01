@@ -27,10 +27,13 @@ printf("accepted\n");
 }
 
 void Server::invoke(const char* method) const {
-printf("writing '%s'\n", method);
-	// TODO send method name
-	write(this->fd, method, strlen(method) * sizeof(char));
-printf("wrote '%s'\n", method);
+printf("%s\n", "server invoke");
+    auto p = Payload::call(method);
+printf("%s\n", "server invoke payload");
+    p.send(this->fd);
+printf("%s\n", "server invoke payload ok");
+
+
 	char buffer[200];
 printf("reading\n");
 	int l = read(this->fd, buffer, sizeof(buffer));
@@ -43,7 +46,8 @@ printf("read %s\n", buffer);
 }
 
 void Server::invoke(const char* method, const Location location) const {
-    Payload p();
+    auto p = Payload::call(method, location);
+    p.send(this->fd);
 }
 
 void Server::stop() {

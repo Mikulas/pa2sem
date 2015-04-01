@@ -1,7 +1,9 @@
 #include "Remote.h"
 
 void RemotePlayer::setup() {
+	printf("%s\n", "remote player setup");
 	server->invoke("setup");
+	printf("%s\n", "remote player setup ok");
 	// TODO
 }
 
