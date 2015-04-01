@@ -12,6 +12,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <unistd.h>
+#include "Payload.h"
 
 #define PORT_MIN 5037 // unassigned http://www.speedguide.net/port.php?port=5037
 #define PORT_MAX 5040
@@ -30,6 +31,7 @@ public:
  	 */
 	void start();
 	void invoke(const char* method) const;
+	void invoke(const char* method, const Location) const;
 	void stop();
 	int getPort();
 

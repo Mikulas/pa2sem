@@ -10,8 +10,8 @@ void RemotePlayer::takeTurn() {
 	// TODO
 }
 
-const Shot RemotePlayer::respond(const Location) {
-	server->invoke("respond");
+const Shot RemotePlayer::respond(const Location location) {
+	server->invoke("respond", location);
 	// TODO
 }
 

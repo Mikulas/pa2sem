@@ -13,15 +13,23 @@
 #include <netdb.h>
 #include <unistd.h>
 #include "../CRC.h"
+#include "../Location.h"
 
 
 class Payload {
 public:
-	uint32_t length;
-	unsigned char* data;
-	uint32_t crc;
+	static Payload call(const char* method);
+	static Payload call(const char* method, const Location location);
+
+	Payload(const unsigned char* data, uint32_t length) : length(length), data(data) {}
+	~Payload();
 	bool validate() const;
 	bool send(int fd);
+
+private:
+	const uint32_t length;
+	const unsigned char* data;
+	uint32_t crc;
 };
 
 

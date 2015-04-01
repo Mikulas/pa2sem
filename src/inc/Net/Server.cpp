@@ -42,6 +42,10 @@ printf("read %s\n", buffer);
 	printf("received: '%s'\n", buffer);
 }
 
+void Server::invoke(const char* method, const Location location) const {
+    Payload p();
+}
+
 void Server::stop() {
 	close(fd);
 }
