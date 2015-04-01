@@ -25,7 +25,7 @@ void Client::connect(string name, int port) {
 
 	printf("connected to server on port %d\n", port);
 
-	const uint size = 1000;
+	const uint size = 200;
 	char* buffer = (char*) malloc(size);
 
 	while (true) {
@@ -35,6 +35,7 @@ void Client::connect(string name, int port) {
 			break;
 		}
 
+printf("int l = %d\n", l);
 		Payload payload = Payload::read((const unsigned char*)buffer);
 printf("%s\n", "payload parsed!");
 

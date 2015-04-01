@@ -53,6 +53,7 @@ Payload Payload::call(const char* method, const Location location) {
 
 Payload Payload::read(const unsigned char* bytes) {
 	uint32_t length = 0;
+printf("%s\n", "memcpy initiated");
 	memcpy(&length, bytes, sizeof(uint32_t));
 printf("read length: %d\n", length);
 
