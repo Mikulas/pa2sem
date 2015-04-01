@@ -5,8 +5,10 @@
 #include "inc/LineInOut.h"
 #include "inc/Player/AI/RandomWithMemory.h"
 
+using std::cerr;
+using std::endl;
+using std::stoi;
 
-using namespace std;
 
 /*! \mainpage My Personal Index Page
  *

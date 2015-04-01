@@ -1,15 +1,18 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
+#include <cctype>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <netdb.h>
+#include <pthread.h>
 #include <string>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include "Server.h"
+#include "Payload.h"
 #include "../Player/Player.h"
 #include "../InOut.h"
 

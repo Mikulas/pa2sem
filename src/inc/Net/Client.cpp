@@ -25,14 +25,19 @@ void Client::connect(string name, int port) {
 
 	printf("connected to server on port %d\n", port);
 
-	char buffer[200];
+	const uint size = 1000;
+	char* buffer = (char*) malloc(size);
 
 	while (true) {
-		memset(&buffer, 0, sizeof(buffer));
-		int l = read(fd, buffer, sizeof(buffer));
+		memset(&buffer, 0, size);
+		int l = read(fd, buffer, size);
 		if (!l) {
 			break;
 		}
+
+		Payload payload = Payload::read((const unsigned char*)buffer);
+printf("%s\n", "payload parsed!");
+
 
 		printf("received: '%s'\n", buffer);
 		if (0 == strcmp(buffer, "setup")) {
@@ -55,10 +60,12 @@ void Client::connect(string name, int port) {
 			throw ClientException();
 		}
 
-		snprintf(buffer, sizeof(buffer), "%d: %s\n", 1337, "Ahoj Mikulasi");
+		snprintf(buffer, size, "%d: %s\n", 1337, "Ahoj Mikulasi");
 		write(fd, buffer, strlen(buffer));
 		printf("wrote '%s'\n", buffer);
 	}
+
+	free(buffer);
 
 	// uzavreni spojeni klientem. Server zjisti uzavreni spojeni a
 	// uvolni prostredky na sve strane.
