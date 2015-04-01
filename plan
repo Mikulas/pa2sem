@@ -1,0 +1,22 @@
+nutne
+	- sitovy multiplayer
+	- nastavitelne AI
+napady
+	- graficke vykresleni (tzn. ne jenom textove dotazy)
+	- pustit ruzna AI proti sobe a zmerit, kolik procent vyhrajou
+	- salvo variation (one shot per ship afloat)
+	- ai poskladat z ruznych vlastnosti
+		- kolem lodi nic nemuze byt
+		- podle velikosti lodi nekam vubec nestrilet (napr nestrilet do uzemi max 3, kdyz mu zbyva jenom lod 5)
+todo
+	- [x] najit nejaka ofiko pravidla lodi
+		- http://battleship.wikia.com/wiki/Battleship_(game)
+		- actually ignore the not touching rule, its stupid and strategies dont work
+		- http://www.datagenetics.com/blog/december32011/index.html
+	- [x] navrhnout tridy
+	- [x] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
+	- [ ] nakodovat to, vcetne unit testu!
+		- [ ] pripravit ascii renderer
+	- [ ] pridat bashove integracni testy
+	- [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+	- [ ] profit

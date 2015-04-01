@@ -23,19 +23,33 @@ void Client::connect(string name, int port) {
 		throw ClientException();
 	}
 
-printf("connected to server on port %d\n", port);
+	printf("connected to server on port %d\n", port);
 
-	char buffer[200] = "";
+	char buffer[200];
 
-	int l = read(fd, buffer, sizeof(buffer));
-printf("received:\n");
-	printf("%s\n", buffer);
-printf("\n<<<end\n");
+	while (true) {
+		memset(&buffer, 0, sizeof(buffer));
+		int l = read(fd, buffer, sizeof(buffer));
+		if (!l) {
+			break;
+		}
 
-	snprintf(buffer, sizeof(buffer), "%d: %s\n", 1337, "Ahoj Mikulasi");
-printf("writing:\n");
-	write(fd, buffer, strlen(buffer));
-printf("wrote\n");
+		printf("received: '%s'\n", buffer);
+		if (0 == strcmp(buffer, "setup")) {
+			player->setup();
+
+		} else if (0 == strcmp(buffer, "takeTurn")) {
+			player->takeTurn();
+
+		} else {
+			printf("unknown '%s'\n", buffer);
+			throw ClientException();
+		}
+
+		snprintf(buffer, sizeof(buffer), "%d: %s\n", 1337, "Ahoj Mikulasi");
+		write(fd, buffer, strlen(buffer));
+		printf("wrote '%s'\n", buffer);
+	}
 
 	// uzavreni spojeni klientem. Server zjisti uzavreni spojeni a
 	// uvolni prostredky na sve strane.
@@ -75,4 +89,25 @@ int Client::openCliSocket(const char * name, int port)
 	}
 	freeaddrinfo(ai);
 	return fd;
+}
+
+//
+// Player implementations
+//
+
+void Client::setup() {
+	// TODO
+}
+
+void Client::takeTurn() {
+	// TODO
+}
+
+const Shot Client::respond(const Location) {
+	// TODO
+}
+
+bool Client::allShipsSunk() const {
+	// TODO
+	return false;
 }

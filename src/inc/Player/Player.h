@@ -21,20 +21,17 @@ using std::vector;
 class Player
 {
     public:
-        Player(InOut* inOut) : inOut(inOut) {};
-    	const Shot respond(const Location);
-    	void setOpponent(Player*);
+        Player() {}
+        void setOpponent(Player*);
         void setGame(Game*);
-    	virtual void setup() = 0;
+    	virtual const Shot respond(const Location) = 0;
+        virtual void setup() = 0;
     	virtual void takeTurn() = 0;
+        virtual bool allShipsSunk() const = 0;
 
 	protected:
 		Board board;
-    	const Shot fireAt(const Location);
-        vector<Shot> shotsFired;
-        InOut* inOut;
-
-	private:
+    	vector<Shot> shotsFired;
 		Player *opponent;
         Game *game;
 };

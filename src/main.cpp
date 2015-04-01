@@ -3,6 +3,7 @@
 #include "inc/Net/Client.h"
 #include "inc/Controller.h"
 #include "inc/LineInOut.h"
+#include "inc/Player/AI/RandomWithMemory.h"
 
 
 using namespace std;
@@ -22,19 +23,22 @@ using namespace std;
 int main(int argc, char **argv)
 {
 	srand(time(NULL));
-	auto renderer = new LineInOut;
+	auto inOut = new LineInOut;
 
 	if (argc == 1) {
-		Controller controller(renderer);
+		Controller controller(inOut);
 		controller.run();
 
-	} else if (argc == 2) {
-		Client* client = new Client();
-		client->connect(argv[1]);
+	} else if (argc == 2 || argc == 3) {
+		Player* player = new RandomWithMemoryAIPlayer(inOut);
+		Client* client = new Client(player);
 
-	} else if (argc == 3) {
-		Client* client = new Client();
-		client->connect(argv[1], stoi(argv[2]));
+		if (argc == 3) {
+			client->connect(argv[1], stoi(argv[2]));
+
+		} else {
+			client->connect(argv[1]);
+		}
 
 	} else {
 		cerr << "Usage: " << argv[0] << endl;

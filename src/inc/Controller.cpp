@@ -31,7 +31,7 @@ void Controller::run() {
 				}
 
 				servers[i] = new Server();
-				players[i] = new RemotePlayer(inOut, servers[i]);
+				players[i] = new RemotePlayer(servers[i]);
 
 			} else if ("ai1" == buff) {
 				players[i] = new RandomAIPlayer(inOut);

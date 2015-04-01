@@ -7,3 +7,11 @@ void RemotePlayer::setup() {
 void RemotePlayer::takeTurn() {
 	server->invoke("takeTurn");
 }
+
+const Shot RemotePlayer::respond(const Location) {
+	// TODO
+}
+
+bool RemotePlayer::allShipsSunk() const {
+	// TODO
+}

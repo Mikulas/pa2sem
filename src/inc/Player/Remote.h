@@ -8,10 +8,11 @@
 class RemotePlayer : public Player
 {
     public:
-        RemotePlayer(InOut* inOut, Server* server)
-        	: Player(inOut), server(server) {};
+        RemotePlayer(Server* server) : server(server) {};
+        virtual const Shot respond(const Location) override;
         virtual void setup() override;
         virtual void takeTurn() override;
+        virtual bool allShipsSunk() const override;
 
     private:
     	Server* server;
