@@ -1,7 +1,7 @@
 #include "Random.h"
 
-void RandomAIPlayer::setup() {
-	placeShipsRandomly();
+vector<Ship> RandomAIPlayer::setup(vector<Ship> ships) {
+	return placeShipsRandomly(ships);
 }
 
 Location RandomAIPlayer::takeTurn() {

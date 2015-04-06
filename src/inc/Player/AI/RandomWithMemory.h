@@ -22,7 +22,7 @@ class RandomWithMemoryAIPlayer : public AIPlayer
     		auto engine = default_random_engine{};
 			shuffle(std::begin(shootAt), std::end(shootAt), engine);
     	};
-		virtual void setup() override;
+		virtual vector<Ship> setup(vector<Ship>) override;
     	virtual Location takeTurn() override;
 
     private:

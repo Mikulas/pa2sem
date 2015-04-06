@@ -1,7 +1,7 @@
 #include "RandomWithMemory.h"
 
-void RandomWithMemoryAIPlayer::setup() {
-	placeShipsRandomly();
+vector<Ship> RandomWithMemoryAIPlayer::setup(vector<Ship> ships) {
+	return placeShipsRandomly(ships);
 }
 
 Location RandomWithMemoryAIPlayer::takeTurn() {

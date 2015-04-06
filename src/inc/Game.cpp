@@ -18,7 +18,7 @@ Game::~Game() {
 
 void Game::setupBoard(Board* board) {
 	while (true) {
-		board->getPlayer()->setup(); // to refactor to method
+		board->getPlayer()->setup(board->ships); // to refactor to method
 		if (board->validate()) {
 			break;
 		}

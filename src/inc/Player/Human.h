@@ -8,7 +8,7 @@ class HumanPlayer : public Player
 {
     public:
     	HumanPlayer(InOut* inOut) : Player(inOut) {};
-    	virtual void setup() override;
+    	virtual vector<Ship> setup(vector<Ship>) override;
     	virtual Location takeTurn() override;
 };
 

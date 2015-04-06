@@ -7,6 +7,7 @@ class Board;
 #include "Game.h"
 #include "Location.h"
 #include "Ship.h"
+#include "Shot.h"
 #include "Player/Player.h"
 
 using std::vector;

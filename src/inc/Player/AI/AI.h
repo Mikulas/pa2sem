@@ -13,7 +13,7 @@ class AIPlayer : public Player
 	public:
 		AIPlayer(InOut* inOut) : Player(inOut) {};
     protected:
-    	void placeShipsRandomly();
+    	vector<Ship> placeShipsRandomly(vector<Ship>);
 };
 
 

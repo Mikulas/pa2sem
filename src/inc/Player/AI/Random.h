@@ -9,7 +9,7 @@ class RandomAIPlayer : public AIPlayer
 {
     public:
     	RandomAIPlayer(InOut* inOut) : AIPlayer(inOut) {};
-		virtual void setup() override;
+		virtual vector<Ship> setup(vector<Ship>) override;
     	virtual Location takeTurn() override;
 };
 

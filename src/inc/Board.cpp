@@ -1,8 +1,6 @@
 #include "Board.h"
 
 Board::Board(const Game* game, Player* player) : game(game), player(player) {
-	player->setBoard(this);
-
 	ships.push_back(Ship(5, "Aircraft Carrier"));
 	ships.push_back(Ship(4, "Battleship"));
 	ships.push_back(Ship(3, "Submarine"));

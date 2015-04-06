@@ -1,10 +1,11 @@
 #include "Human.h"
 
-void HumanPlayer::setup() {
-	for (auto &ship : board->ships) {
+vector<Ship> HumanPlayer::setup(vector<Ship> ships) {
+	for (auto &ship : ships) {
 		inOut->renderBoard(board);
 		inOut->askShipLoc(&ship);
 	}
+	return ships;
 }
 
 Location HumanPlayer::takeTurn() {
