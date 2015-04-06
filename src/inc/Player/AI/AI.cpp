@@ -7,6 +7,8 @@ vector<Ship> AIPlayer::placeShipsRandomly(vector<Ship> ships) {
 			Location end = Random::location(start, ship.length);
 			ship.setStartEnd(start, end);
 
+
+			break;
 			// TODO reimpl here
 			//if (board->canPlace(&ship)) {
 			//	break;

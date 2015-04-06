@@ -88,3 +88,10 @@ const Shot Board::respond(const Location loc) {
 
 	return shot;
 }
+
+void Board::setShips(vector<Ship> newShips) {
+	ships.clear();
+	for (auto &ship : newShips) {
+		ships.push_back(ship);
+	}
+}

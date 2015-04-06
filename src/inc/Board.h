@@ -28,6 +28,7 @@ public:
 	void resetLocations();
 	bool validate() const;
 	const Shot respond(const Location loc);
+	void setShips(vector<Ship>);
 
 	vector<Ship> ships; // TODO fix visibility
 	Player* getPlayer() const;

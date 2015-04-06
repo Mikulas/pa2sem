@@ -18,12 +18,16 @@ Game::~Game() {
 
 void Game::setupBoard(Board* board) {
 	while (true) {
-		board->getPlayer()->setup(board->ships); // to refactor to method
+		auto ships = board->getPlayer()->setup(board->ships);
+		board->setShips(ships);
 		if (board->validate()) {
 			break;
 		}
 		board->resetLocations();
 	};
+
+	// TODO remove, debug
+	inOut->renderShips(board->ships);
 }
 
 void Game::playTurn(Board* active, Board* opponent) {
