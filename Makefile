@@ -5,8 +5,10 @@ _:
 compile:
 	g++ -std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb -o build/lode src/main.cpp src/C.cpp src/inc/*.cpp src/inc/*/*.cpp src/inc/*/*/*.cpp
 run:
-	#cat stdin | build/lode
 	build/lode
+
+run-ai:
+	build/lode < examples/ai2-vs-ai2 | grep -v " turn" | grep -v "miss"
 
 doc:
 	doxygen doxy.conf
