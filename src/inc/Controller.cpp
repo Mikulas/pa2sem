@@ -2,17 +2,20 @@
 
 Controller::Controller(InOut* inOut) {
 	this->inOut = inOut;
+	this->server = new Server();
 }
 
 Controller::~Controller() {
-	delete this->inOut;
-	delete this->game;
+	delete server;
+	delete inOut;
+	delete game;
 }
 
 void Controller::run() {
 	string buff;
 	Player* players[2];
-	int remotePlayers = 0;
+	vector<RemotePlayer*> remotes;
+
 	for (uint i = 0; i < 2; i++) {
 		while (true) {
 			string question = "Select player ";
@@ -23,8 +26,9 @@ void Controller::run() {
 				players[i] = new HumanPlayer(inOut);
 
 			} else if ("net" == buff) {
-				players[i] = new RemotePlayer();
-				remotePlayers++;
+				RemotePlayer *p = new RemotePlayer(server);
+				players[i] = p;
+				remotes.push_back(p);
 
 			} else if ("ai1" == buff) {
 				players[i] = new RandomAIPlayer(inOut);
@@ -39,12 +43,11 @@ void Controller::run() {
 		};
 	}
 
-	if (remotePlayers) {
-		server = new Server();
+	if (remotes.size() != 0) {
 printf("starting server\n"); // todo move to InOut
 		server->start();
-printf("waiting for %d playres\n", remotePlayers); // todo move to InOut
-		server->waitForConnections(remotePlayers);
+printf("waiting for %d players\n", remotes.size()); // todo move to InOut
+		server->waitForConnections(remotes);
 	}
 printf("running game\n"); // todo move to InOut
 

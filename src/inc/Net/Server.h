@@ -1,6 +1,8 @@
 #ifndef SERVER_H
 #define SERVER_H
 
+class Server;
+
 #include <cctype>
 #include <cstdio>
 #include <cstdlib>
@@ -9,8 +11,11 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <vector>
+#include <map>
+#include "../Player/Remote.h"
 
 using std::vector;
+using std::map;
 
 
 class ServerException {};
@@ -24,12 +29,13 @@ class Server {
 public:
 	void start();
 	void stop();
-	void waitForConnections(int count);
+	void waitForConnections(vector<RemotePlayer*>);
 
 	static uint port;
 
 private:
-	vector<int> sockets;
+	int fd;
+	map<RemotePlayer*, int> sockets;
 	int openSrvSocket(const char *name, int port);
 };
 

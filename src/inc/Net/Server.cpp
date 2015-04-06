@@ -75,31 +75,30 @@ bool serveClient(int dataFd)
 }
 
 void Server::start() {
-	int fd = openSrvSocket("localhost", Server::port);
+	fd = openSrvSocket("localhost", Server::port);
 	if (fd < 0) {
 		throw ServerException();
 	}
-
-	sockets.push_back(fd);
 }
 
 void Server::stop() {
-	for (auto &socket : sockets) {
-		close(socket);
+	for (auto &pair : sockets) {
+		close(pair.second);
 	}
 }
 
-void Server::waitForConnections(int count) {
+void Server::waitForConnections(vector<RemotePlayer*> players) {
 	while(true) {
 		fd_set rd;
-		int max = -1;
+		int max = fd;
 
 		// vyplnime mnozinu soketu, ktere nas zajimaji
 		FD_ZERO(&rd);
-		for (auto &socket : sockets) {
-			FD_SET(socket, &rd);
-			if (max == -1 || socket > max) {
-				max = socket;
+		FD_SET(fd, &rd);
+		for (auto &pair : sockets) {
+			FD_SET(pair.second, &rd);
+			if (pair.second > max) {
+				max = pair.second;
 			}
 		}
 
@@ -108,16 +107,18 @@ void Server::waitForConnections(int count) {
 		int res = select(max + 1, &rd, NULL, NULL, NULL);
 		if (res > 0) {
 			// data na soketu sockets[0] -> nove pripojeny klient
-			if (FD_ISSET(sockets[0], &rd)) {
+			if (FD_ISSET(fd, &rd)) {
 				struct sockaddr remote;
 				socklen_t remoteLen = sizeof(remote);
 
 				// vytvorime spojeni k tomuto klientu, accept vraci novy soket, kterym
 				// zasilame data pouze v tomto spojeni
-				int dataFd = accept(sockets[0], &remote, &remoteLen);
-				sockets.push_back(dataFd);
+				int dataFd = accept(fd, &remote, &remoteLen);
 				printf("New connection\n");
-				if (count == sockets.size() - 1) {
+
+				sockets[players.back()] = dataFd;
+				players.pop_back();
+				if (players.size() == 0) {
 					return;
 				}
 			}

@@ -2,6 +2,7 @@
 #define CONTROLLER
 
 
+#include <vector>
 #include "Game.h"
 #include "InOut.h"
 #include "Net/Server.h"
@@ -9,6 +10,8 @@
 #include "Player/AI/RandomWithMemory.h"
 #include "Player/Human.h"
 #include "Player/Remote.h"
+
+using std::vector;
 
 
 class Controller {
