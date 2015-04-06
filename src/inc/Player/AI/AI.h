@@ -1,17 +1,17 @@
 #ifndef AIBASEPLAYER
 #define AIBASEPLAYER
 
-#include "../Player.h"
+#include "../Local.h"
 #include "../../Random.h"
 
 
 /**
  * \pure
  */
-class AIPlayer : public Player
+class AIPlayer : public LocalPlayer
 {
 	public:
-		AIPlayer(InOut* inOut) : Player(inOut) {};
+		AIPlayer(InOut* inOut) : LocalPlayer(inOut) {};
     protected:
     	vector<Ship> placeShipsRandomly(vector<Ship>);
 };

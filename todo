@@ -18,6 +18,7 @@ todo
 	- [ ] nakodovat to, vcetne unit testu!
 		- [ ] pripravit ascii renderer
 	- [ ] sjednotit coding standard, indent public:, nove radky, mezery za class:
+	- [ ] add final to all classes
 	- [ ] projit todo
 	- [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 	- [ ] profit
