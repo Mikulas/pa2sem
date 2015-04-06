@@ -18,13 +18,10 @@ bool Ship::overlaps(const Location loc) const {
 }
 
 bool Ship::setStartEnd(const Location start, const Location end) {
-	if (fields.size() != 0) {
-		return false;
-	}
-
 	if (!start.inLine(&end) || start.distance(&end) != this->length) {
 		return false;
 	}
+	fields.clear();
 
 	unsigned int i;
 	short int min, max;
@@ -44,6 +41,10 @@ bool Ship::setStartEnd(const Location start, const Location end) {
 	}
 
 	return true;
+}
+
+void Ship::unplace() {
+	fields.clear();
 }
 
 bool Ship::hit(const Location loc) {

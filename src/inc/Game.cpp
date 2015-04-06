@@ -3,10 +3,10 @@
 Game::Game(InOut* inOut, Player* playerA, Player* playerB) {
 	this->inOut = inOut;
 
-	playerA->setGame(this);
-	playerB->setGame(this);
-	this->boardA = new Board(playerA);
-	this->boardB = new Board(playerB);
+	this->boardA = new Board(this, playerA);
+	this->boardB = new Board(this, playerB);
+	this->boardA->setOpponent(this->boardB);
+	this->boardB->setOpponent(this->boardA);
 
 	this->state = State::INIT;
 }
@@ -20,12 +20,14 @@ void Game::gameLoop() {
 	while (true) {
 		switch (state) {
 			case State::SETUP_A:
-				//boardA->ships
-				boardA->getPlayer()->setup();
+				do {
+					boardA->getPlayer()->setup();
+				} while (!boardA->validate());
 				break;
 			case State::SETUP_B:
-				//boardB->ships
-				boardB->getPlayer()->setup();
+				do {
+					boardB->getPlayer()->setup();
+				} while (!boardB->validate());
 				break;
 			case State::TURN_A:
 				boardA->getPlayer()->takeTurn();

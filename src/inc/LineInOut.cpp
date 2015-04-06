@@ -79,7 +79,7 @@ void LineInOut::renderBoard(const Board* board) {
 	}
 }
 
-void LineInOut::askShipLoc(Ship* ship, const Board* board) const {
+void LineInOut::askShipLoc(Ship* ship) const {
 	do {
 		Ship newShip = *ship;
 		cout << "Pick start coordinate of " << C::blue << ship->name << C::reset << " (length " << ship->length << "): ";
@@ -93,12 +93,7 @@ void LineInOut::askShipLoc(Ship* ship, const Board* board) const {
 			cout << "Invalid length, expected " << ship->length << ", try again" << endl;
 			continue;
 		}
-		if (!board->canPlace(&newShip)) {
-			cout << "Game rules violation" << endl;
-			continue;
-		}
 
-		// ok set coords for original ship
 		ship->setStartEnd(start, end);
 		break;
 	} while (true);

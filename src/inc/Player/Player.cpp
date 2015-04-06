@@ -1,23 +1,23 @@
 #include "Player.h"
 
-void Player::setGame(Game* game) {
-	this->game = game;
+void Player::setBoard(Board* board) {
+	this->board = board;
 }
 
 const Shot Player::respond(const Location loc) {
-	// Shot shot(loc);
-	// const Ship* ship = this->board.hit(loc);
-	// if (!ship) {
-	// 	shot.response = Response::MISS;
+	Shot shot(loc);
+	const Ship* ship = this->board->hit(loc);
+	if (!ship) {
+		shot.response = Response::MISS;
 
-	// } else if (ship->isSunk()) {
-	// 	shot.response = Response::SUNK;
+	} else if (ship->isSunk()) {
+		shot.response = Response::SUNK;
 
-	// } else {
-	// 	shot.response = Response::HIT;
-	// }
+	} else {
+		shot.response = Response::HIT;
+	}
 
-	// return shot;
+	return shot;
 }
 
 const Shot Player::fireAt(const Location location) {

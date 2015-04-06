@@ -1,6 +1,8 @@
 #include "Board.h"
 
-Board::Board(Player* player) : player(player) {
+Board::Board(const Game* game, Player* player) : game(game), player(player) {
+	player->setBoard(this);
+
 	ships.push_back(Ship(5, "Aircraft Carrier"));
 	ships.push_back(Ship(4, "Battleship"));
 	ships.push_back(Ship(3, "Submarine"));
@@ -48,6 +50,27 @@ bool Board::allShipsSunk() const {
 	return true;
 }
 
+const Game* Board::getGame() const {
+	return game;
+}
+
 Player* Board::getPlayer() const {
 	return player;
+}
+
+void Board::resetLocations() {
+	for (auto &ship : ships) {
+		ship.unplace();
+	}
+}
+
+bool Board::validate() const {
+	for (auto it = ships.begin(); it != ships.end(); ++it) {
+		for (auto it2 = it + 1; it2 != ships.end(); ++it2) {
+			if (it->overlaps(&(*it2))) {
+				return false;
+			}
+		}
+	}
+	return true;
 }

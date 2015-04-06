@@ -24,7 +24,7 @@ public:
 	virtual void renderBoard(const Board*) override;
 	virtual string ask(string question) const override;
 
-	virtual void askShipLoc(Ship*, const Board*) const override;
+	virtual void askShipLoc(Ship*) const override;
 	virtual const Location askShot(const vector<Shot> *shots) const override;
 	virtual void renderShotResult(const Shot) const override;
 	virtual void gameOver(string player) const override;
