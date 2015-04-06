@@ -2,6 +2,7 @@
 
 void HumanPlayer::setup() {
 	for (auto &ship : board->ships) {
+		inOut->renderBoard(board);
 		inOut->askShipLoc(&ship);
 	}
 }

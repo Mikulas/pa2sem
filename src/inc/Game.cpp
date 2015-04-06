@@ -20,27 +20,39 @@ void Game::gameLoop() {
 	while (true) {
 		switch (state) {
 			case State::SETUP_A:
-				do {
+				while (true) {
 					boardA->getPlayer()->setup();
-				} while (!boardA->validate());
+					if (boardA->validate()) {
+						break;
+					}
+					boardA->resetLocations();
+				};
 				break;
+
 			case State::SETUP_B:
-				do {
+				while (true) {
 					boardB->getPlayer()->setup();
-				} while (!boardB->validate());
+					if (boardB->validate()) {
+						break;
+					}
+					boardB->resetLocations();
+				};
 				break;
+
 			case State::TURN_A:
 				boardA->getPlayer()->takeTurn();
 				if (boardB->allShipsSunk()) {
 					gameOver(boardA->getPlayer());
 				}
 				break;
+
 			case State::TURN_B:
 				boardB->getPlayer()->takeTurn();
 				if (boardA->allShipsSunk()) {
 					gameOver(boardB->getPlayer());
 				}
 				break;
+
 			case State::OVER:
 				return;
 			default:

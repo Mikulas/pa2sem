@@ -34,7 +34,7 @@ bool Board::canPlace(const Ship* newShip) const {
 	}
 
 	for (auto &ship : ships) {
-		if (ship.overlaps(newShip)) {
+		if (&ship != newShip && ship.overlaps(newShip)) {
 			return false;
 		}
 	}
