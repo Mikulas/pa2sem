@@ -4,7 +4,7 @@
 class InOut;
 
 #include <string>
-#include <Vector>
+#include <vector>
 #include "Board.h"
 #include "Location.h"
 #include "Ship.h"
@@ -29,7 +29,7 @@ class InOut
 {
     public:
     	virtual ~InOut() {}
-        virtual void renderBoard(const Board*) = 0;
+        virtual void renderShips(vector<Ship>) = 0;
         virtual string ask(string question) const = 0;
 
         virtual void announce(string) const = 0;

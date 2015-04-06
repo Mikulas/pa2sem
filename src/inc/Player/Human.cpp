@@ -2,7 +2,7 @@
 
 vector<Ship> HumanPlayer::setup(vector<Ship> ships) {
 	for (auto &ship : ships) {
-		inOut->renderBoard(board);
+		inOut->renderShips(ships);
 		inOut->askShipLoc(&ship);
 	}
 	return ships;

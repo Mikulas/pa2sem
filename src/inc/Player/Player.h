@@ -27,7 +27,6 @@ class Player
 	protected:
     	vector<Shot> shotsFired;
         InOut* inOut;
-        Board *board;
 };
 
 #endif

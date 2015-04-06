@@ -57,7 +57,16 @@ string LineInOut::getCharForShip(const Ship* ship) {
 	return symbolMap[ship];
 }
 
-void LineInOut::renderBoard(const Board* board) {
+Ship* LineInOut::isShipAt(vector<Ship> *ships, Location loc) const {
+	for (auto &ship : *ships) {
+		if (ship.overlaps(loc)) {
+			return &ship;
+		}
+	}
+	return nullptr;
+}
+
+void LineInOut::renderShips(vector<Ship> ships) {
 	cout << "y\\x ";
 	for (unsigned int x = 0; x < BOARD_SIZE; x++) {
 		cout << x << " ";
@@ -67,7 +76,7 @@ void LineInOut::renderBoard(const Board* board) {
 	for (unsigned int y = 0; y < BOARD_SIZE; y++) {
 		cout << " " << y << "  ";
 		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
-			ship = board->isShipAt(Location(x, y));
+			ship = isShipAt(&ships, Location(x, y));
 			if (!ship) {
 				cout << "⬚";
 			} else {

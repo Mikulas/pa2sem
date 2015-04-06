@@ -21,7 +21,7 @@ class LineInOut : public InOut {
 public:
 	virtual void announce(string) const override;
 	virtual void announceTurn(string, unsigned int turn) const override;
-	virtual void renderBoard(const Board*) override;
+	virtual void renderShips(vector<Ship>) override;
 	virtual string ask(string question) const override;
 
 	virtual void askShipLoc(Ship*) const override;
@@ -35,6 +35,7 @@ private:
 	map<const Ship*, string> symbolMap;
 	string getCharForShip(const Ship*);
 	void renderShots(const vector<Shot> *shots) const;
+	Ship* isShipAt(vector<Ship> *ships, Location) const;
 };
 
 #endif
