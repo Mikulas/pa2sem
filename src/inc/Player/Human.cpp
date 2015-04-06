@@ -7,7 +7,6 @@ void HumanPlayer::setup() {
 }
 
 void HumanPlayer::takeTurn() {
-	// board->getGame()->fireAt->
-	// const Shot shot = fireAt(inOut->askShot(&shotsFired));
-	// inOut->renderShotResult(shot);
+	const Shot shot = fireAt(inOut->askShot(&shotsFired));
+	inOut->renderShotResult(shot);
 }

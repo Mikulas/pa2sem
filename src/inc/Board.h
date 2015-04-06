@@ -26,15 +26,17 @@ public:
 	bool allShipsSunk() const;
 	void resetLocations();
 	bool validate() const;
+	const Shot respond(const Location loc);
 
 	vector<Ship> ships; // TODO fix visibility
 	Player* getPlayer() const;
 	const Game* getGame() const;
 
+	Board* opponent; // TODO fix visibility
+
 private:
 	const Game* game;
 	Player* player;
-	Board* opponent;
 };
 
 

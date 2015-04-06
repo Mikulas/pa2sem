@@ -31,9 +31,15 @@ void Game::gameLoop() {
 				break;
 			case State::TURN_A:
 				boardA->getPlayer()->takeTurn();
+				if (boardB->allShipsSunk()) {
+					gameOver(boardA->getPlayer());
+				}
 				break;
 			case State::TURN_B:
 				boardB->getPlayer()->takeTurn();
+				if (boardA->allShipsSunk()) {
+					gameOver(boardB->getPlayer());
+				}
 				break;
 			case State::OVER:
 				return;

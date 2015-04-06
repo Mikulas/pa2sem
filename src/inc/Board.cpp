@@ -74,3 +74,19 @@ bool Board::validate() const {
 	}
 	return true;
 }
+
+const Shot Board::respond(const Location loc) {
+	Shot shot(loc);
+	const Ship* ship = hit(loc);
+	if (!ship) {
+		shot.response = Response::MISS;
+
+	} else if (ship->isSunk()) {
+		shot.response = Response::SUNK;
+
+	} else {
+		shot.response = Response::HIT;
+	}
+
+	return shot;
+}

@@ -21,7 +21,6 @@ class Player
 {
     public:
         Player(InOut* inOut) : inOut(inOut) {};
-    	const Shot respond(const Location);
         void setBoard(Board*);
     	virtual void setup() = 0;
     	virtual void takeTurn() = 0;
