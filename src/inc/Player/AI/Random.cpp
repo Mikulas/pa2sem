@@ -4,7 +4,6 @@ void RandomAIPlayer::setup() {
 	placeShipsRandomly();
 }
 
-void RandomAIPlayer::takeTurn() {
-	Shot shot = fireAt(Random::location());
-	inOut->renderShotResult(shot);
+Location RandomAIPlayer::takeTurn() {
+	return Random::location();
 }

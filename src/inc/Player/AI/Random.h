@@ -10,7 +10,7 @@ class RandomAIPlayer : public AIPlayer
     public:
     	RandomAIPlayer(InOut* inOut) : AIPlayer(inOut) {};
 		virtual void setup() override;
-    	virtual void takeTurn() override;
+    	virtual Location takeTurn() override;
 };
 
 

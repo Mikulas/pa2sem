@@ -9,7 +9,7 @@ class HumanPlayer : public Player
     public:
     	HumanPlayer(InOut* inOut) : Player(inOut) {};
     	virtual void setup() override;
-    	virtual void takeTurn() override;
+    	virtual Location takeTurn() override;
 };
 
 

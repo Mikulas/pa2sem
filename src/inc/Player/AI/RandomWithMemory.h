@@ -23,7 +23,7 @@ class RandomWithMemoryAIPlayer : public AIPlayer
 			shuffle(std::begin(shootAt), std::end(shootAt), engine);
     	};
 		virtual void setup() override;
-    	virtual void takeTurn() override;
+    	virtual Location takeTurn() override;
 
     private:
     	vector<const Location*> shootAt;

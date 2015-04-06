@@ -4,9 +4,10 @@ void RandomWithMemoryAIPlayer::setup() {
 	placeShipsRandomly();
 }
 
-void RandomWithMemoryAIPlayer::takeTurn() {
-	Shot shot = fireAt(*shootAt.back());
+Location RandomWithMemoryAIPlayer::takeTurn() {
+	Location loc = *shootAt.back();
 	delete shootAt.back();
 	shootAt.pop_back();
-	inOut->renderShotResult(shot);
+
+	return loc;
 }

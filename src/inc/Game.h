@@ -25,6 +25,9 @@ private:
 	Board* boardA;
 	Board* boardB;
 
+	void setupBoard(Board*);
+	void playTurn(Board* active, Board* opponent);
+
 	void nextState();
 };
 

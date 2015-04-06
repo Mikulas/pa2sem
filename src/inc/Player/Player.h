@@ -23,11 +23,11 @@ class Player
         Player(InOut* inOut) : inOut(inOut) {};
         void setBoard(Board*);
     	virtual void setup() = 0;
-    	virtual void takeTurn() = 0;
+    	virtual Location takeTurn() = 0;
+        void saveShot(Shot);
 
 	protected:
-    	const Shot fireAt(const Location);
-        vector<Shot> shotsFired;
+    	vector<Shot> shotsFired;
         InOut* inOut;
         Board *board;
 };

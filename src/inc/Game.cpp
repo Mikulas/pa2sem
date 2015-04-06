@@ -16,41 +16,44 @@ Game::~Game() {
 	delete boardB;
 }
 
+void Game::setupBoard(Board* board) {
+	while (true) {
+		board->getPlayer()->setup(); // to refactor to method
+		if (board->validate()) {
+			break;
+		}
+		board->resetLocations();
+	};
+}
+
+void Game::playTurn(Board* active, Board* opponent) {
+	Location loc = active->getPlayer()->takeTurn();
+	const Shot shot = opponent->respond(loc);
+	active->getPlayer()->saveShot(shot);
+	inOut->renderShotResult(shot);
+
+	if (opponent->allShipsSunk()) {
+		gameOver(active->getPlayer());
+	}
+}
+
 void Game::gameLoop() {
 	while (true) {
 		switch (state) {
 			case State::SETUP_A:
-				while (true) {
-					boardA->getPlayer()->setup();
-					if (boardA->validate()) {
-						break;
-					}
-					boardA->resetLocations();
-				};
+				setupBoard(boardA);
 				break;
 
 			case State::SETUP_B:
-				while (true) {
-					boardB->getPlayer()->setup();
-					if (boardB->validate()) {
-						break;
-					}
-					boardB->resetLocations();
-				};
+				setupBoard(boardB);
 				break;
 
 			case State::TURN_A:
-				boardA->getPlayer()->takeTurn();
-				if (boardB->allShipsSunk()) {
-					gameOver(boardA->getPlayer());
-				}
+				playTurn(boardA, boardB);
 				break;
 
 			case State::TURN_B:
-				boardB->getPlayer()->takeTurn();
-				if (boardA->allShipsSunk()) {
-					gameOver(boardB->getPlayer());
-				}
+				playTurn(boardB, boardA);
 				break;
 
 			case State::OVER:
