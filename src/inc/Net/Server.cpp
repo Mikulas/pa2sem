@@ -117,8 +117,7 @@ void Server::waitForConnections(int count) {
 				int dataFd = accept(sockets[0], &remote, &remoteLen);
 				sockets.push_back(dataFd);
 				printf("New connection\n");
-
-				if (count == sockets.size() + 1) {
+				if (count == sockets.size() - 1) {
 					return;
 				}
 			}

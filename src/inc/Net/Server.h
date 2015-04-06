@@ -1,3 +1,6 @@
+#ifndef SERVER_H
+#define SERVER_H
+
 #include <cctype>
 #include <cstdio>
 #include <cstdlib>
@@ -29,3 +32,7 @@ private:
 	vector<int> sockets;
 	int openSrvSocket(const char *name, int port);
 };
+
+
+
+#endif

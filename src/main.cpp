@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "inc/Controller.h"
+#include "inc/Net/Client.h"
 #include "inc/LineInOut.h"
 
 
@@ -24,8 +25,16 @@ int main(int argc, char **argv)
 
 	auto renderer = new LineInOut;
 
-	Controller controller(renderer);
-	controller.run();
+	if (argc == 1) {
+		Controller controller(renderer);
+		controller.run();
+
+	} else if (argc == 2) {
+		Client client(argv[1]); // TODO catch exc
+		client.process();
+
+	} else if (argc == 3) {
+	}
 
 	return 0;
 }
