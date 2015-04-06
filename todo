@@ -17,5 +17,7 @@ todo
 	- [x] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
 	- [ ] nakodovat to, vcetne unit testu!
 		- [ ] pripravit ascii renderer
+	- [ ] sjednotit coding standard, indent public:, nove radky, mezery za class:
+	- [ ] projit todo
 	- [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 	- [ ] profit
