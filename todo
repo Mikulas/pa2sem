@@ -21,5 +21,6 @@ todo
 	- [ ] add final to all classes
 	- [ ] move impls out of h files to cpp files
 	- [ ] projit todo
+	- [ ] catch networking exceptions (in main?)
 	- [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 	- [ ] profit

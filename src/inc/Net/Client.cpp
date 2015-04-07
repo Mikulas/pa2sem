@@ -10,6 +10,11 @@ void Client::process() {
         if (l <= 0) {
             // TODO
         }
+printf("received (%dB) raw: ", l);
+for (int i = 0; i < l; ++i) {
+    printf("%02X ", buffer[i] & 0xFF);
+}
+printf("\n");
 
         Payload payload(buffer, l);
         printf("received ");
@@ -19,21 +24,24 @@ void Client::process() {
 
         Payload response;
         if (invoke == Invoke::Setup) {
+printf("Setup\n");
             vector<Ship> ships;
             payload >> ships;
             auto placed = player->setup(ships);
             response << placed;
 
         } else if (invoke == Invoke::TakeTurn) {
+printf("TakeTurn\n");
             auto target = player->takeTurn();
             response << target;
 
         } else if (invoke == Invoke::SaveShot) {
+printf("SaveShot\n");
             Shot shot;
             payload >> shot;
             player->saveShot(shot);
 
-            continue; // does not expect response
+            response << Field::Ack;
         }
 
         printf("sending ");

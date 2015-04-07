@@ -27,20 +27,20 @@ public:
         : std::runtime_error(message) {}
 };
 
-enum class Invoke : uint8_t {Setup = 0xDF, TakeTurn = 0xDE, SaveShot = 0xED};
-enum class Field : uint8_t {Location = 0xFF, Shot = 0xFE, Ship = 0xFD, Vector = 0xFC};
+enum class Invoke : uint8_t {Setup = 0xDF, TakeTurn = 0xDE, SaveShot = 0xDD};
+enum class Field : uint8_t {Location = 0xFF, Shot = 0xFE, Ship = 0xFD, Vector = 0xFC, Ack = 0xFB};
 
 class Payload {
 public:
 	Payload() {}
     Payload(const char* bytes, uint count) {
-    	ss.write(bytes, count);
-
-        uint32_t length;
-        *this >> length;
-        if (length != count) {
+        uint32_t expected;
+        memcpy(&expected, bytes, sizeof(uint32_t));
+        if (expected != count) {
             throw PayloadException("Incomplete payload");
         }
+
+    	ss.write(bytes + sizeof(uint32_t), count - sizeof(uint32_t));
     }
 
 	void verify(Field exp) {

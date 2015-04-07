@@ -110,6 +110,11 @@ payload->debug();
 
 	char buffer[500];
 	int l = read(sockets[player], buffer, sizeof(buffer));
+printf("received (%dB) raw: ", l);
+for (int i = 0; i < l; ++i) {
+    printf("%02X ", buffer[i] & 0xFF);
+}
+printf("\n");
 
 	// nulova delka->uzavreni spojeni klientem
 	if (!l) {
@@ -117,7 +122,7 @@ payload->debug();
 	}
 	Payload response(buffer, l);
 
-printf("received ");
+printf("sending: ");
 response.debug();
 
 	return response;
