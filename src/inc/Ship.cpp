@@ -23,6 +23,9 @@ bool Ship::setStartEnd(const Location start, const Location end) {
 	}
 	fields.clear();
 
+	this->start = start;
+	this->end = end;
+
 	unsigned int i;
 	short int min, max;
 	if (start.x == end.x) {
