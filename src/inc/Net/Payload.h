@@ -28,22 +28,19 @@ public:
 		ss.write((const char*) &in, sizeof(T));
 		return *this;
 	}
-    Payload& operator<< (Location location) {
+    template<typename T>
+    Payload& operator>> (T &out) {
+		ss.read((char*)&out, sizeof(T));
+		return *this;
+	}
+
+	Payload& operator<< (Location location) {
     	*this << Field::Location;
     	*this << (uint32_t) location.x;
     	*this << (uint32_t) location.y;
     	return *this;
     }
-
-    Payload& operator>> (Field &out) {
-		ss.read((char*)&out, sizeof(Field));
-		return *this;
-	}
-	Payload& operator>> (uint32_t &out) {
-		ss.read((char*)&out, sizeof(uint32_t));
-		return *this;
-	}
-	Payload& operator>> (Location &val) {
+    Payload& operator>> (Location &val) {
     	*this >> val.x >> val.y;
 		return *this;
     }
