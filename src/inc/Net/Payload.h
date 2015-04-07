@@ -33,12 +33,12 @@ enum class Field : uint8_t {Location = 0xFF, Shot = 0xFE, Ship = 0xFD, Vector = 
 class Payload {
 public:
 	Payload() {}
-    Payload(const char* bytes) {
-    	ss.write(bytes, strlen(bytes));
+    Payload(const char* bytes, uint count) {
+    	ss.write(bytes, count);
 
         uint32_t length;
         *this >> length;
-        if (length != strlen(bytes) - sizeof(uint32_t)) {
+        if (length != count) {
             throw PayloadException("Incomplete payload");
         }
     }
@@ -62,7 +62,7 @@ public:
         char* buffer = new char[size()];
         uint32_t length = size();
         memcpy(buffer, &length, sizeof(uint32_t));
-        memcpy(buffer, ss.str().c_str(), size());
+        memcpy(buffer + sizeof(uint32_t), ss.str().c_str(), size());
 		return buffer;
 	}
 
@@ -158,11 +158,12 @@ public:
 
 
 	void debug() { // todo remove
-		auto str = ss.str();
-		printf("payload(%luB): ", str.length());
-		for (int i = 0; i < str.length(); ++i) {
+		auto str = data();
+		printf("payload(%luB): ", size());
+		for (int i = 0; i < size(); ++i) {
 			printf("%02X ", str[i] & 0xFF);
 		}
+        delete str;
 		printf("\n");
 	}
 

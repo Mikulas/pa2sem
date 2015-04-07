@@ -104,7 +104,9 @@ void Server::waitForConnections(vector<RemotePlayer*> players) {
 Payload Server::send(RemotePlayer* player, Payload* payload) {
 printf("sending ");
 payload->debug();
-	write(sockets[player], payload->data(), payload->size());
+	auto data = payload->data();
+	write(sockets[player], data, payload->size());
+	delete data;
 
 	char buffer[500];
 	int l = read(sockets[player], buffer, sizeof(buffer));
@@ -113,7 +115,7 @@ payload->debug();
 	if (!l) {
 		return Payload(); // TODO fix
 	}
-	Payload response(buffer);
+	Payload response(buffer, l);
 
 printf("received ");
 response.debug();

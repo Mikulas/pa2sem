@@ -7,7 +7,11 @@ void Client::process() {
 
     while (true) {
         l = read(fd, buffer, sizeof(buffer));
-        Payload payload(buffer);
+        if (l <= 0) {
+            // TODO
+        }
+
+        Payload payload(buffer, l);
         printf("received ");
         payload.debug();
 
@@ -34,7 +38,9 @@ void Client::process() {
 
         printf("sending ");
         response.debug();
-        write(fd, response.data(), response.size());
+        auto data = response.data();
+        write(fd, data, response.size());
+        delete data;
     }
 
     close(fd);
