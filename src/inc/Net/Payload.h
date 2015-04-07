@@ -2,24 +2,32 @@
 #define PAYLOAD_H
 
 #include <cstring>
+#include <cstring>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
+#include <stdexcept>
 #include "../Location.h"
 #include "../Ship.h"
 #include "../Shot.h"
 
 using std::iostream;
+using std::memcpy;
 using std::streampos;
 using std::string;
 using std::stringstream;
 using std::strlen;
 using std::vector;
+using std::runtime_error;
 
-class PayloadException {};
+class PayloadException : public runtime_error {
+public:
+    PayloadException(string const& message)
+        : std::runtime_error(message) {}
+};
 
-enum class Invoke : uint8_t {Setup, TakeTurn, SaveShot};
+enum class Invoke : uint8_t {Setup = 0xDF, TakeTurn = 0xDE, SaveShot = 0xED};
 enum class Field : uint8_t {Location = 0xFF, Shot = 0xFE, Ship = 0xFD, Vector = 0xFC};
 
 class Payload {
@@ -27,22 +35,35 @@ public:
 	Payload() {}
     Payload(const char* bytes) {
     	ss.write(bytes, strlen(bytes));
+
+        uint32_t length;
+        *this >> length;
+        if (length != strlen(bytes) - sizeof(uint32_t)) {
+            throw PayloadException("Incomplete payload");
+        }
     }
 
 	void verify(Field exp) {
 		Field load;
     	*this >> load;
     	if (exp != load) {
-			throw PayloadException();
+			throw PayloadException("Failed to validate response node");
     	}
 	}
 
 	size_t size() {
-		return ss.str().length();
+		return sizeof(uint32_t) + ss.str().length();
 	}
 
+    /**
+     * must delete after use
+     */
 	const char* data() {
-		return ss.str().c_str();
+        char* buffer = new char[size()];
+        uint32_t length = size();
+        memcpy(buffer, &length, sizeof(uint32_t));
+        memcpy(buffer, ss.str().c_str(), size());
+		return buffer;
 	}
 
 	template<typename T>

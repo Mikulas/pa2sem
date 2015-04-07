@@ -49,31 +49,6 @@ int Server::openSrvSocket(const char *name, int port)
 	return fd;
 }
 
-/* obsluha jednoho klienta. Vyzvedne (cast) dat zaslanou
- * klientem a zpracuje ji.
- */
-bool serveClient(int dataFd)
-{
-	char buffer[200];
-	int l = read(dataFd, buffer, sizeof(buffer));
-
-	// nulova delka->uzavreni spojeni klientem
-	if (! l) {
-		return false;
-	}
-
-	// prevod mala->velka a naopak
-	for(int i = 0; i < l; i ++) {
-		if (isalpha(buffer[i])) {
-			buffer[i] ^= 0x20;
-		}
-		write(dataFd, buffer, l);
-	}
-
-	// spojeni nebylo ukonceno, jeste mohou prijit dalsi data.
-	return true;
-}
-
 void Server::start() {
 	fd = openSrvSocket("localhost", Server::port);
 	if (fd < 0) {
@@ -127,6 +102,8 @@ void Server::waitForConnections(vector<RemotePlayer*> players) {
 }
 
 Payload Server::send(RemotePlayer* player, Payload* payload) {
+printf("sending ");
+payload->debug();
 	write(sockets[player], payload->data(), payload->size());
 
 	char buffer[500];
@@ -136,6 +113,10 @@ Payload Server::send(RemotePlayer* player, Payload* payload) {
 	if (!l) {
 		return Payload(); // TODO fix
 	}
+	Payload response(buffer);
 
-	return Payload(buffer);
+printf("received ");
+response.debug();
+
+	return response;
 }

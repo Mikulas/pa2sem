@@ -8,6 +8,9 @@ void Client::process() {
     while (true) {
         l = read(fd, buffer, sizeof(buffer));
         Payload payload(buffer);
+        printf("received ");
+        payload.debug();
+
         payload >> invoke;
 
         Payload response;
@@ -29,6 +32,8 @@ void Client::process() {
             continue; // does not expect response
         }
 
+        printf("sending ");
+        response.debug();
         write(fd, response.data(), response.size());
     }
 
