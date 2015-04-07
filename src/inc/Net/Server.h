@@ -13,6 +13,7 @@ class Server;
 #include <vector>
 #include <map>
 #include "../Player/Remote.h"
+#include "Payload.h"
 
 using std::vector;
 using std::map;

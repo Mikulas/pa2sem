@@ -21,9 +21,9 @@ public:
 	/**
 	 * \throws InvalidLocationException if `x`, `y` are out of bounds
 	 */
-	Location(unsigned int x, unsigned int y);
-	const unsigned int x;
-	const unsigned int y;
+	Location(unsigned int x = 0, unsigned int y = 0);
+	unsigned int x; // todo fix visibility
+	unsigned int y; // todo fix visibility
 
 	// <set> operators
 	inline bool operator==(const Location &rhs) const {
