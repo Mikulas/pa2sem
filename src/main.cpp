@@ -4,6 +4,8 @@
 #include "inc/Net/Client.h"
 #include "inc/LineInOut.h"
 
+#include "inc/Player/AI/Random.h"
+
 
 using namespace std;
 
@@ -30,7 +32,8 @@ int main(int argc, char **argv)
 		controller.run();
 
 	} else if (argc == 2) {
-		Client client(argv[1]); // TODO catch exc
+		LocalPlayer* player = new RandomAIPlayer();
+		Client client(argv[1], player); // TODO catch exc
 		client.process();
 
 	} else if (argc == 3) {

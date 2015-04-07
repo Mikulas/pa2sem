@@ -19,7 +19,7 @@ int Server::openSrvSocket(const char *name, int port)
 	/* Otevreni soketu, typ soketu (family) podle navratove hodnoty getaddrinfo,
 	 * stream = TCP
 	 */
-	int fd = socket(ai -> ai_family, SOCK_STREAM, 0);
+	int fd = socket(ai->ai_family, SOCK_STREAM, 0);
 	if (fd == -1) {
 		freeaddrinfo(ai);
 		printf("socket\n");
@@ -28,7 +28,7 @@ int Server::openSrvSocket(const char *name, int port)
 
 	/* napojeni soketu na zadane sitove rozhrani
 	*/
-	if (bind(fd, ai -> ai_addr, ai -> ai_addrlen) == -1) {
+	if (bind(fd, ai->ai_addr, ai->ai_addrlen) == -1) {
 		close(fd);
 		freeaddrinfo(ai);
 		printf("bind\n");
@@ -57,12 +57,12 @@ bool serveClient(int dataFd)
 	char buffer[200];
 	int l = read(dataFd, buffer, sizeof(buffer));
 
-	// nulova delka -> uzavreni spojeni klientem
+	// nulova delka->uzavreni spojeni klientem
 	if (! l) {
 		return false;
 	}
 
-	// prevod mala -> velka a naopak
+	// prevod mala->velka a naopak
 	for(int i = 0; i < l; i ++) {
 		if (isalpha(buffer[i])) {
 			buffer[i] ^= 0x20;
@@ -103,10 +103,10 @@ void Server::waitForConnections(vector<RemotePlayer*> players) {
 		}
 
 		// cekame, dokud na nejakem ze soketu nejsou k dispozici data
-		// pokud nejsou -> proces bude uspan a nebude zadat o procesorovy cas.
+		// pokud nejsou->proces bude uspan a nebude zadat o procesorovy cas.
 		int res = select(max + 1, &rd, NULL, NULL, NULL);
 		if (res > 0) {
-			// data na soketu sockets[0] -> nove pripojeny klient
+			// data na soketu sockets[0]->nove pripojeny klient
 			if (FD_ISSET(fd, &rd)) {
 				struct sockaddr remote;
 				socklen_t remoteLen = sizeof(remote);
@@ -129,10 +129,10 @@ void Server::waitForConnections(vector<RemotePlayer*> players) {
 Payload Server::send(RemotePlayer* player, Payload* payload) {
 	write(sockets[player], payload->data(), payload->size());
 
-	char buffer[200];
+	char buffer[500];
 	int l = read(sockets[player], buffer, sizeof(buffer));
 
-	// nulova delka -> uzavreni spojeni klientem
+	// nulova delka->uzavreni spojeni klientem
 	if (!l) {
 		return Payload(); // TODO fix
 	}

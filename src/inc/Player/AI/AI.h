@@ -10,8 +10,6 @@
  */
 class AIPlayer : public LocalPlayer
 {
-	public:
-		AIPlayer(InOut* inOut) : LocalPlayer(inOut) {};
     protected:
     	vector<Ship> placeShipsRandomly(vector<Ship>);
 };

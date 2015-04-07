@@ -13,7 +13,7 @@ using std::shuffle;
 class RandomWithMemoryAIPlayer : public AIPlayer
 {
     public:
-    	RandomWithMemoryAIPlayer(InOut* inOut) : AIPlayer(inOut) {
+    	RandomWithMemoryAIPlayer() {
     		for (unsigned int x = 0; x < BOARD_SIZE; x++) {
     			for (unsigned int y = 0; y < BOARD_SIZE; y++) {
     				shootAt.push_back(new Location(x, y));

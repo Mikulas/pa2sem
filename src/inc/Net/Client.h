@@ -6,6 +6,8 @@
 #include <netdb.h>
 #include <unistd.h>
 #include "Server.h"
+#include "Payload.h"
+#include "../Player/Local.h"
 
 
 class ClientException {};
@@ -13,11 +15,12 @@ class ClientException {};
 
 class Client {
 public:
-	Client(const char *name);
+	Client(const char *host, LocalPlayer *p);
 	void process();
 
 private:
-	int openCliSocket(const char *name, int port);
+	int openCliSocket(const char *host, int port);
 
+	LocalPlayer *player;
 	int fd;
 };

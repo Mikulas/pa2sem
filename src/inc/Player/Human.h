@@ -6,10 +6,13 @@
 
 class HumanPlayer : public LocalPlayer
 {
-    public:
-    	HumanPlayer(InOut* inOut) : LocalPlayer(inOut) {};
-    	virtual vector<Ship> setup(vector<Ship>) override;
-    	virtual Location takeTurn() override;
+public:
+	HumanPlayer(InOut* inOut) : inOut(inOut) {};
+	virtual vector<Ship> setup(vector<Ship>) override;
+	virtual Location takeTurn() override;
+
+private:
+    InOut* inOut;
 };
 
 

@@ -19,6 +19,7 @@ todo
 		- [ ] pripravit ascii renderer
 	- [ ] sjednotit coding standard, indent public:, nove radky, mezery za class:
 	- [ ] add final to all classes
+	- [ ] move impls out of h files to cpp files
 	- [ ] projit todo
 	- [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 	- [ ] profit

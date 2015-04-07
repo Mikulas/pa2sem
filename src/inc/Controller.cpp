@@ -31,10 +31,10 @@ void Controller::run() {
 				remotes.push_back(p);
 
 			} else if ("ai1" == buff) {
-				players[i] = new RandomAIPlayer(inOut);
+				players[i] = new RandomAIPlayer();
 
 			} else if ("ai2" == buff) {
-				players[i] = new RandomWithMemoryAIPlayer(inOut);
+				players[i] = new RandomWithMemoryAIPlayer();
 
 			} else {
 				continue;
