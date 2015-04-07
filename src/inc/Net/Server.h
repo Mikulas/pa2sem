@@ -6,12 +6,12 @@ class Server;
 #include <cctype>
 #include <cstdio>
 #include <cstdlib>
+#include <map>
 #include <netdb.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <vector>
-#include <map>
 #include "../Player/Remote.h"
 #include "Payload.h"
 
@@ -31,6 +31,8 @@ public:
 	void start();
 	void stop();
 	void waitForConnections(vector<RemotePlayer*>);
+
+	Payload send(RemotePlayer*, Payload*);
 
 	static uint port;
 

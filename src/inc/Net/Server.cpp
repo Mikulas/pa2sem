@@ -126,50 +126,16 @@ void Server::waitForConnections(vector<RemotePlayer*> players) {
 	}
 }
 
-/*
-int main(void) {
-	while(true) {
-		fd_set rd;
-		int max;
+Payload Server::send(RemotePlayer* player, Payload* payload) {
+	write(sockets[player], payload->data(), payload->size());
 
-		// vyplnime mnozinu soketu, ktere nas zajimaji
-		FD_ZERO(&rd);
-		for(vector<int>::size_type i = 0; i < sockets.size (); i ++) {
-			FD_SET(sockets[i], &rd);
-			if (i == 0 || sockets[i] > max) max = sockets[i];
-		}
+	char buffer[200];
+	int l = read(sockets[player], buffer, sizeof(buffer));
 
-		// cekame, dokud na nejakem ze soketu nejsou k dispozici data
-		// pokud nejsou -> proces bude uspan a nebude zadat o procesorovy cas.
-		int res = select(max + 1, &rd, NULL, NULL, NULL);
-		if (res > 0) {
-			// data na soketu sockets[0] -> nove pripojeny klient
-			if (FD_ISSET(sockets[0], &rd)) {
-				struct sockaddr remote;
-				socklen_t remoteLen = sizeof(remote);
-
-				// vytvorime spojeni k tomuto klientu, accept vraci novy soket, kterym
-				// zasilame data pouze v tomto spojeni
-				int dataFd = accept(fd, &remote, &remoteLen);
-				sockets.push_back(dataFd);
-				printf("New connection\n");
-			}
-
-			for(vector<int>::size_type i = 1; i < sockets.size (); i ++) {
-				if (FD_ISSET(sockets[i], &rd)) {
-					// data na nekterem z datovych soketu -> obslouzit
-					if (! serveClient(sockets[i])) {
-						// pokud spojeni skoncilo -> uvolnit prostredky
-						printf("Close connection\n");
-						close(sockets[i]);
-						sockets.erase(sockets.begin() + i);
-						i--;
-					}
-				}
-			}
-		}
+	// nulova delka -> uzavreni spojeni klientem
+	if (!l) {
+		return Payload(); // TODO fix
 	}
 
-	return 0;
+	return Payload(buffer);
 }
-*/

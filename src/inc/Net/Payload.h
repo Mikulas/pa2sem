@@ -19,6 +19,7 @@ using std::vector;
 
 class PayloadException {};
 
+enum class Invoke : uint8_t {Setup, TakeTurn, SaveShot};
 enum class Field : uint8_t {Location = 0xFF, Shot = 0xFE, Ship = 0xFD, Vector = 0xFC};
 
 class Payload {
@@ -34,6 +35,14 @@ public:
     	if (exp != load) {
 			throw PayloadException();
     	}
+	}
+
+	size_t size() {
+		return ss.str().length();
+	}
+
+	const char* data() {
+		return ss.str().c_str();
 	}
 
 	template<typename T>
@@ -56,8 +65,7 @@ public:
     	uint32_t length;
     	*this >> length;
 
-    	char *buffer = new char(length + 1);
-    	buffer[length] = 0;
+    	char *buffer = new char[length + 1]();
 		ss.read(buffer, length);
     	val = string(buffer);
     	delete buffer;
