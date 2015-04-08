@@ -25,15 +25,15 @@ int main(int argc, char **argv)
 {
 	srand(time(NULL));
 
-	auto renderer = new LineInOut;
+	auto inOut = new LineInOut;
 
 	if (argc == 1) {
-		Controller controller(renderer);
+		Controller controller(inOut);
 		controller.run();
 
 	} else if (argc == 2) {
 		LocalPlayer* player = new RandomAIPlayer();
-		Client client(argv[1], player); // TODO catch exc
+		Client client(argv[1], player, inOut); // TODO catch exc
 		client.process();
 
 	} else if (argc == 3) {

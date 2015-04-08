@@ -44,6 +44,7 @@ void Controller::run() {
 	}
 
 	if (remotes.size() != 0) {
+		inOut = new InOutBroadcast(inOut, server);
 		server->start();
 		server->waitForConnections(remotes);
 	}

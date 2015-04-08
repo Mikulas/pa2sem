@@ -5,6 +5,7 @@
 #include <vector>
 #include "Game.h"
 #include "InOut.h"
+#include "InOutBroadcast.h"
 #include "Net/Server.h"
 #include "Player/AI/Random.h"
 #include "Player/AI/RandomWithMemory.h"

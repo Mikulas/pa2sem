@@ -1,5 +1,15 @@
 #include "Client.h"
 
+Client::Client(const char *host, LocalPlayer *player, InOut* inOut) {
+    fd = openCliSocket(host, Server::port);
+    if (fd < 0) {
+        throw ClientException();
+    }
+
+    this->player = player;
+    this->inOut = inOut;
+}
+
 void Client::process() {
     char buffer[500];
     Invoke invoke;
@@ -31,7 +41,33 @@ void Client::process() {
             player->saveShot(shot);
 
             response << Field::Ack;
+
+        } else if (invoke == Invoke::IOAnnounce) {
+            string msg;
+            payload >> msg;
+            inOut->announce(msg);
+
+        } else if (invoke == Invoke::IOAnnounceTurn) {
+            int turn;
+            string msg;
+            payload >> turn;
+            payload >> msg;
+            inOut->announceTurn(msg, turn);
+
+        } else if (invoke == Invoke::IOShotResult) {
+            Shot shot;
+            payload >> shot;
+            inOut->renderShotResult(shot);
+
+        } else if (invoke == Invoke::IOGameOver) {
+            string player;
+            payload >> player;
+            inOut->gameOver(player);
+
+        } else {
+            throw ClientException(); // TODO
         }
+
 
         const char *data = response.data();
         write(fd, data, response.size());
@@ -71,13 +107,4 @@ int Client::openCliSocket(const char * host, int port) {
     }
     freeaddrinfo(ai);
     return fd;
-}
-
-Client::Client(const char *host, LocalPlayer *player) {
-    fd = openCliSocket(host, Server::port);
-    if (fd < 0) {
-        throw ClientException();
-    }
-
-    this->player = player;
 }

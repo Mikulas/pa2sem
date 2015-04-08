@@ -27,8 +27,22 @@ public:
         : std::runtime_error(message) {}
 };
 
-enum class Invoke : uint8_t {Setup = 0xDF, TakeTurn = 0xDE, SaveShot = 0xDD};
-enum class Field : uint8_t {Location = 0xFF, Shot = 0xFE, Ship = 0xFD, Vector = 0xFC, Ack = 0xFB};
+enum class Invoke : uint8_t {
+    Setup = 0xDF,
+    TakeTurn = 0xDE,
+    SaveShot = 0xDD,
+    IOAnnounce = 0xDC,
+    IOAnnounceTurn = 0xDB,
+    IOShotResult = 0xDA,
+    IOGameOver = 0xD9,
+};
+enum class Field : uint8_t {
+    Location = 0xFF,
+    Shot = 0xFE,
+    Ship = 0xFD,
+    Vector = 0xFC,
+    Ack = 0xFB
+};
 
 class Payload {
 public:

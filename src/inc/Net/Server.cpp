@@ -113,3 +113,9 @@ Payload Server::send(RemotePlayer* player, Payload* payload) {
 
 	return response;
 }
+
+void Server::sendAll(Payload* payload) {
+	for (auto &pair : sockets) {
+		send(pair.first, payload);
+	}
+}

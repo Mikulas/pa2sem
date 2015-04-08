@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include "Server.h"
 #include "Payload.h"
+#include "../InOut.h"
 #include "../Player/Local.h"
 
 
@@ -15,10 +16,11 @@ class ClientException {};
 
 class Client {
 public:
-	Client(const char *host, LocalPlayer *p);
+	Client(const char *host, LocalPlayer *p, InOut* inOut);
 	void process();
 
 private:
+	InOut* inOut;
 	int openCliSocket(const char *host, int port);
 
 	LocalPlayer *player;

@@ -33,6 +33,7 @@ public:
 	void waitForConnections(vector<RemotePlayer*>);
 
 	Payload send(RemotePlayer*, Payload*);
+	void sendAll(Payload*);
 
 	static uint port;
 
