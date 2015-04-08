@@ -17,6 +17,15 @@ using std::map;
 using std::sscanf;
 
 
+/**
+ * Line based console output.
+ *
+ * Expects support for ANSI escape codes and UTF-8 and
+ * appropriate typeface.
+ *
+ * Does not move cursor and never uses carriage return,
+ * making full history visible at all times.
+ */
 class LineInOut : public InOut {
 public:
 	virtual void announce(string) const override;

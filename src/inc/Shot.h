@@ -4,10 +4,14 @@
 #include "Location.h"
 
 
-enum class Response : char {MISS, HIT, SUNK};
-
+/**
+ * Wraps Location
+ * \see Player::saveShot
+ */
 class Shot {
 public:
+	enum class Response : char {MISS, HIT, SUNK};
+
 	Shot() {};
 	Shot(Location location) : location(location) {};
 	Location location; // TODO fix visibility

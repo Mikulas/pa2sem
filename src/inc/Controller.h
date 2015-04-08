@@ -13,10 +13,19 @@
 using std::vector;
 
 
+/**
+ * Asks user for game configuration, for example
+ * what players should be in the game.
+ */
 class Controller {
 public:
 	Controller(InOut* inOut);
 	~Controller();
+	/**
+	 * Calls Game::gameLoop(), which blocks until either
+	 * one of the players win.
+	 * \throws ServerException (only in networked game)
+	 */
 	void run();
 private:
 	InOut* inOut;

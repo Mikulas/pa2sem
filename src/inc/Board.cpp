@@ -64,6 +64,9 @@ void Board::resetLocations() {
 
 bool Board::validate() const {
 	for (auto it = ships.begin(); it != ships.end(); ++it) {
+		if (!it->isPlaced()) {
+			return false;
+		}
 		for (auto it2 = it + 1; it2 != ships.end(); ++it2) {
 			if (it->overlaps(&(*it2))) {
 				return false;
@@ -77,13 +80,13 @@ const Shot Board::respond(const Location &loc) {
 	Shot shot(loc);
 	const Ship* ship = hit(loc);
 	if (!ship) {
-		shot.response = Response::MISS;
+		shot.response = Shot::Response::MISS;
 
 	} else if (ship->isSunk()) {
-		shot.response = Response::SUNK;
+		shot.response = Shot::Response::SUNK;
 
 	} else {
-		shot.response = Response::HIT;
+		shot.response = Shot::Response::HIT;
 	}
 
 	return shot;

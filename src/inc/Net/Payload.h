@@ -21,6 +21,9 @@ using std::strlen;
 using std::vector;
 using std::runtime_error;
 
+/**
+ * \see Payload
+ */
 class PayloadException : public runtime_error {
 public:
     PayloadException(string const& message)

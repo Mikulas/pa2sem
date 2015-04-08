@@ -5,8 +5,6 @@ Game::Game(InOut* inOut, Player* playerA, Player* playerB) {
 
 	this->boardA = new Board(this, playerA);
 	this->boardB = new Board(this, playerB);
-	this->boardA->setOpponent(this->boardB); // TODO remove
-	this->boardB->setOpponent(this->boardA);
 
 	this->state = State::INIT;
 }

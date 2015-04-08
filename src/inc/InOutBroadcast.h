@@ -6,6 +6,13 @@
 #include "Net/Server.h"
 
 
+/**
+ * Composite pattern for InOut
+ *
+ * Relays all calls to original InOut and
+ * also broadcasts to all users connected to
+ * Server when appropriate.
+ */
 class InOutBroadcast : public InOut {
 public:
 	InOutBroadcast(InOut *inOut, Server *server)

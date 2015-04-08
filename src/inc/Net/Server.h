@@ -20,6 +20,9 @@ using std::vector;
 using std::map;
 
 
+/**
+ * \see Server
+ */
 class ServerException : public runtime_error {
 public:
     ServerException(string const& message)
@@ -27,6 +30,12 @@ public:
 };
 
 
+/**
+ * Communicates with one or multiple Client instances via Payload.
+ * Listens on one port. Since all communication with user
+ * must be blocking (with the exception of sending output),
+ * all methods are called on the main thread.
+ */
 class Server {
 public:
 	Server() {};

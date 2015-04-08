@@ -15,6 +15,10 @@ class InvalidLocationException {};
 
 /**
  * \exception InvalidLocationException
+ *
+ * All fields serialized into Payload
+ * - `x`
+ * - `y`
  */
 class Location {
 public:

@@ -22,7 +22,7 @@ public:
 	 * create RemotePlayer and returns nullptr
 	 *
 	 * \returns Player *
-	 * \returns nullptr on failure
+	 * \returns 'nullptr' on failure
 	 */
 	static Player* from(const char* type, InOut* inOut, Server *server = nullptr) {
 		if (strcmp(type, "human") == 0) {

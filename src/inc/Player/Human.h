@@ -4,6 +4,10 @@
 #include "Local.h"
 
 
+/**
+ * Asks user for input.
+ * All input and output must be done through InOut.
+ */
 class HumanPlayer : public LocalPlayer {
 public:
 	HumanPlayer(InOut* inOut) : inOut(inOut) {};

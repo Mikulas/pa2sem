@@ -41,7 +41,7 @@ public:
 			Location input(7, 5);
 			Payload p;
 			Shot shot(input);
-			shot.response = Response::HIT;
+			shot.response = Shot::Response::HIT;
 			p << shot;
 
 			Shot readShot;

@@ -131,7 +131,7 @@ void LineInOut::renderShots(const vector<Shot> *shots) const {
 					continue;
 				}
 			}
-			if (found && found->response == Response::MISS) {
+			if (found && found->response == Shot::Response::MISS) {
 				cout << "◯ "; // ⎔▢⦁·
 			} else if (found) {
 				cout << "ⓧ "; // ⬣ⓧⓍ
@@ -145,9 +145,9 @@ void LineInOut::renderShots(const vector<Shot> *shots) const {
 
 void LineInOut::renderShotResult(const Shot shot) const {
 	cout << "shot fired at " << shot.location.x << "," << shot.location.y << " ";
-	if (shot.response == Response::SUNK) {
+	if (shot.response == Shot::Response::SUNK) {
 		cout << C::blue << "SUNK a ship" << C::reset << endl;
-	} else if (shot.response == Response::HIT) {
+	} else if (shot.response == Shot::Response::HIT) {
 		cout << C::green << "was a HIT" << C::reset << endl;
 	} else {
 		cout << "was a miss" << endl;

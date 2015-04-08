@@ -5,6 +5,11 @@
 #include "Location.h"
 
 
+/**
+ * Utility class for generating random Location
+ *
+ * \warning Expects set random seed
+ */
 class Random {
 public:
 	static unsigned int between(unsigned int min, unsigned int max) {
@@ -14,13 +19,13 @@ public:
 		return between(0, BOARD_SIZE - 1);
 	}
 	/**
-	 * \return random valid location
+	 * \return random valid Location
 	 */
 	static Location location() {
 		return Location(coord(), coord());
 	}
 	/**
-	 * \return random valid location for specified distance
+	 * \return random valid Location for specified distance
 	 * of another location
 	 *
 	 * Useful for placing random ships.

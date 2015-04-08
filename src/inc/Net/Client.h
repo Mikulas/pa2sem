@@ -15,6 +15,9 @@
 #include "../Player/Local.h"
 
 
+/**
+ * \see Client
+ */
 class ClientException : public runtime_error {
 public:
     ClientException(string const& message)
@@ -22,6 +25,12 @@ public:
 };
 
 
+/**
+ * Connects to Server and blocks until Server
+ * sends a Payload, which is then parsed and appropriate
+ * methods are invoked on either LocalPlayer or
+ * on InOut.
+ */
 class Client {
 public:
 	/**
