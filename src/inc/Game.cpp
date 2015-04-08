@@ -7,6 +7,8 @@ Game::Game(InOut* inOut, Player* playerA, Player* playerB) {
 	this->boardB = new Board(this, playerB);
 
 	this->state = State::INIT;
+
+	this->turn = 0;
 }
 
 Game::~Game() {

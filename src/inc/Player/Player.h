@@ -18,6 +18,7 @@ using std::vector;
  */
 class Player {
 public:
+	virtual ~Player() {};
 	/**
 	 * Called by game loop for until all ships
 	 * are placed according to rules.

@@ -1,5 +1,9 @@
 #include "Board.h"
 
+Board::~Board() {
+	delete player;
+}
+
 Board::Board(const Game* game, Player* player) : game(game), player(player) {
 	ships.push_back(Ship(5, "Aircraft Carrier"));
 	ships.push_back(Ship(4, "Battleship"));

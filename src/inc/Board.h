@@ -26,6 +26,7 @@ public:
 	Board() {};
 #endif
 	Board(const Game* game, Player* player);
+	~Board();
 
 	/**
 	 * \returns `true` if Ship placement is valid

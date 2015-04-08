@@ -28,6 +28,7 @@ public:
 		auto engine = default_random_engine{};
 		shuffle(std::begin(shootAt), std::end(shootAt), engine);
 	};
+	~RandomWithMemoryAIPlayer();
 	virtual vector<Ship> setup(vector<Ship>) override;
 	virtual Location takeTurn() override;
 

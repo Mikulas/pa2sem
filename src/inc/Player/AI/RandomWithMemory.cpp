@@ -1,5 +1,11 @@
 #include "RandomWithMemory.h"
 
+RandomWithMemoryAIPlayer::~RandomWithMemoryAIPlayer() {
+	for (auto &loc : shootAt) {
+		delete loc;
+	}
+}
+
 vector<Ship> RandomWithMemoryAIPlayer::setup(vector<Ship> ships) {
 	return placeShipsRandomly(ships);
 }
