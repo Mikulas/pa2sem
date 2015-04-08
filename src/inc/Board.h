@@ -23,7 +23,9 @@ using std::vector;
 class Board {
 public:
 #ifdef TESTMODE
-	Board() {};
+	Board() {
+		player = nullptr;
+	};
 #endif
 	Board(const Game* game, Player* player);
 	~Board();
