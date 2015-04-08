@@ -33,7 +33,10 @@ public:
      */
 	virtual Location takeTurn() = 0;
 	/**
-	 * Called after a setup
+	 * Called after takeTurn() returns with shot result.
+	 * Is inteded for-but not limited to-AI implementaions.
+	 * Called with Shot with location of last valid takeTurn.
+	 * Should not output to user, shot results are handled by Game.
 	 */
 	virtual void saveShot(Shot) = 0;
 };

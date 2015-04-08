@@ -8,12 +8,22 @@
 #include "AI/Random.h"
 #include "AI/RandomWithMemory.h"
 
+/**
+ * Creates instances of Player from string type name
+ */
 class PlayerFactory {
 public:
 	static Player* from(string type, InOut* inOut, Server *server = nullptr) {
 		return from(type.c_str(), inOut, server);
 	}
 
+	/**
+	 * If server is null, silently fails to
+	 * create RemotePlayer and returns nullptr
+	 *
+	 * \returns Player *
+	 * \returns nullptr on failure
+	 */
 	static Player* from(const char* type, InOut* inOut, Server *server = nullptr) {
 		if (strcmp(type, "human") == 0) {
 			return new HumanPlayer(inOut);

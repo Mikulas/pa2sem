@@ -10,6 +10,13 @@ using std::default_random_engine;
 using std::shuffle;
 
 
+/**
+ * Fires at random locations, but never
+ * repeats previous target.
+ *
+ * Takes about 95 turns on average to sunk all ships.
+ * Upper bound is board size: 100 turns for 10x10 board.
+ */
 class RandomWithMemoryAIPlayer : public AIPlayer {
 public:
 	RandomWithMemoryAIPlayer() {

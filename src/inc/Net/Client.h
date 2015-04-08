@@ -22,10 +22,6 @@ public:
 };
 
 
-/**
- * \exception ClientException
- * \exception PayloadException
- */
 class Client {
 public:
 	/**

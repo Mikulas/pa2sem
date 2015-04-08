@@ -28,8 +28,6 @@ public:
 };
 
 /**
- * \exception PayloadException
- *
  * Example usage:
  * \code{.cpp}
  * vector<Ship> ships = ...;

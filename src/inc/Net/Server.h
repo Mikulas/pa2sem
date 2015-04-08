@@ -27,10 +27,6 @@ public:
 };
 
 
-/**
- * \exception ServerException
- * \exception PayloadException
- */
 class Server {
 public:
 	Server() {};
