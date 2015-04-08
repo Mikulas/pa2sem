@@ -51,14 +51,14 @@ public:
     	}
 	}
 
-	size_t size() {
+	size_t size() const {
 		return sizeof(uint32_t) + ss.str().length();
 	}
 
     /**
      * must delete after use
      */
-	const void data(char* buffer) {
+	const void data(char* buffer) const {
         uint32_t length = size();
         memcpy(buffer, &length, sizeof(uint32_t));
         memcpy(buffer + sizeof(uint32_t), ss.str().c_str(), size());
@@ -156,12 +156,13 @@ public:
 
 
 	void debug() { // todo remove
-		char buffer[size()];
+		char *buffer = new char[size()];
         data(buffer);
 		printf("payload(%luB): ", size());
 		for (int i = 0; i < size(); ++i) {
 			printf("%02X ", buffer[i] & 0xFF);
 		}
+        delete buffer;
 		printf("\n");
 	}
 
