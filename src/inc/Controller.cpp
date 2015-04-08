@@ -51,7 +51,14 @@ printf("waiting for %lu players\n", remotes.size()); // todo move to InOut
 	}
 printf("running game\n"); // todo move to InOut
 
-	// TODO randomize player order?
-	this->game = new Game(inOut, players[0], players[1]);
-	this->game->gameLoop();
+	try {
+		// TODO randomize player order?
+		this->game = new Game(inOut, players[0], players[1]);
+		this->game->gameLoop();
+
+	} catch (ServerException &e) {
+		// TODO inform user
+		server->stop();
+		exit(1);
+	}
 }

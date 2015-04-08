@@ -46,10 +46,9 @@ printf("SaveShot\n");
 
         printf("sending ");
         response.debug();
-        char *data = new char[response.size()];
-        response.data(data);
+        const char *data = response.data();
         write(fd, data, response.size());
-        delete data;
+        delete[] data;
     }
 
     close(fd);

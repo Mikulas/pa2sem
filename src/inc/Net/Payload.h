@@ -58,10 +58,12 @@ public:
     /**
      * must delete after use
      */
-	const void data(char* buffer) const {
+	const char* data() const {
         uint32_t length = size();
+        char *buffer = new char[length];
         memcpy(buffer, &length, sizeof(uint32_t));
-        memcpy(buffer + sizeof(uint32_t), ss.str().c_str(), size());
+        memcpy(buffer + sizeof(uint32_t), ss.str().c_str(), length - sizeof(uint32_t));
+        return buffer;
 	}
 
 	template<typename T>
@@ -156,13 +158,12 @@ public:
 
 
 	void debug() { // todo remove
-		char *buffer = new char[size()];
-        data(buffer);
+		const char* buffer = data();
 		printf("payload(%luB): ", size());
 		for (int i = 0; i < size(); ++i) {
 			printf("%02X ", buffer[i] & 0xFF);
 		}
-        delete buffer;
+        delete[] buffer;
 		printf("\n");
 	}
 
