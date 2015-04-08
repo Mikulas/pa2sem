@@ -1,0 +1,36 @@
+Battleship
+==========
+
+Seminar work for course `BI-PA2` 2015.
+
+Author: `ditemiku`
+
+Build
+-----
+
+Compile tests, run tests and compile application with:
+```
+make
+```
+
+Compile application only with
+```
+make compile
+```
+
+Running
+-------
+
+Launch as
+```
+make run
+```
+or manually
+```
+./build/lode
+```
+
+License
+-------
+
+See `./LICENSE`
