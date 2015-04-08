@@ -3,6 +3,7 @@
 
 #include "Player.h"
 #include "../InOut.h"
+#include "../Random.h"
 
 
 class LocalPlayer : public Player {
@@ -10,6 +11,8 @@ class LocalPlayer : public Player {
         virtual void saveShot(Shot) override;
 
 	protected:
+		vector<Ship> placeShipsRandomly(vector<Ship>);
+
     	vector<Shot> shotsFired;
 };
 

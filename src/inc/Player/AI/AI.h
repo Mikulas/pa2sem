@@ -10,8 +10,6 @@
  */
 class AIPlayer : public LocalPlayer
 {
-    protected:
-    	vector<Ship> placeShipsRandomly(vector<Ship>);
 };
 
 

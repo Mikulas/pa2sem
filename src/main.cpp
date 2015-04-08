@@ -43,6 +43,7 @@ int main(int argc, char **argv)
 			LocalPlayer* player = (LocalPlayer*) PlayerFactory::from(argv[2], inOut);
 			if (player == nullptr) {
 				inOut->renderError("Unknown player type");
+				exit(1);
 			}
 			Client client(argv[1], player, inOut);
 			client.process();

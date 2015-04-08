@@ -29,7 +29,6 @@ void Controller::run() {
 			}
 
 			if ("net" == buff) {
-printf("player %d is remote\n", i);
 				remotes.push_back((RemotePlayer*) players[i]);
 			}
 			break;

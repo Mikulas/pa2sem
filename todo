@@ -4,7 +4,8 @@
 	- http://www.datagenetics.com/blog/december32011/index.html
 - [x] navrhnout tridy
 - [x] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
-- [ ] opravit testy
+- [x] opravit testy
+- [x] catch networking exceptions (in main?)
 - [ ] add static analyzer
 - [ ] pridat unit testy
 - [ ] sjednotit coding standard, indent public:, nove radky, mezery za class:
@@ -13,7 +14,6 @@
 - [ ] pripravit ascii renderer
 - [ ] pridat chytra ai
 - [ ] projit todo
-- [ ] catch networking exceptions (in main?)
 - [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 
 
