@@ -173,7 +173,7 @@ public:
 
 	void debug() { // todo remove
 		const char* buffer = data();
-		printf("payload(%luB): ", size());
+		printf("payload(%dB): ", (int) size());
 		for (int i = 0; i < size(); ++i) {
 			printf("%02X ", buffer[i] & 0xFF);
 		}

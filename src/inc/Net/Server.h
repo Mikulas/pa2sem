@@ -33,6 +33,7 @@ public:
 
 class Server {
 public:
+	Server() {};
 	void start();
 	void stop();
 	void waitForConnections(vector<RemotePlayer*>);

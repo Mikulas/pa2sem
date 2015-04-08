@@ -14,12 +14,12 @@ public:
 	Ship() {}
 	Ship(unsigned int length) : length(length) {}
 	Ship(unsigned int length, string name) : name(name), length(length) {}
-	bool setStartEnd(const Location start, const Location end);
+	bool setStartEnd(const Location &start, const Location &end);
 	void unplace();
 	bool overlaps(const Ship*) const;
-	bool overlaps(const Location) const;
+	bool overlaps(const Location&) const;
 	bool isPlaced() const;
-	bool hit(const Location);
+	bool hit(const Location&);
 	bool isSunk() const;
 
 	string name; // todo make const or fix visibility

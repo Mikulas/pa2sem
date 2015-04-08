@@ -25,12 +25,12 @@ public:
 	};
 
 	bool canPlace(const Ship* newShip) const;
-	const Ship* isShipAt(const Location) const;
-	const Ship* hit(const Location);
+	const Ship* isShipAt(const Location&) const;
+	const Ship* hit(const Location&);
 	bool allShipsSunk() const;
 	void resetLocations();
 	bool validate() const;
-	const Shot respond(const Location loc);
+	const Shot respond(const Location &loc);
 	void setShips(vector<Ship>);
 
 	vector<Ship> ships; // TODO fix visibility

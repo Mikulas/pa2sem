@@ -13,11 +13,11 @@ bool Ship::overlaps(const Ship* other) const {
 	return false;
 }
 
-bool Ship::overlaps(const Location loc) const {
+bool Ship::overlaps(const Location &loc) const {
 	return fields.find(loc) != fields.end();
 }
 
-bool Ship::setStartEnd(const Location start, const Location end) {
+bool Ship::setStartEnd(const Location &start, const Location &end) {
 	if (!start.inLine(&end) || start.distance(&end) != this->length) {
 		return false;
 	}
@@ -50,7 +50,7 @@ void Ship::unplace() {
 	fields.clear();
 }
 
-bool Ship::hit(const Location loc) {
+bool Ship::hit(const Location &loc) {
 	if (fields.find(loc) == fields.end()) {
 		return false;
 	}

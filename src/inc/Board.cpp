@@ -8,7 +8,7 @@ Board::Board(const Game* game, Player* player) : game(game), player(player) {
 	ships.push_back(Ship(2, "Destroyer"));
 }
 
-const Ship* Board::isShipAt(const Location loc) const {
+const Ship* Board::isShipAt(const Location &loc) const {
 	for (auto &ship : ships) {
 		if (ship.overlaps(loc)) {
 			return &ship;
@@ -17,7 +17,7 @@ const Ship* Board::isShipAt(const Location loc) const {
 	return nullptr;
 }
 
-const Ship* Board::hit(const Location loc) {
+const Ship* Board::hit(const Location &loc) {
 	for (auto &ship : ships) {
 		if (ship.hit(loc)) {
 			return &ship;
@@ -73,7 +73,7 @@ bool Board::validate() const {
 	return true;
 }
 
-const Shot Board::respond(const Location loc) {
+const Shot Board::respond(const Location &loc) {
 	Shot shot(loc);
 	const Ship* ship = hit(loc);
 	if (!ship) {

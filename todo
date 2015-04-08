@@ -6,10 +6,10 @@
 - [x] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
 - [x] opravit testy
 - [x] catch networking exceptions (in main?)
+- [ ] add final to all classes
 - [ ] add static analyzer
 - [ ] pridat unit testy
 - [ ] sjednotit coding standard, indent public:, nove radky, mezery za class:
-- [ ] add final to all classes
 - [ ] move impls out of h files to cpp files
 - [ ] pripravit ascii renderer
 - [ ] pridat chytra ai
