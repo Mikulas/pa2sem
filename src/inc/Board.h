@@ -28,13 +28,13 @@ public:
 	Board(const Game* game, Player* player);
 
 	/**
-	 * \returns 'true' if Ship placement is valid
+	 * \returns `true` if Ship placement is valid
 	 * in regard to other placed ships on this Board
 	 */
 	bool canPlace(const Ship* newShip) const;
 	/**
 	 * \returns Ship which was at the Location
-	 * \returns 'nullptr' otherwise
+	 * \returns `nullptr` otherwise
 	 */
 	const Ship* isShipAt(const Location&) const;
 	/**
@@ -52,7 +52,7 @@ public:
 	 */
 	void resetLocations();
 	/**
-	 * \returns 'true' if all ships are placed
+	 * \returns `true` if all ships are placed
 	 * and placed according to the game rules
 	 */
 	bool validate() const;

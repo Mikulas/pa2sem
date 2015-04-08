@@ -37,7 +37,7 @@ public:
 	bool overlaps(const Ship*) const;
 	bool overlaps(const Location&) const;
 	/**
-	 * \returns 'true' if setStartEnd has been called with valid locations
+	 * \returns `true` if setStartEnd has been called with valid locations
 	 */
 	bool isPlaced() const;
 	/**
@@ -46,7 +46,7 @@ public:
 	 */
 	bool hit(const Location&);
 	/**
-	 * \returns 'true' if all fields have been hit()
+	 * \returns `true` if all fields have been hit()
 	 */
 	bool isSunk() const;
 
