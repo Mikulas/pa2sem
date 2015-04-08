@@ -88,6 +88,7 @@ public:
     };
 
 	Payload() {}
+    Payload(Payload&&) {} // todo
 
     /**
      * \throws PayloadException if size does not match
@@ -228,8 +229,8 @@ public:
      */
 	void debug() { // todo remove
 		const char* buffer = data();
-		printf("payload(%dB): ", (int) size());
-		for (int i = 0; i < size(); ++i) {
+		printf("payload(%uB): ", (uint) size());
+		for (uint i = 0; i < size(); ++i) {
 			printf("%02X ", buffer[i] & 0xFF);
 		}
         delete[] buffer;

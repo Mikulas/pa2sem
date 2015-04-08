@@ -3,6 +3,7 @@
 const Location LineInOut::readLocation() const {
 	string answer;
 
+	Location location;
 	int res = -1;
 	unsigned int x, y;
 	do {
@@ -13,10 +14,10 @@ const Location LineInOut::readLocation() const {
 
 		getline(cin, answer);
 
-		res = sscanf(answer.c_str(), "%d %d", &x, &y);
+		res = sscanf(answer.c_str(), "%u %u", &x, &y);
 		if (res == 2) {
 			try {
-				return Location(x, y);
+				location = Location(x, y);
 			} catch (exception* e) {
 				continue;
 			}
@@ -24,6 +25,8 @@ const Location LineInOut::readLocation() const {
 		}
 
 	} while (true);
+
+	return location;
 }
 
 string LineInOut::ask(string question) const {

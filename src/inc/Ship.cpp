@@ -27,7 +27,7 @@ bool Ship::setStartEnd(const Location &start, const Location &end) {
 	this->end = end;
 
 	unsigned int i;
-	short int min, max;
+	unsigned int min, max;
 	if (start.x == end.x) {
 		min = start.y < end.y ? start.y : end.y;
 		max = start.y < end.y ? end.y : start.y;
