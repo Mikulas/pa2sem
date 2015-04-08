@@ -1,12 +1,12 @@
-#ifndef PLAYERFACTORY_H
-#define PLAYERFACTORY_H
+#ifndef PLAYER_FACTORY_H
+#define PLAYER_FACTORY_H
 
 #include "../InOut.h"
 #include "../Net/Server.h"
-#include "Human.h"
-#include "Remote.h"
 #include "AI/Random.h"
 #include "AI/RandomWithMemory.h"
+#include "Human.h"
+#include "Remote.h"
 
 /**
  * Creates instances of Player from string type name

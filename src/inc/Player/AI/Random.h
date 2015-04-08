@@ -1,5 +1,5 @@
-#ifndef AIPLAYER
-#define AIPLAYER
+#ifndef PLAYER_AI_RANDOM_H
+#define PLAYER_AI_RANDOM_H
 
 #include "AI.h"
 #include "../../Random.h"

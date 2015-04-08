@@ -1,5 +1,5 @@
-#ifndef PLAYER
-#define PLAYER
+#ifndef PLAYER_PLAYER_H
+#define PLAYER_PLAYER_H
 
 class Player;
 

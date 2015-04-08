@@ -9,11 +9,14 @@
 - [x] add static analyzer
 - [x] move impls out of h files to cpp files
 - [x] sjednotit coding standard, indent public:, nove radky, mezery za class:
-- [ ] cs fix imports newlines, sort usings, fix include guards
+- [x] sort usings, fix include guards
+- [ ] cs fix imports newlines
 - [ ] pripravit ascii renderer
 - [ ] create man page?
 - [ ] pridat chytra ai
-- [ ] projit todo
+- [ ] projit todo v kodu
+- [ ] server: pridat hlasku add waiting for users to connect + jak to maji zavolat
+- [ ] user random placement is asked multiple times
 - [ ] pridat unit testy
 - [ ] add final to all classes
 - [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html

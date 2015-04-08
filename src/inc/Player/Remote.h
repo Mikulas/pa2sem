@@ -1,5 +1,5 @@
-#ifndef REMOTEPLAYER
-#define REMOTEPLAYER
+#ifndef PLAYER_REMOTE_H
+#define PLAYER_REMOTE_H
 
 class RemotePlayer;
 

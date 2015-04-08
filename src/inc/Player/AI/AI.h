@@ -1,8 +1,8 @@
-#ifndef AIBASEPLAYER
-#define AIBASEPLAYER
+#ifndef PLAYER_AI_H
+#define PLAYER_AI_H
 
-#include "../Local.h"
 #include "../../Random.h"
+#include "../Local.h"
 
 
 /**

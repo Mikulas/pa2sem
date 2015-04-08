@@ -1,25 +1,25 @@
-#ifndef PAYLOAD_H
-#define PAYLOAD_H
+#ifndef NET_PAYLOAD_H
+#define NET_PAYLOAD_H
 
 #include <cstring>
 #include <cstring>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 #include <string>
 #include <vector>
-#include <stdexcept>
 #include "../Location.h"
 #include "../Ship.h"
 #include "../Shot.h"
 
 using std::iostream;
 using std::memcpy;
+using std::runtime_error;
 using std::streampos;
 using std::string;
 using std::stringstream;
 using std::strlen;
 using std::vector;
-using std::runtime_error;
 
 /**
  * \see Payload

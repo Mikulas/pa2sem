@@ -1,5 +1,5 @@
-#ifndef LINEINOUT
-#define LINEINOUT
+#ifndef LINEINOUT_H
+#define LINEINOUT_H
 
 #include <exception>
 #include <iostream>

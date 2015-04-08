@@ -1,14 +1,14 @@
-#ifndef BOARD
-#define BOARD
+#ifndef BOARD_H
+#define BOARD_H
 
 class Board;
 
 #include <vector>
 #include "Game.h"
 #include "Location.h"
+#include "Player/Player.h"
 #include "Ship.h"
 #include "Shot.h"
-#include "Player/Player.h"
 
 using std::vector;
 

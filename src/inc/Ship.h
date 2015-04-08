@@ -1,12 +1,12 @@
-#ifndef SHIP
-#define SHIP
+#ifndef SHIP_H
+#define SHIP_H
 
 #include <set>
 #include <string>
 #include "Location.h"
 
-using std::string;
 using std::set;
+using std::string;
 
 
 /**

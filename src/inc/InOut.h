@@ -1,24 +1,24 @@
-#ifndef INOUT
-#define INOUT
+#ifndef INOUT_H
+#define INOUT_H
 
 class InOut;
 
+#include <iostream>
+#include <stdexcept>
 #include <string>
 #include <vector>
-#include <stdexcept>
-#include <iostream>
+#include "../C.h"
 #include "Board.h"
 #include "Location.h"
 #include "Ship.h"
 #include "Shot.h"
-#include "../C.h"
 
-using std::string;
-using std::to_string;
-using std::vector;
 using std::cerr;
 using std::endl;
 using std::runtime_error;
+using std::string;
+using std::to_string;
+using std::vector;
 
 
 /**

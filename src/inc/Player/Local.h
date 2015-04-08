@@ -1,5 +1,5 @@
-#ifndef LOCALPLAYER
-#define LOCALPLAYER
+#ifndef PLAYER_LOCAL_H
+#define PLAYER_LOCAL_H
 
 #include "Player.h"
 #include "../InOut.h"

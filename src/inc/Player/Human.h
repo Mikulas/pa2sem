@@ -1,5 +1,5 @@
-#ifndef HUMANPLAYER
-#define HUMANPLAYER
+#ifndef PLAYER_HUMAN_H
+#define PLAYER_HUMAN_H
 
 #include "Local.h"
 

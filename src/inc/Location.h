@@ -1,5 +1,5 @@
-#ifndef LOCATION
-#define LOCATION
+#ifndef LOCATION_H
+#define LOCATION_H
 
 #define BOARD_SIZE 10
 

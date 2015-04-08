@@ -1,18 +1,18 @@
-#ifndef CLIENT_H
-#define CLIENT_H
+#ifndef NET_CLIENT_H
+#define NET_CLIENT_H
 
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <netdb.h>
-#include <unistd.h>
 #include <stdexcept>
-#include "Server.h"
-#include "Payload.h"
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include "../InOut.h"
 #include "../Player/Local.h"
+#include "Payload.h"
+#include "Server.h"
 
 
 /**

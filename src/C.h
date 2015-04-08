@@ -1,5 +1,5 @@
-#ifndef CONSOLECOLOR
-#define CONSOLECOLOR
+#ifndef C_H
+#define C_H
 
 #include <string>
 

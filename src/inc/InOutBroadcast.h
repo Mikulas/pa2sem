@@ -1,5 +1,5 @@
-#ifndef LINEINOUTBROADCAST
-#define LINEINOUTBROADCAST
+#ifndef INOUTBROADCAST_H
+#define INOUTBROADCAST_H
 
 #include "InOut.h"
 #include "Net/Payload.h"

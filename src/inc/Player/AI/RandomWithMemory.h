@@ -1,10 +1,10 @@
-#ifndef RANDOMMEMAIPLAYER
-#define RANDOMMEMAIPLAYER
+#ifndef PLAYERWITHMEMORY_AI_RANDOM_H
+#define PLAYERWITHMEMORY_AI_RANDOM_H
 
 #include <algorithm>
 #include <random>
-#include "AI.h"
 #include "../../Random.h"
+#include "AI.h"
 
 using std::default_random_engine;
 using std::shuffle;

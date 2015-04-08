@@ -1,5 +1,5 @@
-#ifndef SERVER_H
-#define SERVER_H
+#ifndef NET_SERVER_H
+#define NET_SERVER_H
 
 class Server;
 
@@ -7,8 +7,8 @@ class Server;
 #include <cstdio>
 #include <cstdlib>
 #include <map>
-#include <stdexcept>
 #include <netdb.h>
+#include <stdexcept>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -16,8 +16,8 @@ class Server;
 #include "../Player/Remote.h"
 #include "Payload.h"
 
-using std::vector;
 using std::map;
+using std::vector;
 
 
 /**
