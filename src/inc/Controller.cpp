@@ -22,22 +22,15 @@ void Controller::run() {
 			question += (char) ('A' + i);
 			question += ": [human/net/ai1/ai2]: ";
 			buff = inOut->ask(question);
-			if ("human" == buff) {
-				players[i] = new HumanPlayer(inOut);
 
-			} else if ("net" == buff) {
-				RemotePlayer *p = new RemotePlayer(server);
-				players[i] = p;
-				remotes.push_back(p);
-
-			} else if ("ai1" == buff) {
-				players[i] = new RandomAIPlayer();
-
-			} else if ("ai2" == buff) {
-				players[i] = new RandomWithMemoryAIPlayer();
-
-			} else {
+			players[i] = PlayerFactory::from(buff, inOut, server);
+			if (players[i] == nullptr) {
 				continue;
+			}
+
+			if ("net" == buff) {
+printf("player %d is remote\n", i);
+				remotes.push_back((RemotePlayer*) players[i]);
 			}
 			break;
 		};

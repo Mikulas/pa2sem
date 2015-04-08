@@ -6,6 +6,7 @@ Client::Client(const char *host, LocalPlayer *player, InOut* inOut) {
         throw ClientException("Failed connecting to server");
     }
 
+    this->ignoreServer = false;
     this->player = player;
     this->inOut = inOut;
 }
@@ -18,54 +19,66 @@ void Client::process() {
     while (true) {
         l = read(fd, buffer, sizeof(buffer));
         if (l <= 0) {
-            // TODO
+            if (ignoreServer) {
+                exit(0); // TODO meh
+            }
+            throw ClientException("Disconnected");
         }
 
-        Payload payload(buffer, l);
-        payload >> invoke;
-
         Payload response;
-        if (invoke == Invoke::Setup) {
-            vector<Ship> ships;
-            payload >> ships;
-            auto placed = player->setup(ships);
-            response << placed;
+        try {
+            Payload payload(buffer, l);
+            payload >> invoke;
 
-        } else if (invoke == Invoke::TakeTurn) {
-            auto target = player->takeTurn();
-            response << target;
+            if (invoke == Invoke::Setup) {
+                vector<Ship> ships;
+                payload >> ships;
+                auto placed = player->setup(ships);
+                response << placed;
 
-        } else if (invoke == Invoke::SaveShot) {
-            Shot shot;
-            payload >> shot;
-            player->saveShot(shot);
+            } else if (invoke == Invoke::TakeTurn) {
+                auto target = player->takeTurn();
+                response << target;
 
-            response << Field::Ack;
+            } else if (invoke == Invoke::SaveShot) {
+                Shot shot;
+                payload >> shot;
+                player->saveShot(shot);
 
-        } else if (invoke == Invoke::IOAnnounce) {
-            string msg;
-            payload >> msg;
-            inOut->announce(msg);
+                response << Field::Ack;
 
-        } else if (invoke == Invoke::IOAnnounceTurn) {
-            int turn;
-            string msg;
-            payload >> turn;
-            payload >> msg;
-            inOut->announceTurn(msg, turn);
+            } else if (invoke == Invoke::IOAnnounce) {
+                string msg;
+                payload >> msg;
+                inOut->announce(msg);
 
-        } else if (invoke == Invoke::IOShotResult) {
-            Shot shot;
-            payload >> shot;
-            inOut->renderShotResult(shot);
+            } else if (invoke == Invoke::IOAnnounceTurn) {
+                int turn;
+                string msg;
+                payload >> turn;
+                payload >> msg;
+                inOut->announceTurn(msg, turn);
 
-        } else if (invoke == Invoke::IOGameOver) {
-            string player;
-            payload >> player;
-            inOut->gameOver(player);
+            } else if (invoke == Invoke::IOShotResult) {
+                Shot shot;
+                payload >> shot;
+                inOut->renderShotResult(shot);
 
-        } else {
-            throw ClientException("Invalid method invoked");
+            } else if (invoke == Invoke::IOGameOver) {
+                ignoreServer = true;
+                string player;
+                payload >> player;
+                inOut->gameOver(player);
+
+            } else {
+                throw ClientException("Invalid method invoked");
+            }
+
+        } catch (PayloadException &e) {
+            if (ignoreServer) {
+                exit(0); // TODO meh
+            }
+            throw e;
         }
 
 

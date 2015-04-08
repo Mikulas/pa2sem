@@ -6,8 +6,7 @@
 
 #include "inc/Net/Server.h"
 #include "inc/Net/Client.h"
-#include "inc/Player/AI/Random.h"
-#include "inc/Player/Human.h"
+#include "inc/Player/Factory.h"
 
 
 using namespace std;
@@ -36,12 +35,17 @@ int main(int argc, char **argv)
 			controller.run();
 
 		} else if (argc == 2) {
-			// LocalPlayer* player = new RandomAIPlayer();
-			LocalPlayer* player = new HumanPlayer(inOut);
-			Client client(argv[1], player, inOut); // TODO catch exc
+			LocalPlayer* player = (LocalPlayer*) PlayerFactory::from("human", inOut);
+			Client client(argv[1], player, inOut);
 			client.process();
 
 		} else if (argc == 3) {
+			LocalPlayer* player = (LocalPlayer*) PlayerFactory::from(argv[2], inOut);
+			if (player == nullptr) {
+				inOut->renderError("Unknown player type");
+			}
+			Client client(argv[1], player, inOut);
+			client.process();
 		}
 
 	} catch (ServerException &e) {

@@ -47,6 +47,9 @@ public:
     void renderError(runtime_error &e) {
         cerr << C::red << "Sorry, game over: " << e.what() << C::reset << endl;
     }
+    void renderError(string msg) {
+        cerr << C::red << msg << C::reset << endl;
+    }
 };
 
 

@@ -33,6 +33,7 @@ private:
 
 	LocalPlayer *player;
 	int fd;
+	bool ignoreServer;
 };
 
 
