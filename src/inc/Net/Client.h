@@ -1,3 +1,6 @@
+#ifndef CLIENT_H
+#define CLIENT_H
+
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -5,13 +8,18 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <unistd.h>
+#include <stdexcept>
 #include "Server.h"
 #include "Payload.h"
 #include "../InOut.h"
 #include "../Player/Local.h"
 
 
-class ClientException {};
+class ClientException : public runtime_error {
+public:
+    ClientException(string const& message)
+        : std::runtime_error(message) {}
+};
 
 
 class Client {
@@ -26,3 +34,6 @@ private:
 	LocalPlayer *player;
 	int fd;
 };
+
+
+#endif

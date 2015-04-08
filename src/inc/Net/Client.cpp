@@ -3,7 +3,7 @@
 Client::Client(const char *host, LocalPlayer *player, InOut* inOut) {
     fd = openCliSocket(host, Server::port);
     if (fd < 0) {
-        throw ClientException();
+        throw ClientException("Failed connecting to server");
     }
 
     this->player = player;
@@ -65,7 +65,7 @@ void Client::process() {
             inOut->gameOver(player);
 
         } else {
-            throw ClientException(); // TODO
+            throw ClientException("Invalid method invoked");
         }
 
 

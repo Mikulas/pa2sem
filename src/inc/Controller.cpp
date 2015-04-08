@@ -55,8 +55,7 @@ void Controller::run() {
 		this->game->gameLoop();
 
 	} catch (ServerException &e) {
-		// TODO inform user
 		server->stop();
-		exit(1);
+		throw e;
 	}
 }

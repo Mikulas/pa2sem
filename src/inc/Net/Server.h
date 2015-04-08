@@ -7,6 +7,7 @@ class Server;
 #include <cstdio>
 #include <cstdlib>
 #include <map>
+#include <stdexcept>
 #include <netdb.h>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -19,7 +20,11 @@ using std::vector;
 using std::map;
 
 
-class ServerException {};
+class ServerException : public runtime_error {
+public:
+    ServerException(string const& message)
+        : std::runtime_error(message) {}
+};
 
 
 /* sekvencni reseni, ketre pomoci funkce select vybira aktivni spojeni. Obsluha jenotlivych

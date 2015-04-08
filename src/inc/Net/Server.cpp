@@ -48,7 +48,7 @@ int Server::openSrvSocket(const char *name, int port)
 void Server::start() {
 	fd = openSrvSocket("localhost", Server::port);
 	if (fd < 0) {
-		throw ServerException();
+		throw ServerException("Failed to start server");
 	}
 }
 
@@ -105,9 +105,8 @@ Payload Server::send(RemotePlayer* player, Payload* payload) {
 	char buffer[500];
 	int l = read(sockets[player], buffer, sizeof(buffer));
 
-	// nulova delka->uzavreni spojeni klientem
-	if (!l) {
-		return Payload(); // TODO fix
+	if (l <= 0) {
+		throw ServerException("Player disconnected.");
 	}
 	Payload response(buffer, l);
 

@@ -4,7 +4,10 @@
 #include "inc/Net/Client.h"
 #include "inc/LineInOut.h"
 
+#include "inc/Net/Server.h"
+#include "inc/Net/Client.h"
 #include "inc/Player/AI/Random.h"
+#include "inc/Player/Human.h"
 
 
 using namespace std;
@@ -27,16 +30,28 @@ int main(int argc, char **argv)
 
 	auto inOut = new LineInOut;
 
-	if (argc == 1) {
-		Controller controller(inOut);
-		controller.run();
+	try {
+		if (argc == 1) {
+			Controller controller(inOut);
+			controller.run();
 
-	} else if (argc == 2) {
-		LocalPlayer* player = new RandomAIPlayer();
-		Client client(argv[1], player, inOut); // TODO catch exc
-		client.process();
+		} else if (argc == 2) {
+			// LocalPlayer* player = new RandomAIPlayer();
+			LocalPlayer* player = new HumanPlayer(inOut);
+			Client client(argv[1], player, inOut); // TODO catch exc
+			client.process();
 
-	} else if (argc == 3) {
+		} else if (argc == 3) {
+		}
+
+	} catch (ServerException &e) {
+		inOut->renderError(e);
+
+	} catch (ClientException &e) {
+		inOut->renderError(e);
+
+	} catch (PayloadException &e) {
+		inOut->renderError(e);
 	}
 
 	return 0;
