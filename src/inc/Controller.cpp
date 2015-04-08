@@ -44,12 +44,9 @@ void Controller::run() {
 	}
 
 	if (remotes.size() != 0) {
-printf("starting server\n"); // todo move to InOut
 		server->start();
-printf("waiting for %lu players\n", remotes.size()); // todo move to InOut
 		server->waitForConnections(remotes);
 	}
-printf("running game\n"); // todo move to InOut
 
 	try {
 		// TODO randomize player order?

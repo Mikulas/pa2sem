@@ -10,33 +10,22 @@ void Client::process() {
         if (l <= 0) {
             // TODO
         }
-printf("received (%dB) raw: ", l);
-for (int i = 0; i < l; ++i) {
-    printf("%02X ", buffer[i] & 0xFF);
-}
-printf("\n");
 
         Payload payload(buffer, l);
-        printf("received ");
-        payload.debug();
-
         payload >> invoke;
 
         Payload response;
         if (invoke == Invoke::Setup) {
-printf("Setup\n");
             vector<Ship> ships;
             payload >> ships;
             auto placed = player->setup(ships);
             response << placed;
 
         } else if (invoke == Invoke::TakeTurn) {
-printf("TakeTurn\n");
             auto target = player->takeTurn();
             response << target;
 
         } else if (invoke == Invoke::SaveShot) {
-printf("SaveShot\n");
             Shot shot;
             payload >> shot;
             player->saveShot(shot);
@@ -44,8 +33,6 @@ printf("SaveShot\n");
             response << Field::Ack;
         }
 
-        printf("sending ");
-        response.debug();
         const char *data = response.data();
         write(fd, data, response.size());
         delete[] data;
@@ -63,7 +50,6 @@ int Client::openCliSocket(const char * host, int port) {
      */
     snprintf(portStr, sizeof(portStr), "%d", port);
     if (getaddrinfo(host, portStr, NULL, &ai)) {
-        printf("addrinfo\n");
         return -1;
     }
 
@@ -73,7 +59,6 @@ int Client::openCliSocket(const char * host, int port) {
     int fd = socket(ai->ai_family, SOCK_STREAM, 0);
     if (fd == -1) {
         freeaddrinfo(ai);
-        printf("socket\n");
         return -1;
     }
     /* Zadost o spojeni se serverem (ted se teprve zacne komunikovat).
@@ -82,7 +67,6 @@ int Client::openCliSocket(const char * host, int port) {
     if (connect(fd, ai->ai_addr, ai->ai_addrlen) == - 1) {
         close(fd);
         freeaddrinfo(ai);
-        printf("connect\n");
         return -1;
     }
     freeaddrinfo(ai);

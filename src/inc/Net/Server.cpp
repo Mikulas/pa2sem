@@ -12,7 +12,6 @@ int Server::openSrvSocket(const char *name, int port)
 	 */
 	snprintf(portStr, sizeof(portStr), "%d", port);
 	if (getaddrinfo(name, portStr, NULL, &ai)) {
-		printf("addrinfo\n");
 		return -1;
 	}
 
@@ -22,7 +21,6 @@ int Server::openSrvSocket(const char *name, int port)
 	int fd = socket(ai->ai_family, SOCK_STREAM, 0);
 	if (fd == -1) {
 		freeaddrinfo(ai);
-		printf("socket\n");
 		return -1;
 	}
 
@@ -31,7 +29,6 @@ int Server::openSrvSocket(const char *name, int port)
 	if (bind(fd, ai->ai_addr, ai->ai_addrlen) == -1) {
 		close(fd);
 		freeaddrinfo(ai);
-		printf("bind\n");
 		return -1;
 	}
 
@@ -43,7 +40,6 @@ int Server::openSrvSocket(const char *name, int port)
 	if (listen(fd, 10) == -1)
 	{
 		close(fd);
-		printf("listen\n");
 		return -1;
 	}
 	return fd;
@@ -102,28 +98,18 @@ void Server::waitForConnections(vector<RemotePlayer*> players) {
 }
 
 Payload Server::send(RemotePlayer* player, Payload* payload) {
-printf("sending ");
-payload->debug();
 	const char *data = payload->data();
 	write(sockets[player], data, payload->size());
 	delete[] data;
 
 	char buffer[500];
 	int l = read(sockets[player], buffer, sizeof(buffer));
-printf("received (%dB) raw: ", l);
-for (int i = 0; i < l; ++i) {
-    printf("%02X ", buffer[i] & 0xFF);
-}
-printf("\n");
 
 	// nulova delka->uzavreni spojeni klientem
 	if (!l) {
 		return Payload(); // TODO fix
 	}
 	Payload response(buffer, l);
-
-printf("sending: ");
-response.debug();
 
 	return response;
 }
