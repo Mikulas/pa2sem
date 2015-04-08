@@ -16,6 +16,9 @@ using std::vector;
 class Board
 {
 public:
+#ifdef TESTMODE
+	Board() {};
+#endif
 	Board(const Game* game, Player* player);
 	void setOpponent(Board* opponent) {
 		this->opponent = opponent;
