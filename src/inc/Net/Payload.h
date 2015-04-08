@@ -103,7 +103,7 @@ public:
     	char *buffer = new char[length + 1]();
 		ss.read(buffer, length);
     	val = string(buffer);
-    	delete buffer;
+    	delete[] buffer;
 		return *this;
     }
 
