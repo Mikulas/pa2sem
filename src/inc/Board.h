@@ -13,8 +13,7 @@ class Board;
 using std::vector;
 
 
-class Board
-{
+class Board {
 public:
 #ifdef TESTMODE
 	Board() {};

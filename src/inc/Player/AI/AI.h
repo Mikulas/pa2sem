@@ -8,8 +8,7 @@
 /**
  * \pure
  */
-class AIPlayer : public LocalPlayer
-{
+class AIPlayer : public LocalPlayer {
 };
 
 

@@ -30,8 +30,7 @@ using std::runtime_error;
  * \interface InOut
  * \pure
  */
-class InOut
-{
+class InOut {
 public:
 	virtual ~InOut() {}
     virtual void renderShips(vector<Ship>) = 0;

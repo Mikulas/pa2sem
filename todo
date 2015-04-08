@@ -6,14 +6,14 @@
 - [x] vyjit z https://edux.fit.cvut.cz/courses/BI-PA2/semestralka
 - [x] opravit testy
 - [x] catch networking exceptions (in main?)
-- [ ] add final to all classes
-- [ ] add static analyzer
-- [ ] pridat unit testy
-- [ ] sjednotit coding standard, indent public:, nove radky, mezery za class:
-- [ ] move impls out of h files to cpp files
+- [x] add static analyzer
+- [x] move impls out of h files to cpp files
+- [x] sjednotit coding standard, indent public:, nove radky, mezery za class:
 - [ ] pripravit ascii renderer
 - [ ] pridat chytra ai
 - [ ] projit todo
+- [ ] pridat unit testy
+- [ ] add final to all classes
 - [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 
 

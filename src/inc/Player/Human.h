@@ -4,8 +4,7 @@
 #include "Local.h"
 
 
-class HumanPlayer : public LocalPlayer
-{
+class HumanPlayer : public LocalPlayer {
 public:
 	HumanPlayer(InOut* inOut) : inOut(inOut) {};
 	virtual vector<Ship> setup(vector<Ship>) override;

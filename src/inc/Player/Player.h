@@ -15,8 +15,7 @@ using std::vector;
  * \interface Player
  * \pure
  */
-class Player
-{
+class Player {
 public:
     virtual vector<Ship> setup(vector<Ship>) = 0;
 	virtual Location takeTurn() = 0;

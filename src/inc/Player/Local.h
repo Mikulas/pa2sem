@@ -7,13 +7,13 @@
 
 
 class LocalPlayer : public Player {
-    public:
-        virtual void saveShot(Shot) override;
+public:
+    virtual void saveShot(Shot) override;
 
-	protected:
-		vector<Ship> placeShipsRandomly(vector<Ship>);
+protected:
+	vector<Ship> placeShipsRandomly(vector<Ship>);
 
-    	vector<Shot> shotsFired;
+	vector<Shot> shotsFired;
 };
 
 #endif

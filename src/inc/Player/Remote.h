@@ -7,8 +7,7 @@ class RemotePlayer;
 #include "../Net/Server.h"
 
 
-class RemotePlayer : public Player
-{
+class RemotePlayer : public Player {
 public:
 	RemotePlayer(Server *server) : server(server) {};
 	virtual vector<Ship> setup(vector<Ship>) override;
