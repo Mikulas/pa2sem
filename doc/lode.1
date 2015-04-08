@@ -1,0 +1,43 @@
+.TH LODE 1 08/04/2015 "User Commands"
+.SH NAME
+lode - Battleship Game
+.SH SYNOPSIS
+Serves for both local and networked games.
+
+To launch the game in interactive mode, run
+
+.B lode
+
+Or connect to an existing game server
+
+.B lode
+.I host
+.I [player]
+
+.SH AVAILABILITY
+Tested on OS X 10.10.3 and Debian. Networking should work between all unix systems that share endianness.
+.SH DESCRIPTION
+Battleship (also Battleships or Sea Battle) is a guessing game for two players. It is known worldwide as a pencil and paper game which dates from World War I. It was published by various companies as a pad-and-pencil game in the 1930s, and was released as a plastic board game by Milton Bradley in 1967. (summary from https://en.wikipedia.org/wiki/Battleship_(game))
+.SH OPTIONS
+When running manually, there is only one mandatory option
+.TP 5
+host
+Server network address. See getaddrinfo(3) for supported formats.
+.TP 5
+player
+Optional, defaults to
+.B human.
+Must be one of
+.B human,
+.B net,
+.B ai1,
+.B ai2.
+
+.SH GAME RULES
+TODO
+
+.SH NOTES
+TODO
+
+.SH AUTHOR
+Mikulas Dite <ditemiku@fit.cvut.cz>

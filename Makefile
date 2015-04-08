@@ -21,6 +21,9 @@ compile-test:
 test:
 	build/test
 
+man:
+	ln -s `pwd`/doc/lode.1 /usr/share/man/man1/lode.1
+
 lines:
 	cat src/* src/**/* 2>/dev/null | wc -l
 	cat tests/* tests/**/* 2>/dev/null | wc -l
