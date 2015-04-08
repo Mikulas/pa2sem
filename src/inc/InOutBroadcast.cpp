@@ -5,7 +5,7 @@ void InOutBroadcast::announce(string msg) const {
 	inOut->announce(msg);
 
 	Payload p;
-	p << Invoke::IOAnnounce;
+	p << Payload::Invoke::IOAnnounce;
 	p << msg;
 	server->sendAll(&p);
 }
@@ -14,7 +14,7 @@ void InOutBroadcast::announceTurn(string msg, unsigned int turn) const {
 	inOut->announceTurn(msg, turn);
 
 	Payload p;
-	p << Invoke::IOAnnounceTurn;
+	p << Payload::Invoke::IOAnnounceTurn;
 	p << turn;
 	p << msg;
 	server->sendAll(&p);
@@ -40,7 +40,7 @@ void InOutBroadcast::renderShotResult(const Shot shot) const {
 	inOut->renderShotResult(shot);
 
 	Payload p;
-	p << Invoke::IOShotResult;
+	p << Payload::Invoke::IOShotResult;
 	p << shot;
 	server->sendAll(&p);
 }
@@ -49,7 +49,7 @@ void InOutBroadcast::gameOver(string player) const {
 	inOut->gameOver(player);
 
 	Payload p;
-	p << Invoke::IOGameOver;
+	p << Payload::Invoke::IOGameOver;
 	p << player;
 	server->sendAll(&p);
 }

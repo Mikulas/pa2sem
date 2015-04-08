@@ -2,7 +2,7 @@
 
 vector<Ship> RemotePlayer::setup(vector<Ship> ships) {
 	Payload request;
-	request << Invoke::Setup;
+	request << Payload::Invoke::Setup;
 	request << ships;
 	Payload response = server->send(this, &request);
 
@@ -13,7 +13,7 @@ vector<Ship> RemotePlayer::setup(vector<Ship> ships) {
 
 Location RemotePlayer::takeTurn() {
 	Payload request;
-	request << Invoke::TakeTurn;
+	request << Payload::Invoke::TakeTurn;
 	Payload response = server->send(this, &request);
 
 	Location target;
@@ -23,7 +23,7 @@ Location RemotePlayer::takeTurn() {
 
 void RemotePlayer::saveShot(Shot shot) {
 	Payload request;
-	request << Invoke::SaveShot;
+	request << Payload::Invoke::SaveShot;
 	request << shot;
 	server->send(this, &request);
 }

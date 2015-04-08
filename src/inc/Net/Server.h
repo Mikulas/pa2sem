@@ -27,26 +27,56 @@ public:
 };
 
 
-/* sekvencni reseni, ketre pomoci funkce select vybira aktivni spojeni. Obsluha jenotlivych
-* klientu se (dle pozadavku) strida v case.
-*/
-
+/**
+ * \exception ServerException
+ * \exception PayloadException
+ */
 class Server {
 public:
 	Server() {};
+	/**
+	 * Starts listening on socket, but does not wait for
+	 * any connection.
+	 * \see waitForConnections
+	 * \throws ServerException
+	 */
 	void start();
+	/**
+	 * Silently disconnects all users, if any.
+	 */
 	void stop();
+	/**
+	 * Blocks until there are as many connections
+	 * as passed `RemotePlayer*`.
+	 * There is no guarantee which player is bound to
+	 * which socket, the order is random (depends on
+	 * order in which users connect).
+	 */
 	void waitForConnections(vector<RemotePlayer*>);
 
+	/**
+	 * \see Payload
+	 * \throws ServerException player disconnected
+	 * \throws PayloadException
+	 */
 	Payload send(RemotePlayer*, Payload*);
+	/**
+	 * \see Payload
+	 * \throws ServerException player disconnected
+	 * \throws PayloadException
+	 */
 	void sendAll(Payload*);
 
 	static uint port;
 
 private:
+	/**
+	 * \throws ServerException
+	 */
+	int openSrvSocket(const char *name, int port);
+
 	int fd;
 	map<RemotePlayer*, int> sockets;
-	int openSrvSocket(const char *name, int port);
 };
 
 

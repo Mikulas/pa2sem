@@ -9,7 +9,9 @@
 - [x] add static analyzer
 - [x] move impls out of h files to cpp files
 - [x] sjednotit coding standard, indent public:, nove radky, mezery za class:
+- [ ] cs fix imports newlines, sort usings, fix include guards
 - [ ] pripravit ascii renderer
+- [ ] create man page?
 - [ ] pridat chytra ai
 - [ ] projit todo
 - [ ] pridat unit testy

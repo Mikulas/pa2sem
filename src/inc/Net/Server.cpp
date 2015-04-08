@@ -12,7 +12,7 @@ int Server::openSrvSocket(const char *name, int port)
 	 */
 	snprintf(portStr, sizeof(portStr), "%d", port);
 	if (getaddrinfo(name, portStr, NULL, &ai)) {
-		return -1;
+		throw ServerException("Invalid hostname");
 	}
 
 	/* Otevreni soketu, typ soketu (family) podle navratove hodnoty getaddrinfo,
@@ -21,7 +21,7 @@ int Server::openSrvSocket(const char *name, int port)
 	int fd = socket(ai->ai_family, SOCK_STREAM, 0);
 	if (fd == -1) {
 		freeaddrinfo(ai);
-		return -1;
+		throw ServerException("Failed to open socket");
 	}
 
 	/* napojeni soketu na zadane sitove rozhrani
@@ -29,7 +29,7 @@ int Server::openSrvSocket(const char *name, int port)
 	if (bind(fd, ai->ai_addr, ai->ai_addrlen) == -1) {
 		close(fd);
 		freeaddrinfo(ai);
-		return -1;
+		throw ServerException("Failed to bind to socket");
 	}
 
 	freeaddrinfo(ai);
@@ -40,7 +40,7 @@ int Server::openSrvSocket(const char *name, int port)
 	if (listen(fd, 10) == -1)
 	{
 		close(fd);
-		return -1;
+		throw ServerException("Failed to listen on socket");
 	}
 	return fd;
 }

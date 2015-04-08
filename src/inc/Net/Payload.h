@@ -27,26 +27,70 @@ public:
         : std::runtime_error(message) {}
 };
 
-enum class Invoke : uint8_t {
-    Setup = 0xDF,
-    TakeTurn = 0xDE,
-    SaveShot = 0xDD,
-    IOAnnounce = 0xDC,
-    IOAnnounceTurn = 0xDB,
-    IOShotResult = 0xDA,
-    IOGameOver = 0xD9,
-};
-enum class Field : uint8_t {
-    Location = 0xFF,
-    Shot = 0xFE,
-    Ship = 0xFD,
-    Vector = 0xFC,
-    Ack = 0xFB
-};
-
+/**
+ * \exception PayloadException
+ *
+ * Example usage:
+ * \code{.cpp}
+ * vector<Ship> ships = ...;
+ * Payload p;
+ * p << Invoke::Setup
+ * p << ships
+ * \endcode
+ *
+ * \code{.cpp}
+ * char *data = ...;
+ * int length = ...;
+ * Payload p(data, length);
+ * Invoke i;
+ * p >> i;
+ * \endcode
+ *
+ * Invoke format (from Server to Client):
+ * \code{.unparsed}
+ * uint32_t   total payload length (including this field)
+ * Invoke     action
+ * ...        additional optional parameters for invoked method:
+ *    Field   not necessary but makes sure server and client formats match
+ *    data    one or multiple scalars or other fields
+ * \endcode
+ *
+ * Response formats (from Client to Server)
+ * \code{.unparsed}
+ * uint32_t   total payload length (including this field)
+ * Field::Ack empty response (invoke acknowledged)
+ * \endcode
+ *
+ * \code{.unparsed}
+ * uint32_t   total payload length (including this field)
+ * Field      empty response
+ * data       one or multiple scalars or other fields
+ * \endcode
+ */
 class Payload {
 public:
+    enum class Invoke : uint8_t {
+        Setup = 0xDF, /**< \see Player::setup() */
+        TakeTurn = 0xDE, /**< \see Player::takeTurn() */
+        SaveShot = 0xDD, /**< \see Player::saveShot() */
+        IOAnnounce = 0xDC, /**< \see InOut::announce() */
+        IOAnnounceTurn = 0xDB, /**< \see InOut::announceTurn() */
+        IOShotResult = 0xDA, /**< \see InOut::renderShotResult() */
+        IOGameOver = 0xD9, /**< \see InOut::gameOver() */
+    };
+    enum class Field : uint8_t {
+        Location = 0xFF, /**< \see Location */
+        Shot = 0xFE, /**< \see Shot */
+        Ship = 0xFD, /**< \see Ship */
+        Vector = 0xFC,
+        Ack = 0xFB /**< empty response */
+    };
+
 	Payload() {}
+
+    /**
+     * \throws PayloadException if size does not match
+     */
     Payload(const char* bytes, uint count) {
         uint32_t expected;
         memcpy(&expected, bytes, sizeof(uint32_t));
@@ -57,6 +101,10 @@ public:
     	ss.write(bytes + sizeof(uint32_t), count - sizeof(uint32_t));
     }
 
+    /**
+     * Loads Field, which moves ostream position
+     * \throws PayloadException
+     */
 	void verify(Field exp) {
 		Field load;
     	*this >> load;
@@ -65,12 +113,16 @@ public:
     	}
 	}
 
+    /**
+     * \see data()
+     */
 	size_t size() const {
 		return sizeof(uint32_t) + ss.str().length();
 	}
 
     /**
-     * must delete after use
+     * Caller must `delete[]` data after use
+     * \see size()
      */
 	const char* data() const {
         uint32_t length = size();
@@ -170,7 +222,9 @@ public:
 		return *this;
     }
 
-
+    /**
+     * Prints `data()` as hex by bytes
+     */
 	void debug() { // todo remove
 		const char* buffer = data();
 		printf("payload(%dB): ", (int) size());

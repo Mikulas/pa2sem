@@ -22,17 +22,43 @@ public:
 };
 
 
+/**
+ * \exception ClientException
+ * \exception PayloadException
+ */
 class Client {
 public:
+	/**
+	 * \throws ClientException connecting to host fails
+	 */
 	Client(const char *host, LocalPlayer *p, InOut* inOut);
+	/**
+	 * When `ignoreServer == true`, calls `exit(0)` upon being
+	 * disconnected from server.
+	 *
+	 * \throws ClientException disconnected from server
+	 * \throws ClientException unknown method in invoke field
+	 * \throws PayloadException
+	 */
 	void process();
 
 private:
 	InOut* inOut;
+	/**
+	 * \throws ClientException
+	 */
 	int openCliSocket(const char *host, int port);
 
 	LocalPlayer *player;
 	int fd;
+
+	/**
+	 * Set to `true` when client recieves GameOver
+	 * payload.
+	 * When `true`, process quits gracefully when
+	 * disconnected from server (as opposed to throwing
+	 * exception when set to `false`).
+	 */
 	bool ignoreServer;
 };
 

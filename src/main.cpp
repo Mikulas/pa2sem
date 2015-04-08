@@ -11,17 +11,25 @@
 
 using namespace std;
 
-/*! \mainpage My Personal Index Page
+/*! \mainpage Battleship
  *
  * \section intro_sec Introduction
  *
- * This is the introduction.
+ * Seminar work BI-PA2 2015
  *
- * \section install_sec Installation
+ * \section install_sec Build
  *
- * \subsection step1 Step 1: Opening the box
+ * Build with `make`
  *
- * etc...
+ * \section run_sec Running
+ * \subsection run_server Local game or Server
+ * Execute interactive game interface as `make run`
+ * or manually call `./build/lode`
+ *
+ * \subsection run_client Remote game
+ * To connect to a remote server, call
+ * `./build/lode server [Type]`
+ * where `Type` is one of (`human`, `ai1`, `ai2`).
  */
 int main(int argc, char **argv)
 {

@@ -13,7 +13,7 @@ Client::Client(const char *host, LocalPlayer *player, InOut* inOut) {
 
 void Client::process() {
     char buffer[500];
-    Invoke invoke;
+    Payload::Invoke invoke;
     int l;
 
     while (true) {
@@ -30,41 +30,41 @@ void Client::process() {
             Payload payload(buffer, l);
             payload >> invoke;
 
-            if (invoke == Invoke::Setup) {
+            if (invoke == Payload::Invoke::Setup) {
                 vector<Ship> ships;
                 payload >> ships;
                 auto placed = player->setup(ships);
                 response << placed;
 
-            } else if (invoke == Invoke::TakeTurn) {
+            } else if (invoke == Payload::Invoke::TakeTurn) {
                 auto target = player->takeTurn();
                 response << target;
 
-            } else if (invoke == Invoke::SaveShot) {
+            } else if (invoke == Payload::Invoke::SaveShot) {
                 Shot shot;
                 payload >> shot;
                 player->saveShot(shot);
 
-                response << Field::Ack;
+                response << Payload::Field::Ack;
 
-            } else if (invoke == Invoke::IOAnnounce) {
+            } else if (invoke == Payload::Invoke::IOAnnounce) {
                 string msg;
                 payload >> msg;
                 inOut->announce(msg);
 
-            } else if (invoke == Invoke::IOAnnounceTurn) {
+            } else if (invoke == Payload::Invoke::IOAnnounceTurn) {
                 int turn;
                 string msg;
                 payload >> turn;
                 payload >> msg;
                 inOut->announceTurn(msg, turn);
 
-            } else if (invoke == Invoke::IOShotResult) {
+            } else if (invoke == Payload::Invoke::IOShotResult) {
                 Shot shot;
                 payload >> shot;
                 inOut->renderShotResult(shot);
 
-            } else if (invoke == Invoke::IOGameOver) {
+            } else if (invoke == Payload::Invoke::IOGameOver) {
                 ignoreServer = true;
                 string player;
                 payload >> player;
@@ -99,7 +99,7 @@ int Client::openCliSocket(const char * host, int port) {
      */
     snprintf(portStr, sizeof(portStr), "%d", port);
     if (getaddrinfo(host, portStr, NULL, &ai)) {
-        return -1;
+        throw ClientException("Invalid host or server not running");
     }
 
     /* Otevreni soketu, typ soketu (family) podle navratove hodnoty getaddrinfo,
@@ -108,7 +108,7 @@ int Client::openCliSocket(const char * host, int port) {
     int fd = socket(ai->ai_family, SOCK_STREAM, 0);
     if (fd == -1) {
         freeaddrinfo(ai);
-        return -1;
+        throw ClientException("Socket failure");
     }
     /* Zadost o spojeni se serverem (ted se teprve zacne komunikovat).
      * vysledkem je bud otevrene datove spojeni nebo chyba.
@@ -116,7 +116,7 @@ int Client::openCliSocket(const char * host, int port) {
     if (connect(fd, ai->ai_addr, ai->ai_addrlen) == - 1) {
         close(fd);
         freeaddrinfo(ai);
-        return -1;
+        throw ClientException("Connection failure");
     }
     freeaddrinfo(ai);
     return fd;
