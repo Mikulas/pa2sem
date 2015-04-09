@@ -7,6 +7,8 @@
 /**
  * Asks user for input.
  * All input and output must be done through InOut.
+ *
+ * \ingroup Player
  */
 class HumanPlayer : public LocalPlayer {
 public:

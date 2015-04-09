@@ -16,8 +16,12 @@ run:
 check:
 	cppcheck --enable=all --std=c++11 -I src --suppress=missingIncludeSystem src/main.cpp
 
-run-ai:
-	build/lode < examples/ai2-vs-ai2 | grep -v " turn" | grep -v "miss"
+run-ai1:
+	build/lode < examples/ai1-vs-ai1 | grep -v "miss"
+run-ai2:
+	build/lode < examples/ai2-vs-ai2 | grep -v "miss"
+run-ai3:
+	build/lode < examples/ai3-vs-ai3 | grep -v "miss"
 
 doc:
 	doxygen doxy.conf

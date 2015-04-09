@@ -23,6 +23,7 @@ using std::vector;
 
 /**
  * \see Payload
+ * \ingroup Net
  */
 class PayloadException : public runtime_error {
 public:
@@ -67,6 +68,8 @@ public:
  * Field      empty response
  * data       one or multiple scalars or other fields
  * \endcode
+ *
+ * \ingroup Net
  */
 class Payload {
 public:

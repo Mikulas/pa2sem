@@ -7,6 +7,7 @@
 
 /**
  * \pure
+ * \ingroup Player
  */
 class AIPlayer : public LocalPlayer {
 };

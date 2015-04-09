@@ -15,6 +15,7 @@ using std::vector;
  * Changes Board during Player::setup() phase and fires at location Player::takeTurn()
  * \interface Player
  * \pure
+ * \ingroup Player
  */
 class Player {
 public:

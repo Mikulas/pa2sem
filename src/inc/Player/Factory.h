@@ -4,12 +4,15 @@
 #include "../InOut.h"
 #include "../Net/Server.h"
 #include "AI/Random.h"
+#include "AI/RandomHunt.h"
 #include "AI/RandomWithMemory.h"
 #include "Human.h"
 #include "Remote.h"
 
 /**
  * Creates instances of Player from string type name
+ *
+ * \ingroup Player
  */
 class PlayerFactory {
 public:
@@ -39,6 +42,9 @@ public:
 
 		} else if (strcmp(type, "ai2") == 0) {
 			return new RandomWithMemoryAIPlayer();
+
+		} else if (strcmp(type, "ai3") == 0) {
+			return new RandomHuntAIPlayer();
 		}
 
 		return nullptr;

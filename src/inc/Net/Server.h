@@ -22,6 +22,7 @@ using std::vector;
 
 /**
  * \see Server
+ * \ingroup Net
  */
 class ServerException : public runtime_error {
 public:
@@ -35,6 +36,8 @@ public:
  * Listens on one port. Since all communication with user
  * must be blocking (with the exception of sending output),
  * all methods are called on the main thread.
+ *
+ * \ingroup Net
  */
 class Server {
 public:

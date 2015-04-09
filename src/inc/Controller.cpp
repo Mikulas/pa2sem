@@ -20,7 +20,7 @@ void Controller::run() {
 		while (true) {
 			string question = "Select player ";
 			question += (char) ('A' + i);
-			question += ": [human/net/ai1/ai2]: ";
+			question += ": [human/net/ai1/ai2/ai3]: ";
 			buff = inOut->ask(question);
 
 			players[i] = PlayerFactory::from(buff, inOut, server);

@@ -43,6 +43,11 @@ void Game::playTurn(Board* active, Board* opponent) {
 
 void Game::gameLoop() {
 	while (true) {
+		if (turn > 700) {
+			// failsafe against bad AI implementations
+			gameOver(nullptr);
+		}
+
 		switch (state) {
 			case State::SETUP_A:
 				setupBoard(boardA);

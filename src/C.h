@@ -7,6 +7,7 @@ using std::string;
 
 
 /**
+ * \ingroup Utility
  * Utility class for outputing console colors
  * C stands for Color
  *

@@ -1,11 +1,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include "inc/Controller.h"
-#include "inc/Net/Client.h"
 #include "inc/LineInOut.h"
-
-#include "inc/Net/Server.h"
 #include "inc/Net/Client.h"
+#include "inc/Net/Client.h"
+#include "inc/Net/Server.h"
 #include "inc/Player/Factory.h"
 
 
@@ -30,10 +29,14 @@ using namespace std;
  * To connect to a remote server, call
  * `./build/lode server [Type]`
  * where `Type` is one of (`human`, `ai1`, `ai2`).
+ *
+ * \defgroup Utility Utility
+ * \defgroup Player Player
+ * \defgroup Net Net
  */
 int main(int argc, char **argv)
 {
-	srand(time(NULL));
+	srand(time(0) + clock());
 
 	auto inOut = new LineInOut;
 

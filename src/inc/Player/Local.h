@@ -9,6 +9,8 @@
 /**
  * Should only be instantiated client-side or
  * in a local game.
+ *
+ * \ingroup Player
  */
 class LocalPlayer : public Player {
 public:

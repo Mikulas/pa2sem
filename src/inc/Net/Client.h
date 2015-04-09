@@ -17,6 +17,7 @@
 
 /**
  * \see Client
+ * \ingroup Net
  */
 class ClientException : public runtime_error {
 public:
@@ -30,6 +31,8 @@ public:
  * sends a Payload, which is then parsed and appropriate
  * methods are invoked on either LocalPlayer or
  * on InOut.
+ *
+ * \ingroup Net
  */
 class Client {
 public:

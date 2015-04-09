@@ -13,6 +13,7 @@
 - [ ] cs fix imports newlines
 - [ ] pripravit ascii renderer
 - [ ] create man page?
+- [ ] add class communication diagram to doxygen (eg what is server, what is remote etc)
 - [ ] pridat chytra ai
 - [ ] projit todo v kodu
 - [ ] server: pridat hlasku add waiting for users to connect + jak to maji zavolat

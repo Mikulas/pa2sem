@@ -9,8 +9,10 @@
  * Fires at random locations, with possible
  * duplicated locations.
  *
- * Takes roughly 300 turns on average to sunk all ships,
+ * Takes 220 turns on average to sunk all ships,
  * but is not bound and might run forever.
+ *
+ * \ingroup Player
  */
 class RandomAIPlayer : public AIPlayer {
 public:

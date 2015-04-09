@@ -16,6 +16,8 @@ class RemotePlayer;
  * While RemotePlayer could in theory invoke methods on
  * another instance of RemotePlayer, this is not supported
  * feature and should not be used.
+ *
+ * \ingroup Player
  */
 class RemotePlayer : public Player {
 public:
