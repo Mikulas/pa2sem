@@ -10,30 +10,6 @@
 
 using namespace std;
 
-/*! \mainpage Battleship
- *
- * \section intro_sec Introduction
- *
- * Seminar work BI-PA2 2015
- *
- * \section install_sec Build
- *
- * Build with `make`
- *
- * \section run_sec Running
- * \subsection run_server Local game or Server
- * Execute interactive game interface as `make run`
- * or manually call `./build/lode`
- *
- * \subsection run_client Remote game
- * To connect to a remote server, call
- * `./build/lode server [Type]`
- * where `Type` is one of (`human`, `ai1`, `ai2`).
- *
- * \defgroup Utility Utility
- * \defgroup Player Player
- * \defgroup Net Net
- */
 int main(int argc, char **argv)
 {
 	srand(time(0) + clock());
