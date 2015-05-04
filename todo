@@ -1,3 +1,8 @@
+- [x] --help
+- [ ] random ship placement should not fail
+- [ ] controller should hint how to connect to game server
+
+
 - [x] najit nejaka ofiko pravidla lodi
 	- http://battleship.wikia.com/wiki/Battleship_(game)
 	- actually ignore the not touching rule, its stupid and strategies dont work

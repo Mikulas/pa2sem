@@ -17,6 +17,7 @@ public:
 	virtual Location takeTurn() override;
 
 private:
+	bool forceRandomShips = false;
     InOut* inOut;
 };
 
