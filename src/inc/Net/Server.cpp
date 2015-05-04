@@ -46,7 +46,11 @@ int Server::openSrvSocket(const char *name, int port)
 }
 
 void Server::start() {
-	fd = openSrvSocket("localhost", Server::port);
+	start("localhost");
+}
+
+void Server::start(const char *addr) {
+	fd = openSrvSocket(addr, Server::port);
 	if (fd < 0) {
 		throw ServerException("Failed to start server");
 	}

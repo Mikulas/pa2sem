@@ -45,10 +45,18 @@ public:
 	/**
 	 * Starts listening on socket, but does not wait for
 	 * any connection.
+	 * Defaults to loopback interface.
 	 * \see waitForConnections
 	 * \throws ServerException
 	 */
 	void start();
+	/**
+	 * Starts listening on socket, but does not wait for
+	 * any connection.
+	 * \see waitForConnections
+	 * \throws ServerException
+	 */
+	void start(const char* addr);
 	/**
 	 * Silently disconnects all users, if any.
 	 */
