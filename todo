@@ -1,8 +1,6 @@
 - [x] --help
-- [ ] random ship placement should not fail
-- [ ] controller should hint how to connect to game server
-
-
+- [x] random ship placement should not fail
+- [x] controller should hint how to connect to game server
 - [x] najit nejaka ofiko pravidla lodi
 	- http://battleship.wikia.com/wiki/Battleship_(game)
 	- actually ignore the not touching rule, its stupid and strategies dont work
@@ -15,15 +13,15 @@
 - [x] move impls out of h files to cpp files
 - [x] sjednotit coding standard, indent public:, nove radky, mezery za class:
 - [x] sort usings, fix include guards
-- [ ] cs fix imports newlines
+- [x] cs fix imports newlines
 - [ ] pripravit ascii renderer
-- [ ] create man page?
-- [ ] add class communication diagram to doxygen (eg what is server, what is remote etc)
+- [x] create man page?
+- [x] add class communication diagram to doxygen (eg what is server, what is remote etc)
 - [ ] pridat chytra ai
 - [ ] projit todo v kodu
-- [ ] server: pridat hlasku add waiting for users to connect + jak to maji zavolat
-- [ ] user random placement is asked multiple times
-- [ ] pridat unit testy
+- [x] server: pridat hlasku add waiting for users to connect + jak to maji zavolat
+- [x] user random placement is asked multiple times
+- [x] pridat unit testy
 - [ ] add final to all classes
 - [ ] na pohyb kurzoru pouzit http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 
@@ -31,7 +29,7 @@
 nutne
 	- sitovy multiplayer
 	- nastavitelne AI
-napady
+backlog
 	- graficke vykresleni (tzn. ne jenom textove dotazy)
 	- pustit ruzna AI proti sobe a zmerit, kolik procent vyhrajou
 	- salvo variation (one shot per ship afloat)

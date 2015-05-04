@@ -11,7 +11,7 @@ unsigned int Location::getIndex() const {
 }
 
 unsigned int Location::distance(const Location* other) const {
-	return abs(this->x - other->x) + abs(this->y - other->y) + 1;
+	return abs((int) this->x - (int) other->x) + abs((int) this->y - (int) other->y) + 1;
 }
 
 bool Location::inLine(const Location* other) const {

@@ -1,7 +1,7 @@
 #include "Controller.h"
 
 Controller::Controller(InOut* inOut, string program)
-	: inOut(inOut), program(program), server(new Server()) {}
+	: inOut(inOut), server(new Server()), program(program) {}
 
 Controller::~Controller() {
 	delete server;
