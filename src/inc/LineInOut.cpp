@@ -38,6 +38,10 @@ string LineInOut::ask(string question) const {
 	return answer;
 }
 
+void LineInOut::out(string msg) const {
+	cout << msg << endl;
+}
+
 void LineInOut::announce(string msg) const {
 	cout << C::underline << msg << C::reset << endl;
 }

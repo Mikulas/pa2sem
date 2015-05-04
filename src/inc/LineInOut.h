@@ -28,6 +28,7 @@ using std::sscanf;
  */
 class LineInOut : public InOut {
 public:
+	virtual void out(string) const override;
 	virtual void announce(string) const override;
 	virtual void announceTurn(string, unsigned int turn) const override;
 	virtual void renderShips(vector<Ship>) override;

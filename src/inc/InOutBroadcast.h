@@ -17,6 +17,7 @@ class InOutBroadcast : public InOut {
 public:
 	InOutBroadcast(InOut *inOut, Server *server)
 		: server(server), inOut(inOut) {};
+	virtual void out(string) const override;
 	virtual void announce(string) const override;
 	virtual void announceTurn(string, unsigned int turn) const override;
 	virtual void renderShips(vector<Ship>) override;

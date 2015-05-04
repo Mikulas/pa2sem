@@ -55,6 +55,10 @@ public:
      */
     virtual string ask(string question) const = 0;
     /**
+     * Print arbitrary string
+     */
+    virtual void out(string) const = 0;
+    /**
      * Print generic game state change, for
      * example used to announce which player
      * setup is taking place

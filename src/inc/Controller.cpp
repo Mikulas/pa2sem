@@ -1,9 +1,7 @@
 #include "Controller.h"
 
-Controller::Controller(InOut* inOut) {
-	this->inOut = inOut;
-	this->server = new Server();
-}
+Controller::Controller(InOut* inOut, string program)
+	: inOut(inOut), program(program), server(new Server()) {}
 
 Controller::~Controller() {
 	delete server;
@@ -58,7 +56,15 @@ void Controller::run() {
 		msg += addr;
 		msg += ":";
 		msg += std::to_string(Server::port);
-		inOut->announce(msg);
+		inOut->out(msg);
+
+		string info = "Connect with: ";
+		info += program;
+		info += " ";
+		info += addr;
+		info += " [player-type]";
+		inOut->out(info);
+
 		server->waitForConnections(remotes);
 	}
 

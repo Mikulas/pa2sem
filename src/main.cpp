@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	auto positional = args.getPositional();
 	try {
 		if (positional.size() == 1) {
-			Controller controller(inOut);
+			Controller controller(inOut, positional.at(0));
 			controller.run();
 
 		} else if (positional.size() == 2) {

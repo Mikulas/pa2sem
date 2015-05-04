@@ -11,6 +11,7 @@
 #include "Player/Remote.h"
 
 using std::vector;
+using std::string;
 
 
 /**
@@ -19,7 +20,7 @@ using std::vector;
  */
 class Controller {
 public:
-	Controller(InOut* inOut);
+	Controller(InOut* inOut, string program);
 	~Controller();
 	/**
 	 * Calls Game::gameLoop(), which blocks until either
@@ -31,6 +32,8 @@ private:
 	InOut* inOut;
 	Game* game;
 	Server* server;
+
+	string program;
 };
 
 

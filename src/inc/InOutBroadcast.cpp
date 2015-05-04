@@ -1,5 +1,8 @@
 #include "InOutBroadcast.h"
 
+void InOutBroadcast::out(string msg) const {
+	inOut->out(msg);
+}
 
 void InOutBroadcast::announce(string msg) const {
 	inOut->announce(msg);
