@@ -37,7 +37,28 @@ void Controller::run() {
 
 	if (remotes.size() != 0) {
 		inOut = new InOutBroadcast(inOut, server);
-		server->start();
+
+		string addr;
+		while (true) {
+			addr = inOut->ask("Enter address the server should listen on: [localhost] ");
+			if (addr == "") {
+				addr = "localhost";
+			}
+
+			try {
+				server->start(addr.c_str());
+				break;
+
+			} catch(ServerException &e) {
+				inOut->renderError("Cannot bind to specified interface.");
+			}
+		}
+
+		string msg = "Waiting for players to connect to ";
+		msg += addr;
+		msg += ":";
+		msg += std::to_string(Server::port);
+		inOut->announce(msg);
 		server->waitForConnections(remotes);
 	}
 
