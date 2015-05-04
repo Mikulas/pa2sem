@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include "../src/C.h"
+#include "ArgumentsTest.h"
 #include "BoardTest.h"
 #include "LocationTest.h"
 #include "ShipTest.h"
@@ -24,6 +25,7 @@ int main(int argc, char **argv)
 	cout << C::bold << C::blue
 		<< "  \\_______________/" << C::reset << endl;
 
+	testcase(Arguments);
 	testcase(Location);
 	testcase(Ship);
 	testcase(Board);

@@ -8,7 +8,7 @@ _:
 	make doc >/dev/null 2>&1 # ignore doxygen, we want tests and compile output
 
 compile:
-	g++ -std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb -o build/lode src/main.cpp src/C.cpp src/inc/*.cpp src/inc/*/*.cpp src/inc/*/*/*.cpp
+	g++ -std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb -o build/lode src/main.cpp src/C.cpp src/inc/*.cpp src/inc/*/*.cpp src/inc/*/*/*.cpp src/lib/*.cpp
 
 run:
 	build/lode
@@ -27,7 +27,7 @@ doc:
 	doxygen doxy.conf
 
 compile-test:
-	g++ -std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb -o build/test tests/test.cpp src/C.cpp src/inc/*.cpp src/inc/*/*.cpp src/inc/*/*/*.cpp
+	g++ -std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb -o build/test tests/test.cpp src/C.cpp src/inc/*.cpp src/inc/*/*.cpp src/inc/*/*/*.cpp src/lib/*.cpp
 
 test: build/test
 	build/test
