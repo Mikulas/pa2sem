@@ -11,7 +11,7 @@
 
 using namespace std;
 
-int main(int argc, char *argv[])
+int main(int argc, const char *argv[])
 {
 	srand(time(0) + clock());
 	auto inOut = new LineInOut;

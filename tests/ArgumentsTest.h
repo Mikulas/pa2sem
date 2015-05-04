@@ -9,7 +9,7 @@ using std::vector;
 class ArgumentsTest : public TestCase {
 public:
 	virtual void run() override {
-		vector<char*> args;
+		vector<const char*> args;
 
 		Arguments a1(args.size(), args.data());
 		assert(false == a1.flag("flag-a"),

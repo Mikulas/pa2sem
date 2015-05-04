@@ -1,6 +1,6 @@
 #include "Arguments.h"
 
-Arguments::Arguments(int argc, char **argv) {
+Arguments::Arguments(int argc, const char **argv) {
 	for (int i = 0; i < argc; ++i) {
 		string partial = argv[i];
 

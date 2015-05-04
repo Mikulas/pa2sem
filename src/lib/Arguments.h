@@ -12,7 +12,7 @@ using std::set;
 
 class Arguments {
 public:
-	Arguments(int argc, char **argv);
+	Arguments(int argc, const char **argv);
 	bool flag(string flag);
 	bool flag(string flag, char shortcut);
 	vector<string> getPositional();
