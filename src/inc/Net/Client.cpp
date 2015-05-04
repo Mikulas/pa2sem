@@ -1,7 +1,7 @@
 #include "Client.h"
 
-Client::Client(const char *host, LocalPlayer *player, InOut* inOut) {
-    fd = openCliSocket(host, Server::port);
+Client::Client(string host, LocalPlayer *player, InOut* inOut) {
+    fd = openCliSocket(host.c_str(), Server::port);
     if (fd < 0) {
         throw ClientException("Failed connecting to server");
     }

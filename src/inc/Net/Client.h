@@ -39,7 +39,7 @@ public:
 	/**
 	 * \throws ClientException connecting to host fails
 	 */
-	Client(const char *host, LocalPlayer *p, InOut* inOut);
+	Client(string host, LocalPlayer *p, InOut* inOut);
 	/**
 	 * When `ignoreServer == true`, calls `exit(0)` upon being
 	 * disconnected from server.
