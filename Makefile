@@ -42,6 +42,7 @@ release:
 			benchmark-ai.sh \
 			doc \
 			doxy.conf \
+			examples \
 			git-version.sh \
 			Makefile \
 			prohlaseni.txt \
