@@ -69,7 +69,6 @@ void Controller::run() {
 	}
 
 	try {
-		// TODO randomize player order?
 		this->game = new Game(inOut, players[0], players[1]);
 		this->game->gameLoop();
 

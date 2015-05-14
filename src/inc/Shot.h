@@ -14,8 +14,8 @@ public:
 
 	Shot() {};
 	Shot(Location location) : location(location) {};
-	Location location; // TODO fix visibility
-	Response response; // TODO fix visibility
+	Location location;
+	Response response;
 };
 
 

@@ -20,7 +20,7 @@ void Client::process() {
         l = read(fd, buffer, sizeof(buffer));
         if (l <= 0) {
             if (ignoreServer) {
-                exit(0); // TODO meh
+                exit(0);
             }
             throw ClientException("Disconnected");
         }
@@ -76,7 +76,7 @@ void Client::process() {
 
         } catch (PayloadException &e) {
             if (ignoreServer) {
-                exit(0); // TODO meh
+                exit(0);
             }
             throw e;
         }

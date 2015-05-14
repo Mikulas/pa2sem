@@ -26,7 +26,6 @@ void Game::setupBoard(Board* board) {
 		board->resetLocations();
 	};
 
-	// TODO remove, debug
 	inOut->renderShips(board->ships);
 }
 

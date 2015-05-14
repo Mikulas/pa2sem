@@ -91,7 +91,7 @@ public:
     };
 
 	Payload() {}
-    Payload(Payload&&) {} // todo
+    Payload(Payload&&) {}
 
     /**
      * \throws PayloadException if size does not match
@@ -230,7 +230,7 @@ public:
     /**
      * Prints `data()` as hex by bytes
      */
-	void debug() { // todo remove
+	void debug() {
 		const char* buffer = data();
 		printf("payload(%uB): ", (uint) size());
 		for (uint i = 0; i < size(); ++i) {

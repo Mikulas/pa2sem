@@ -67,7 +67,7 @@ public:
 	 */
 	void setShips(vector<Ship>);
 
-	vector<Ship> ships; // TODO fix visibility
+	vector<Ship> ships;
 	Player* getPlayer() const;
 	const Game* getGame() const;
 

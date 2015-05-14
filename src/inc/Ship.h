@@ -50,12 +50,12 @@ public:
 	 */
 	bool isSunk() const;
 
-	string name; // todo make const or fix visibility
+	string name;
 	/**
 	 * Amount of fields occupied. For example, ship of
 	 * length 2 could be on fields (1, 1) to (1, 2).
 	 */
-	unsigned int length; // todo make const or fix visibility
+	unsigned int length;
 	/**
 	 * \internal
 	 */

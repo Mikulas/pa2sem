@@ -102,7 +102,6 @@ void LineInOut::askShipLoc(Ship* ship) const {
 
 		Location start = readLocation();
 		cout << "Enter end coordinate: ";
-		// TODO offer all 4 options
 		Location end = readLocation();
 
 		if (!newShip.setStartEnd(start, end)) {
