@@ -1,3 +1,5 @@
-build/*
-!build/.gitkeep
-doc/html
+/build/*
+!/build/.gitkeep
+/doc/html
+/ditemiku
+/ditemiku.zip

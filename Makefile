@@ -39,3 +39,22 @@ lines:
 clean:
 	rm -rf build/*
 	rm -rf doc/html/
+
+release:
+	make clean
+	rm -r ditemiku ditemiku.zip; \
+	mkdir ditemiku
+	cp -r \
+			benchmark-ai.sh \
+			doc \
+			doxy.conf \
+			git-version.sh \
+			Makefile \
+			prohlaseni.txt \
+			README \
+			src \
+			tests \
+			zadani.txt \
+		ditemiku
+	mkdir ditemiku/build
+	zip -r ditemiku.zip ditemiku
