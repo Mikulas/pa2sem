@@ -12,13 +12,13 @@ check:
 	cppcheck --enable=all --std=c++11 -I src --suppress=missingIncludeSystem src/main.cpp
 
 compile:
-	g++ -std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb -o build/lode src/main.cpp src/C.cpp src/inc/*.cpp src/inc/*/*.cpp src/inc/*/*/*.cpp src/lib/*.cpp
+	g++ -std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb -o ditemiku src/main.cpp src/C.cpp src/inc/*.cpp src/inc/*/*.cpp src/inc/*/*/*.cpp src/lib/*.cpp
 
 compile-test:
 	g++ -std=c++11 -Wall -pedantic -Wno-long-long -O0 -ggdb -o build/test tests/test.cpp src/C.cpp src/inc/*.cpp src/inc/*/*.cpp src/inc/*/*/*.cpp src/lib/*.cpp
 
 run:
-	build/lode
+	./ditemiku
 
 test: build/test
 	build/test
@@ -31,16 +31,18 @@ lines:
 	cat tests/* tests/**/* 2>/dev/null | wc -l
 
 clean:
-	rm -rf build/*
-	rm -rf doc/html/
+	rm -rf ditemiku*; \
+	rm -rf build/*; \
+	rm -rf doc; \
+	echo cleaned
 
 release:
 	make clean
 	rm -r ditemiku ditemiku.zip; \
-	mkdir ditemiku
+	mkdir build/ditemiku
 	cp -r \
 			benchmark-ai.sh \
-			doc \
+			conf \
 			doxy.conf \
 			examples \
 			git-version.sh \
@@ -50,7 +52,7 @@ release:
 			src \
 			tests \
 			zadani.txt \
-		ditemiku
-	find ditemiku -name ".*" -delete
-	mkdir ditemiku/build
-	zip -r ditemiku.zip ditemiku
+		build/ditemiku
+	find build/ditemiku -name ".*" -delete
+	mkdir build/ditemiku/build
+	cd build && zip -r ../ditemiku.zip ditemiku
