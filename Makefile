@@ -51,5 +51,6 @@ release:
 			tests \
 			zadani.txt \
 		ditemiku
+	find ditemiku -name ".*" -delete
 	mkdir ditemiku/build
 	zip -r ditemiku.zip ditemiku
